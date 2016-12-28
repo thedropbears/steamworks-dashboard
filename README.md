@@ -1,2 +1,1 @@
-# steamworks-dashboard
-The Drop Bears' dashboard for 2017 steamworks
+# steamworks-dashboard: The Drop Bears' 2017 code for a HTML/JavaScript Dashboard

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <link href="debug.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- This starts the NetworkTables websocket, it can be accessed from multiple
+     pages simultaneously -->
+<script src="/networktables/networktables.js"></script>
+
+<!-- Obviously, you will want to copy this file locally in a real
+     dashboard, as the Driver Station won't have internet access -->
+<script src="res/jquery-2.2.0.min.js"></script>
+<script src="res/d3.min.js"></script>
+
+<!-- uncomment this is you want to use included utility functions that
+     implement common functionality that you might find useful. Requires
+     that d3.js and jQuery are included first -->
+<!-- <script src="/networktables/utils.js"></script> -->
+
+<div>
+	NetworkTables websocket: <span id="connectstate">Unknown state</span><br/>
+	Robot: <span id="robotstate">Unknown state</span>
+</div>
+<hr/>
+
+<table id="nt" border=1>
+	<tbody></tbody>
+</table>
+
+<div id="graph">
+    <div id="variable-graph">
+    </div>
+    Variable:  <input type="text" id="graph-variable-name" value="vision_x"><br/>
+    Min Value: <input type="text" id="graph-min-val" value="-1.0"><br/>
+    Max Value: <input type="text" id="graph-max-val" value="1.0"><br/>
+    Buff Len:  <input type="text" id="graph-buffer-length" value="1000"><br/>
+    <input id="graph-button" type="button" value="Graph" onclick="restartGraph();" />
+    <input id="graph-toggle-button" type="button" value="Toggle Updating" onclick="toggleGraphing();" />
+
+</div>
+
+
+<script type="text/javascript">
+"use strict";
+$(document).ready(function(){
+	// sets a function that will be called when the websocket connects/disconnects
+	NetworkTables.addWsConnectionListener(onNetworkTablesConnection, true);
+
+	// sets a function that will be called when the robot connects/disconnects
+	NetworkTables.addRobotConnectionListener(onRobotConnection, true);
+
+	// sets a function that will be called when any NetworkTables key/value changes
+	NetworkTables.addGlobalListener(onValueChanged, true);
+});
+var data;
+var path;
+var line
+var x;
+var y;
+var plotVariable;
+var graphing = true;
+function onRobotConnection(connected) {
+	$('#robotstate').text(connected ? "Connected!" : "Disconnected");
+}
+function onNetworkTablesConnection(connected) {
+	if (connected) {
+		$("#connectstate").text("Connected!");
+
+		// clear the table
+		$("#nt tbody > tr").remove();
+
+	} else {
+		$("#connectstate").text("Disconnected!");
+	}
+}
+
+function toggleGraphing() {
+    graphing = !graphing;
+}
+
+function restartGraph() {
+    var divId = "#variable-graph";
+    var minVal = parseFloat(document.getElementById("graph-min-val").value);
+    var maxVal = parseFloat(document.getElementById("graph-max-val").value);
+    var buffer = parseInt(document.getElementById("graph-buffer-length").value);
+    plotVariable = document.getElementById("graph-variable-name").value;
+    data = d3.range(buffer).map(function() {return 0.0});
+    var margin = {top: 20, right: 20, bottom: 20, left: 40},
+        width = 450 - margin.left - margin.right,
+        height = 300 - margin.top - margin.bottom;
+    x = d3.scale.linear()
+        .domain([0, buffer - 1])
+        .range([0, width]);
+    y = d3.scale.linear()
+        .domain([minVal, maxVal])
+        .range([height, 0]);
+    line = d3.svg.line()
+        .x(function(d, i) { return x(i); })
+        .y(function(d, i) { return y(d); });
+    var svg = d3.select(divId).append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    svg.append("defs").append("clipPath")
+        .attr("id", "clip")
+    .append("rect")
+        .attr("width", width)
+        .attr("height", height);
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + y(0) + ")")
+        .call(d3.svg.axis().scale(x).orient("bottom"));
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(d3.svg.axis().scale(y).orient("left"));
+    path = svg.append("g")
+        .attr("clip-path", "url(#clip)")
+    .append("path")
+        .datum(data)
+        .attr("class", "line")
+        .attr("d", line);
+}
+function tick(point) {
+  // push a new data point onto the back
+  data.push(point);
+  // redraw the line, and slide it to the left
+  path
+      .attr("d", line)
+      .attr("transform", null)
+    .transition()
+      //.duration(950)
+      .ease("linear")
+      .attr("transform", "translate(" + x(-1) + ",0)")
+      //.each("end", tick);
+  // pop the old data point off the front
+  data.shift();
+}
+
+function onValueChanged(key, value, isNew) {
+	// key thing here: we're using the various NetworkTable keys as
+	// the id of the elements that we're appending, for simplicity. However,
+	// the key names aren't always valid HTML identifiers, so we use
+	// the NetworkTables.keyToId() function to convert them appropriately
+    if(key == "/SmartDashboard/"+plotVariable && graphing) {
+        tick(value);
+    }
+
+	if (isNew) {
+		var tr = $('<tr></tr>').appendTo($('#nt > tbody:last'));
+		$('<td></td>').text(key).appendTo(tr);
+		$('<td></td>').attr('id', NetworkTables.keyToId(key))
+					   .text(value)
+					   .appendTo(tr);
+	} else {
+
+		// similarly, use keySelector to convert the key to a valid jQuery
+		// selector. This should work for class names also, not just for ids
+		$('#' + NetworkTables.keySelector(key)).text(value);
+	}
+}
+</script>
+
+</body>
+</html>
