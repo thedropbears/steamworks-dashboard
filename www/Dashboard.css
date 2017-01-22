@@ -10,8 +10,12 @@
     -khtml-user-select: none;
     -webkit-user-select: none;
     overflow: hidden;
-}
 
+}
+body {
+  background-color: #8F8F8F
+
+}
 .topPanel div {
     background-color: #101828;
 }
@@ -24,6 +28,7 @@
 
 .topPanel ul {
     background-color: #101828;
+    border-bottom: medium solid #3565bf
 }
 
 ul {
@@ -97,7 +102,7 @@ ul {
     background-color: #8F8F8F;
     display: inline-block;
     width: 50%;
-
+    border-right: medium solid #3565bf;
 }
 
 #main-body li {
@@ -108,7 +113,9 @@ ul {
 
 #camera {
     float: left;
-    border: medium solid #3565bf;
+    border-right: medium solid #3565bf;
+    border-left: medium solid #3565bf;
+    border-bottom: medium solid #3565bf;
     display: inline-block;
     vertical-align: text-top;
     width: 50%;
@@ -117,7 +124,7 @@ ul {
 
 
 #robotState {
-    border: medium solid #3565bf;
+    border-right: medium solid #3565bf;
     width: 18vw;
     height: 18vw;
     background-color: #8F8F8F;
@@ -132,7 +139,7 @@ ul {
     align-items:center;
     width:18vw;
     height:18vw;
-    border: medium solid #3565bf;
+    border-right: medium solid #3565bf;
     background-color: #8F8F8F;
     margin: 0 0 0 -15px;
 }
@@ -146,6 +153,8 @@ ul {
 }
 #pegPostion{
     background-color: #8F8F8F;
-    border: medium solid #3565bf;
+    border-top: medium solid #3565bf;
+    border-right: medium solid #3565bf;
+    border-bottom: medium solid #3565bf;
     margin:-4px 0 0 0;
 }
