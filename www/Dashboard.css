@@ -1,7 +1,7 @@
 /* http://www.colors.commutercreative.com/grid/ */
 
 * {
-  /*  border: 1px dotted rgb(24, 218, 0);*/
+    border: 1px dotted rgb(24, 218, 0);
     box-sizing: border-box;
     font-family: arial;
     margin: 0;
@@ -19,7 +19,7 @@
 .topPanel li {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 3vw;
+    margin-right: 2vw;
 }
 
 .topPanel ul {
@@ -77,7 +77,7 @@ ul {
     border-bottom: thick solid #3565bf;
 }
 
-#sideList {
+.sideList {
     vertical-align: middle;
     display: ;
     text-align: right;
