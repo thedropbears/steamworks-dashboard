@@ -1,7 +1,7 @@
 /* http://www.colors.commutercreative.com/grid/ */
 
 * {
-  /*  border: 1px dotted rgb(24, 218, 0);*/
+    border: 0px dotted rgb(24, 218, 0);
     box-sizing: border-box;
     font-family: arial;
     margin: 0;
@@ -19,7 +19,7 @@
 .topPanel li {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 3vw;
+    margin-right: 2vw;
 }
 
 .topPanel ul {
@@ -77,7 +77,7 @@ ul {
     border-bottom: thick solid #3565bf;
 }
 
-#sideList {
+.sideList {
     vertical-align: middle;
     display: ;
     text-align: right;
@@ -94,7 +94,7 @@ ul {
 }
 
 #main-body {
-    background-color: #8F8F8F;
+    background-color: ;
     display: inline-block;
     width: 50%;
 
@@ -103,7 +103,7 @@ ul {
 #main-body li {
     display: inline-block;
     vertical-align: top;
-    background-color: #8F8F8F;
+    background-color: #;
 }
 
 #camera {
@@ -112,7 +112,7 @@ ul {
     display: inline-block;
     vertical-align: text-top;
     width: 50%;
-    background-color:#8F8F8F;
+    background-color:#;
 }
 
 
@@ -120,7 +120,7 @@ ul {
     border: medium solid #3565bf;
     width: 18vw;
     height: 18vw;
-    background-color: #8F8F8F;
+    background-color: #;
     margin-top:0px;
     margin-left:auto;
     margin-right:auto;
@@ -133,19 +133,19 @@ ul {
     width:18vw;
     height:18vw;
     border: medium solid #3565bf;
-    background-color: #8F8F8F;
+    background-color: #;
     margin: 0 0 0 -15px;
 }
 
 #compass {
     height: 12vw;
-    background-color: #8F8F8F;
+    background-color: #;
     margin-top:0px;
     margin-left:auto;
     margin-right:auto;
 }
 #pegPostion{
-    background-color: #8F8F8F;
+    background-color: #;
     border: medium solid #3565bf;
     margin:-4px 0 0 0;
 }
