@@ -1,252 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-	<meta charset="utf-8">
-    <link href="operator-ui.css" rel="stylesheet">
+    <title>4774 Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="Dashboard.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="Dashboard.js" async="async" type="text/javascript"></script>
 </head>
-<body class="OperatorUI">
 
-<!-- This starts the NetworkTables websocket, it can be accessed from multiple
-     pages simultaneously -->
-<script src="/networktables/networktables.js"></script>
-
-<script src="res/jquery-2.2.0.min.js"></script>
-<script src="res/d3.min.js"></script>
-
-<!-- uncomment this is you want to use included utility functions that
-     implement common functionality that you might find useful. Requires
-     that d3.js and jQuery are included first -->
-<!-- <script src="/networktables/utils.js"></script> -->
-
-<div class="Area" id="left-box">
-    <div id="text-data">
-        <a href="debug.html">Debugging Page</a>
-        <div>
-            Robot: <span id="robotstate">Unknown state</span>
-        </div>
-        <div id="range_finder">Range Finder: <span>0.0</span></div>
-        <div id="gyro">Robot Heading: <span>0.0</span></div>
-        <div id="vision_x">Vision X: <span>0.0</span></div>
+<body>
+    <div class="topPanel">
+        <ul id="topList ">
+            <li id="timer">2:15</li>
+            <li id="cycleTimer">21</li>
+            <li> <button class="button" id="camChange">
+              <a>Switch Camera</a>
+            </button></li>
+            <li> <button class="button" id="camChange">
+              <a>Gyro Reset</a>
+            </button></li>
+            <li> <button class="button" id="camChange">
+              <a>Reset Video Stream</a>
+            </button></li>
+            <li> <button class="button" id="camChange">
+              <a>Reverse Controls</a>
+            </button></li>
+            <li> <button class="button" id="camChange">
+              <a>Switch Camera</a>
+            </button></li>
+            <li id="sideList">
+                <li id="Connection">Connected</li>
+                <li id="battery" style="color:white;">Battery</li>
+                <li class="dropdown"><select>
+                  <option value="2">Auto Mode</option>
+                  </select>
+                </li>
+            </li>
+        </ul>
     </div>
-    <div id="ontarget" class="StatusDisplay">
-        SHOOT?
+
+    <!-- <img id="camera" src="http://10.47.74.2:5800/?action=stream" /> -->
+    <img id="camera" src="camera.jpg" />
+
+    <div id="main-body">
+        <ul>
+            <li>
+                <h1 id="robotState"> State</h1></li>
+            <li>
+                <div id="compassDiv">
+                    <img id="compass" src="car.png" />
+                </div>
+            </li>
+        </ul>
     </div>
-    <div id="intakespeed" class="StatusDisplay">
-        INTAKE:<div id="intakestate">NO BALL</div>
+    <div id="pegPostion">
+        <svg width="100%" height="30em">
+          <!-- real scale 0.27501909854em width, 2.1em height-->
+          <rect id="pegSVG" x="50%" y="0" width="1%" height="10%" fill="black" />
+
+          	<image xlink:href="car.png" x="50%" y="50%" height="7.2em" width="8em"/>
+          <text id="textSVG" x="0" y="35" font-family="Verdana" font-size="35">
+              Over 9,000
+
+</svg>
     </div>
-    <div id="shooterspeed" class="StatusDisplay">
-        SHOOTER STATUS
-    </div>
-    <!-- <img src="res/img/logo.png" id="logo"></a> -->
-    <img src="res/img/towards-enemy.png" id="heading"></a>
-</div>
-
-<div class="Area" id="right-box">
-    <div id="position-display">
-        <p id="position-display-title">Robot Relative to Target</p>
-        <div id="position-display-container">
-            <div id="position-display-robot"></div>
-            </div>
-        </div>
-    </div>
-    <div id="camera">
-        <img class="camera-img-class" id="camera-img" src="http://10.47.74.2:5800/?action=stream" />
-    </div>
-    <div id="vision-camera">
-        <img class="camera-img-class" id="vision-camera-img" src="http://10.47.74.2:5801/?action=stream" />
-    </div>
-    <select id="auto-choice">
-    </select>
-</div>
-
-<script type="text/javascript">
-"use strict";
-
-var target_range = 1.6;
-
-var vision_x = 1.0;
-var range = 5.0;
-var shooter_speed = 0.0;
-var boulder_state = 0;
-var intake_speed = 0.0;
-var intake_states = {};
-intake_states["0"] = "NO BALL";
-intake_states["11"] = "BACKDRIVING FAST";
-intake_states["12"] = "BACKDRIVING SLOWLY";
-intake_states["1"] = "SPINNING UP";
-intake_states["10"] = "READY TO INTAKE";
-intake_states["2"] = "BALL DETECTED";
-intake_states["4"] = "PINNING BALL";
-intake_states["5"] = "BALL HELD AUTONOMOUSLY";
-intake_states["6"] = "SHOTS FIRED!";
-$(document).ready(function(){
-    var $autoSelector = $("#auto-choice");
-    $autoSelector.change(function(event) {
-            event.preventDefault();
-            var val = $autoSelector.find("option:selected").text();
-            NetworkTables.setValue("/SmartDashboard/Autonomous Mode/selected", val);
-    });
-	// sets a function that will be called when the websocket connects/disconnects
-	NetworkTables.addWsConnectionListener(onNetworkTablesConnection, true);
-
-	// sets a function that will be called when the robot connects/disconnects
-	NetworkTables.addRobotConnectionListener(onRobotConnection, true);
-
-	// sets a function that will be called when any NetworkTables key/value changes
-	NetworkTables.addGlobalListener(onValueChanged, true);
-
-    //change_robot_range(200.0);
-    //change_robot_strafe_pos(0.0);
-    //rotate_robot(0.0);
-
-});
-function onRobotConnection(connected) {
-	$('#robotstate').text(connected ? "Connected!" : "Disconnected");
-}
-function onNetworkTablesConnection(connected) {
-	if (connected) {
-		$("#connectstate").text("Connected!");
-
-		// clear the table
-		$("#nt tbody > tr").remove();
-
-	} else {
-		$("#connectstate").text("Disconnected!");
-	}
-}
-function onValueChanged(key, value, isNew) {
-    switch (key) {
-        case "/SmartDashboard/range_finder":
-            $('#range_finder span').text(Number((value)).toFixed(1));
-            change_robot_range(value);
-            range = value;
-            break;
-        case "/SmartDashboard/gyro":
-            $('#gyro span').text((Number((value)).toFixed(1)));
-            rotate_robot(value);
-            rotate_compass(value);
-            break;
-        case "/SmartDashboard/vision_x":
-            $('#vision_x span').text((Number((value)).toFixed(1)));
-            change_robot_strafe_pos(value);
-            vision_x = value;
-            break;
-        case "/SmartDashboard/boulder_state":
-            intake_state = value;
-            break;
-        case "/SmartDashboard/intake_speed":
-            intake_speed = value;
-            break;
-        case "/SmartDashboard/shooter_speed":
-            shooter_speed = value;
-            break;
-        case "/SmartDashboard/Autonomous Mode/options":
-        case "/SmartDashboard/Autonomous Mode/default":
-        case "/SmartDashboard/Autonomous Mode/selected":
-            updateChooser('#auto-choice', '/SmartDashboard/Autonomous Mode');
-            break;
-
-    }
-
-    updateDisplays();
-}
-
-function toTitleCase(str)
-{
-    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-}
-
-function updateDisplays(){
-    var onTargetDiv = document.getElementById("ontarget");
-    if(vision_x < 0.05 && Math.abs(range-target_range) < 0.1) {
-        onTargetDiv.style.backgroundColor = "green";
-    } else {
-        onTargetDiv.style.backgroundColor = "red";
-    }
-
-    var intakeSpeedDiv = document.getElementById("intakespeed");
-    if(intake_speed == 0.0) {
-        intakeSpeedDiv.style.backgroundColor = "orange";
-    } else if (intake_speed > 0.0) {
-        intakeSpeedDiv.style.backgroundColor = "green";
-    } else {
-        intakeSpeedDiv.style.backgroundColor = "red";
-    }
-
-    document.getElementById("intakestate").innerHTML = toTitleCase(intake_state.replaceAll("_", " "));
-
-    var shooterSpeedDiv = document.getElementById("shooterspeed");
-
-    if(shooter_speed == 0.0) {
-        shooterSpeedDiv.style.backgroundColor = "orange";
-    } else if (shooter_speed > 0.0) {
-        shooterSpeedDiv.style.backgroundColor = "green";
-    } else {
-        shooterSpeedDiv.style.backgroundColor = "red";
-    }
-}
-
-function change_robot_range(dist) {
-    var robot = document.getElementById("position-display-robot");
-    var xpos = (dist-target_range)/target_range;
-    if (xpos >= 1.0){
-        xpos = 1.0;
-    }
-    xpos = xpos*10.0+10.0-1.0;
-    robot.style.top = xpos + "vw";
-}
-
-function change_robot_strafe_pos(vision_x){
-    vision_x = -vision_x
-    if(vision_x >= -1.0 && vision_x <= 1.0) {
-    var robot = document.getElementById("position-display-robot");
-    var ypos = vision_x*10.0-0.75+10.0;
-    robot.style.left = ypos + "vw";
-    }
-}
-
-function rotate_robot(heading) {
-    heading = -heading // turn from ccw to clockwise
-    var robot = document.getElementById("position-display-robot");
-    robot.style.transform = ("rotate(" + heading + "rad)")
-}
-
-function rotate_compass(heading) {
-    heading = -heading + 3.14159 // turn from ccw to clockwise
-    var robot = document.getElementById("heading");
-    robot.style.transform = ("rotate(" + heading + "rad)")
-}
-
-function updateChooser(id, key) {
-    var options = NetworkTables.getValue(key + '/options');
-
-    if (options === undefined)
-        return;
-
-    var optDefault = NetworkTables.getValue(key + '/default');
-    var selected = NetworkTables.getValue(key + '/selected');
-
-    var opt = d3.select(id)
-        .selectAll("option")
-        .data(options);
-
-    opt.enter()
-        .append("option");
-
-    opt.text(function(d,i){
-        return options[i];
-    });
-
-    opt.exit().remove();
-
-    if (selected !== undefined) {
-        $(id).val(selected);
-    } else if (optDefault !== undefined) {
-        $(id).val(optDefault);
-    }
-
-}
-</script>
 
 </body>
+
 </html>
