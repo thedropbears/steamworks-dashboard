@@ -99,7 +99,7 @@ ul {
 }
 
 #main-body {
-    background-color: #8F8F8F;
+    background-color: #E0E0E0;
     display: inline-block;
     width: 50%;
     border-right: medium solid #3565bf;
@@ -108,7 +108,7 @@ ul {
 #main-body li {
     display: inline-block;
     vertical-align: top;
-    background-color: #8F8F8F;
+    background-color: #E0E0E0;
 }
 
 #camera {
@@ -119,7 +119,7 @@ ul {
     display: inline-block;
     vertical-align: text-top;
     width: 50%;
-    background-color:#8F8F8F;
+    background-color:#E0E0E0;
 }
 
 
@@ -127,7 +127,7 @@ ul {
     border-right: medium solid #3565bf;
     width: 18vw;
     height: 18vw;
-    background-color: #8F8F8F;
+    background-color: #E0E0E0;
     margin-top:0px;
     margin-left:auto;
     margin-right:auto;
@@ -140,19 +140,19 @@ ul {
     width:18vw;
     height:18vw;
     border-right: medium solid #3565bf;
-    background-color: #8F8F8F;
+    background-color: #E0E0E0;
     margin: 0 0 0 -15px;
 }
 
 #compass {
     height: 12vw;
-    background-color: #8F8F8F;
+    background-color: #E0E0E0;
     margin-top:0px;
     margin-left:auto;
     margin-right:auto;
 }
 #pegPostion{
-    background-color: #8F8F8F;
+    background-color: #E0E0E0;
     border-top: medium solid #3565bf;
     border-right: medium solid #3565bf;
     border-bottom: medium solid #3565bf;
