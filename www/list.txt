@@ -1,0 +1,12 @@
+camera
+connection confirmation
+timer(cycle time, climbing reminder)
+battery
+current action/state (turning, placing gear, picking up gear, moving, disactived, autonomous)
+peg location
+robot orientation
+auto mode selector
+gyro reset
+revese controls
+refresh video stream
+http://media.giphy.com/media/Jrd9E2kuPuOYM/giphy.gif text-shadow: -1px 0 cyan, 0 1px cyan, 1px 0 cyan, 0 -1px cyan;
