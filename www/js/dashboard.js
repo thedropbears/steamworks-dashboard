@@ -1,8 +1,15 @@
 var targetRange = 1.6; // TODO work out how far we can see
-
+var camera = 1;
 $(document).ready(function() {
     $("#reverseControl").click(function() {
         $("#reverseControl").toggleClass("activeReverse");
+    });
+    $("#camChange").click(function() {
+      camera = camera+ 1;
+      if (camera > 3){
+        camera = 1
+      }
+
     });
 
     // sets a function that will be called when the websocket connects/disconnects
@@ -10,6 +17,7 @@ $(document).ready(function() {
 
     // sets a function that will be called when the robot connects/disconnects
     NetworkTables.addRobotConnectionListener(onRobotConnection, true);
+
 
     // sets a function that will be called when any NetworkTables key/value changes
     NetworkTables.addGlobalListener(onValueChanged, true);
@@ -78,3 +86,11 @@ function rotateCompass(heading) {
     var robot = document.getElementById("compass");
     robot.style.transform = "rotate(" + heading + "rad)";
 }
+/*
+function onNetworkTablesConnection(key, value){
+    switch(key){
+      case radian;
+      $("#compass")..style.transform = (value *  57.3);
+
+    }
+}*/
