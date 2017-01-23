@@ -111,9 +111,8 @@ ul {
     background-color: #E0E0E0;
 }
 
-#camera {
+.camera {
     float: left;
-    border-right: medium solid #3565bf;
     border-left: medium solid #3565bf;
     border-bottom: medium solid #3565bf;
     display: inline-block;
@@ -123,7 +122,9 @@ ul {
 }
 
 
+
 #robotState {
+  border-left: thick solid #3565bf;
     border-right: medium solid #3565bf;
     width: 18vw;
     height: 18vw;
@@ -152,6 +153,8 @@ ul {
     margin-right:auto;
 }
 #pegPostion{
+  border-left: thick solid #3565bf;
+
     background-color: #E0E0E0;
     border-top: medium solid #3565bf;
     border-right: medium solid #3565bf;
