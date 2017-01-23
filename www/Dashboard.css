@@ -124,12 +124,14 @@ ul {
 
 
 #robotState {
+    font-size:24pt;
+    font-weight: 600;
     border-right: medium solid #3565bf;
-    width: 18vw;
+    width: 18vw; /*32.53vw*/
     height: 18vw;
     background-color: #E0E0E0;
     margin-top:0px;
-    margin-left:auto;
+    margin-left:1vw;
     margin-right:auto;
 }
 
@@ -139,9 +141,17 @@ ul {
     align-items:center;
     width:18vw;
     height:18vw;
-    border-right: medium solid #3565bf;
     background-color: #E0E0E0;
-    margin: 0 0 0 -15px;
+    margin: 0 0 0 -250px;
+}   
+
+#robotState2 {
+    margin-left:-1vw;
+    font-size:24pt;
+    font-weight: 600;
+    align:left;
+    background-color: #E0E0E0;
+    margin-right: 100px
 }
 
 #compass {
