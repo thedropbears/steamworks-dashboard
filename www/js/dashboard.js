@@ -6,14 +6,17 @@ $(document).ready(function() {
     });
     $("#camChange").click(function() {
       camera = camera+ 1;
-      if (camera > 3){
+      if (camera > 2){
         camera = 1;}
-      if (camer === 1){
-        
+      if (camera === 1){
+          $("#camera").css({"content":"url(img/car.jpg)"});
+      }
+      else if (camera === 2) {
+        $("#camera").css('content:url("img/camera2.jpg");');
       }
 
-
     });
+
 
 
     // sets a function that will be called when the websocket connects/disconnects
@@ -42,8 +45,11 @@ function onRobotConnection(connected) {
 function onNetworkTablesConnection(connected) {
     if (connected) {
         $("#Connection").text("Connected!");
+        $("#Connection").css("color:lime;");
     } else {
         $("#Connection").text("Disconnected :(");
+        $("#Connection").css("color:red;");
+
     }
 }
 
