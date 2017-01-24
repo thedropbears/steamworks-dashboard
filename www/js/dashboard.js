@@ -7,10 +7,14 @@ $(document).ready(function() {
     $("#camChange").click(function() {
       camera = camera+ 1;
       if (camera > 3){
-        camera = 1
+        camera = 1;}
+      if (camer === 1){
+        
       }
 
+
     });
+
 
     // sets a function that will be called when the websocket connects/disconnects
     NetworkTables.addWsConnectionListener(onNetworkTablesConnection, true);
