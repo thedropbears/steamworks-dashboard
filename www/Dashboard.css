@@ -130,9 +130,9 @@ ul {
     width: 18vw; /*32.53vw*/
     height: 18vw;
     background-color: #E0E0E0;
-    margin-top:0px;
-    margin-left:1vw;
     margin-right:auto;
+    margin: -3px 0 0 0;
+    border-top: medium solid #3565bf;
 }
 
 #compassDiv {
@@ -145,15 +145,6 @@ ul {
     margin: 0 0 0 -250px;
 }   
 
-#robotState2 {
-    margin-left:-1vw;
-    font-size:24pt;
-    font-weight: 600;
-    align:left;
-    background-color: #E0E0E0;
-    margin-right: 100px
-}
-
 #compass {
     height: 12vw;
     background-color: #E0E0E0;
@@ -165,6 +156,20 @@ ul {
     background-color: #E0E0E0;
     border-top: medium solid #3565bf;
     border-right: medium solid #3565bf;
+    border-bottom: medium solid #3565bf;
+    margin:-4px 0 0 0;
+}
+
+#cameraName{
+    background-color: #E0E0E0;
+    margin: 0 50vw 0 0;
+    border-right: medium solid #3565bf;
+    border-left: medium solid #3565bf;
+    font-size: 250%;
+    font-weight: 600;
+    font-family: arial;
+}
+#space {
     border-bottom: medium solid #3565bf;
     margin:-4px 0 0 0;
 }
