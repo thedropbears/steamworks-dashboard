@@ -1,5 +1,0 @@
-camera
-start of teleop
-current action/state (turning, placing gear, picking up gear, moving, disactived, autonomous)
-peg location
-robot orientation

@@ -4,11 +4,12 @@
 <head>
     <title>4774 Dashboard</title>
     <link rel="stylesheet" type="text/css" href="Dashboard.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <script src="/networktables/networktables.js"></script>
     <script src="js/jquery-2.2.0.min.js"></script>
     <script src="js/d3.min.js"></script>
+    <script src="js/jquery.blink.js"></script>
+
     <!-- some utility functions that are highly useful -->
     <script src="/networktables/utils.js"></script>
 
@@ -18,7 +19,6 @@
 <body>
     <div class="topPanel">
         <ul id="topList ">
-            <li id="timer">2:15</li>
             <li id="cycleTimer">21</li>
             <li> <button class="button" id="camChange">
               <a>Switch Camera</a>
@@ -38,18 +38,19 @@
                   <option value="2">Robot Modes</option>
                   </select>
                 </li>
+            </li>
         </ul>
         <ul id="cameraName">Front Camera</ul>
     </div>
     <!-- <img id="camera" src="http://10.47.74.2:5800/?action=stream" /> -->
     <img id="camera" src="img/camera.jpg" />
-    <div id=space></div>
+    <div id="space"></div>
     <div id="main-body">
         <ul>
             <li>
                 <h1 id="robotState"> State</h1></li>
             <li>
-                <div id="compassDiv">   
+                <div id="compassDiv">
                     <img id="compass" src="img/robot.png" />
                 </div>
             </li>
@@ -61,10 +62,10 @@
           <rect id="pegSVG" x="50%" y="0" width="1%" height="10%" fill="black" />
 
                 <image xlink:href="img/robot.png" x="42.15%" y="40%" height="7.2em" width="8em"/>
-          <text id="textSVG" x="0" y="35" font-family="Verdana" font-size="35">
+
 </svg>
     </div>
-
 </body>
+
 
 </html>

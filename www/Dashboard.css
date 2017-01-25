@@ -10,12 +10,12 @@
     -khtml-user-select: none;
     -webkit-user-select: none;
     overflow: hidden;
-
 }
+
 body {
-  background-color: #E0E0E0
-
+    background-color: #E0E0E0
 }
+
 .topPanel div {
     background-color: #101828;
 }
@@ -23,11 +23,13 @@ body {
 .topPanel li {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 2vw;
+    margin-right: 3.5vw;
+    margin-bottom: 1vw;
 }
 
 .topPanel ul {
     background-color: #101828;
+    border-bottom: medium solid #3565bf;
 }
 
 ul {
@@ -58,27 +60,22 @@ ul {
 .button:active {
     opacity: 0.3;
 }
-.activeReverse{
-  opacity: 0.3;
+
+.activeReverse {
+    opacity: 0.3;
 }
 
-#timer {
-    width: 11vw;
-    font-size: 500%;
+#cycleTimer {
+    width: 20.9vw;
+    font-size: 800%;
     font-weight: 600;
     margin-left: 2vw;
     color: #3565bf;
     background-color: #101828;
 }
 
-#cycleTimer {
-    width: 3vw;
-    font-size: 250%;
-    color: #3565bf;
-}
-
 #topList {
-    border-bottom: thick solid #3565bf;
+    border-bottom: medium solid #3565bf;
 }
 
 .sideList {
@@ -94,7 +91,8 @@ ul {
     font-weight: 700;
     background-color: #101828;
     font-size: 150%;
-    width: 9vw
+    width: 12vw;
+    margin-right:1vw;
 }
 
 #main-body {
@@ -110,70 +108,64 @@ ul {
     background-color: #E0E0E0;
 }
 
-.camera {
+#camera {
     float: left;
     border-left: medium solid #3565bf;
     border-bottom: medium solid #3565bf;
     display: inline-block;
     vertical-align: text-top;
-    width: 50v;
-    background-color:#E0E0E0;
+    width: 50%;
+    background-color: #E0E0E0;
 }
 
-
-
 #robotState {
-<<<<<<< HEAD
-  border-left: thick solid #3565bf;
-=======
-    font-size:24pt;
+    font-size: 24pt;
     font-weight: 600;
->>>>>>> 7d3eb56c742b0fcc6ad8f46780d367f74604ad5d
     border-right: medium solid #3565bf;
-    width: 18vw; /*32.53vw*/
+    border-left: medium solid #3565bf;
+    width: 18vw;
     height: 18vw;
     background-color: #E0E0E0;
-    margin-right:auto;
+    margin-right: auto;
     margin: 0 0 0 0;
 }
 
 #compassDiv {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    width:18vw;
-    height:18vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18vw;
+    height: 18vw;
     background-color: #E0E0E0;
-    margin: 0 0 0 -250px;
-}   
+}
 
 #compass {
     height: 12vw;
     background-color: #E0E0E0;
-    margin-top:0px;
-    margin-left:auto;
-    margin-right:auto;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
 }
-#pegPostion{
-  border-left: thick solid #3565bf;
 
+#pegPostion {
     background-color: #E0E0E0;
-    border-top: medium solid #3565bf;
-    border-right: medium solid #3565bf;
-    border-bottom: medium solid #3565bf;
-    margin:-4px 0 0 0;
+    border: medium solid #3565bf;
+    margin: -4px 0 0 0;
 }
 
-#cameraName{
+#cameraName {
     background-color: #E0E0E0;
     margin: 0 50vw 0 0;
-    border-right: medium solid #3565bf;
     border-left: medium solid #3565bf;
+    border-right: medium solid #3565bf;
+    border-bottom-width: 0px;
     font-size: 250%;
     font-weight: 600;
     font-family: arial;
+    width: 100%;
 }
+
 #space {
     border-bottom: medium solid #3565bf;
-    margin:-4px 0 0 0;
+    margin: -4px 0 0 0;
 }
