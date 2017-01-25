@@ -4,6 +4,8 @@ $(document).ready(function() {
     $("#reverseControl").click(function() {
         $("#reverseControl").toggleClass("activeReverse");
     });
+    timerTimer()
+    timerCycle()
 
     // sets a function that will be called when the websocket connects/disconnects
     NetworkTables.addWsConnectionListener(onNetworkTablesConnection, true);
@@ -78,3 +80,44 @@ function rotateCompass(heading) {
     var robot = document.getElementById("compass");
     robot.style.transform = "rotate(" + heading + "rad)";
 }
+function timerTimer(){
+var countDownDate = Math.floor(new Date().getTime() / 1000) + 135;
+
+var x = setInterval(function() {
+    var now = Math.floor(new Date().getTime() / 1000);
+    var distance = countDownDate - now;
+    var minutes = Math.floor(distance % (60 * 60) / (60));
+    var seconds = Math.floor(distance % (60));
+
+    if (seconds < 10) {
+        index.html.getElementById("timer").innerHTML = minutes + ":0" + seconds;
+    }
+    else {
+        index.html.getElementById("timer").innerHTML = minutes + ":" + seconds;
+    }
+    if (distance < 0) {
+        clearInterval(x);
+        index.html.getElementById("timer").innerHTML = "Finished";
+    }
+}, 1000);
+}
+
+function timerCycle(){
+var countDownDate = Math.floor(new Date().getTime() / 1000) + 21;
+
+var x = setInterval(function() {
+    var now = Math.floor(new Date().getTime() / 1000);
+    var distance = countDownDate - now;
+    var seconds = Math.floor(distance % (60));
+
+    if (seconds < 10) {
+        index.html.getElementById("cycleTimer").innerHTML = "0" + seconds;
+    }
+    else {
+        index.html.getElementById("cycleTimer").innerHTML = seconds;
+    }
+    if (distance < 0) {
+        clearInterval(x);
+        index.html.getElementById("cycleTimer").innerHTML = "Finished";
+    }
+}, 1000);}

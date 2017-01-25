@@ -4,9 +4,9 @@
 <head>
     <title>4774 Dashboard</title>
     <link rel="stylesheet" type="text/css" href="Dashboard.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <script src="jquery-3.1.1.min.js"></script>
-    <script src="Dashboard.js" async="async" type="text/javascript"></script>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/dashboard.js" async="async" type="text/javascript"></script>
 </head>
 
 <body>
@@ -39,7 +39,7 @@
     </div>
 
     <!-- <img id="camera" src="http://10.47.74.2:5800/?action=stream" /> -->
-    <img id="camera" src="camera.jpg" />
+    <img id="camera" src="img/camera.jpg" />
 
     <div id="main-body">
         <ul>
@@ -47,7 +47,7 @@
                 <h1 id="robotState"> State</h1></li>
             <li>
                 <div id="compassDiv">
-                    <img id="compass" src="car.png" />
+                    <img id="compass" src="img/car.png" />
                 </div>
             </li>
         </ul>
@@ -57,13 +57,56 @@
           <!-- real scale 0.27501909854em width, 2.1em height-->
           <rect id="pegSVG" x="50%" y="0" width="1%" height="10%" fill="black" />
 
-          	<image xlink:href="car.png" x="50%" y="50%" height="7.2em" width="8em"/>
+          	<image xlink:href="img/car.png" x="50%" y="50%" height="7.2em" width="8em"/>
           <text id="textSVG" x="0" y="35" font-family="Verdana" font-size="35">
 
 
 </svg>
     </div>
-
 </body>
+<script>
+var countDownDate = Math.floor(new Date().getTime() / 1000) + 135;
+
+var x = setInterval(function() {
+    var now = Math.floor(new Date().getTime() / 1000);
+    var distance = countDownDate - now;
+    var minutes = Math.floor(distance % (60 * 60) / (60));
+    var seconds = Math.floor(distance % (60));
+
+    if (seconds < 10) {
+        document.getElementById("timer").innerHTML = minutes + ":0" + seconds;
+    }
+    else {
+        document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+    }
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "Finished";
+    }
+}, 1000);
+
+var countDownDate1 = Math.floor(new Date().getTime() / 1000) + 21;
+
+var x1 = setInterval(function() {
+    var now1 = Math.floor(new Date().getTime() / 1000);
+    var distance1 = countDownDate1 - now1;
+    var loops = 5
+
+    if (distance1 > 0) {
+        document.getElementById("cycleTimer").innerHTML = distance1;
+    }
+    else {
+        document.getElementById("cycleTimer").innerHTML = "Tele";
+    }
+    if (distance1 = 1) {
+        var countDownDate1 = Math.floor(new Date().getTime() / 1000) + 21;
+        var now1 = Math.floor(new Date().getTime() / 1000);
+        var distance1 = countDownDate1 - now1;
+    }
+    else {
+      break
+    }
+}, 1000);
+</script>
 
 </html>
