@@ -124,14 +124,19 @@ ul {
 
 
 #robotState {
+<<<<<<< HEAD
   border-left: thick solid #3565bf;
+=======
+    font-size:24pt;
+    font-weight: 600;
+>>>>>>> 7d3eb56c742b0fcc6ad8f46780d367f74604ad5d
     border-right: medium solid #3565bf;
-    width: 18vw;
+    width: 18vw; /*32.53vw*/
     height: 18vw;
     background-color: #E0E0E0;
-    margin-top:0px;
-    margin-left:auto;
     margin-right:auto;
+    margin: -3px 0 0 0;
+    border-top: medium solid #3565bf;
 }
 
 #compassDiv {
@@ -140,10 +145,9 @@ ul {
     align-items:center;
     width:18vw;
     height:18vw;
-    border-right: medium solid #3565bf;
     background-color: #E0E0E0;
-    margin: 0 0 0 -15px;
-}
+    margin: 0 0 0 -250px;
+}   
 
 #compass {
     height: 12vw;
@@ -158,6 +162,20 @@ ul {
     background-color: #E0E0E0;
     border-top: medium solid #3565bf;
     border-right: medium solid #3565bf;
+    border-bottom: medium solid #3565bf;
+    margin:-4px 0 0 0;
+}
+
+#cameraName{
+    background-color: #E0E0E0;
+    margin: 0 50vw 0 0;
+    border-right: medium solid #3565bf;
+    border-left: medium solid #3565bf;
+    font-size: 250%;
+    font-weight: 600;
+    font-family: arial;
+}
+#space {
     border-bottom: medium solid #3565bf;
     margin:-4px 0 0 0;
 }
