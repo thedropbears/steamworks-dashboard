@@ -3,7 +3,7 @@
 * {
     border: 0px dotted rgb(24, 218, 0);
     box-sizing: border-box;
-    font-family: arial;
+    font-family: monospace;
     margin: 0;
     padding: 0;
     font-size: 80% -moz-user-select: -moz-none;
