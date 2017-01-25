@@ -28,7 +28,6 @@ body {
 
 .topPanel ul {
     background-color: #101828;
-    border-bottom: medium solid #3565bf
 }
 
 ul {
@@ -135,8 +134,7 @@ ul {
     height: 18vw;
     background-color: #E0E0E0;
     margin-right:auto;
-    margin: -3px 0 0 0;
-    border-top: medium solid #3565bf;
+    margin: 0 0 0 0;
 }
 
 #compassDiv {
