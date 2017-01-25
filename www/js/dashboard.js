@@ -10,12 +10,12 @@ $(document).ready(function() {
         camera = 1;}
       if (camera === 1){
           $("#camera").css({"content":"url(img/car.jpg)"});
-          $("#camChange").text("Switch to camera 2");
+          $("#cameraName").text("Front Camera");
 
       }
       else if (camera === 2) {
         $("#camera").css({"content":"url(img/camera.jpg)"});
-        $("#camChange").text("Switch to camera 1");
+        $("#cameraName").text("Back Camera");
       }
     });
 
