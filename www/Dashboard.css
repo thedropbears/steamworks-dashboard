@@ -17,12 +17,14 @@ body {
 }
 
 .blink {
-  animation: blinker 1s linear infinite;
-  color: red;
+    animation: blinker 1s linear infinite;
+    color: red;
 }
 
 @keyframes blinker {
-  0% { opacity: 0}
+    0% {
+        opacity: 0
+    }
 }
 
 .topPanel div {
@@ -81,15 +83,15 @@ ul {
     color: #3565bf;
     background-color: #101828;
 }
-#cycleTimer{
-  font-size: 800%;
-  margin-left: 2vw;
 
+#cycleTimer {
+    font-size: 800%;
+    margin-left: 2vw;
 }
-#timerInfo{
-  font-size: 500%;
-  width: 14vw
 
+#timerInfo {
+    font-size: 500%;
+    width: 14vw
 }
 
 #topList {
@@ -98,7 +100,6 @@ ul {
 
 .sideList {
     vertical-align: middle;
-    display: ;
     text-align: right;
     color: #3565bf;
     background-color: #101828;
@@ -110,7 +111,7 @@ ul {
     background-color: #101828;
     font-size: 150%;
     width: 12vw;
-    margin-right:1vw;
+    margin-right: 1vw;
 }
 
 #main-body {

@@ -94,7 +94,7 @@ function onValueChanged(key, value, isNew) {
 
         case "/SmartDashboard/gyro":
             rotateCompass(value);
-            rotateRobot(value);
+            //rotateRobot(value);
             break;
     }
 }
@@ -117,12 +117,12 @@ function changeRobotStrafePos(visionX) {
         robot.style.left = ypos + "vw";
     }
 }
-
+/*
 function rotateRobot(heading) {
     heading = -heading; // gyro is the wrong way around (ccw, not clockwise)
     var robot = document.getElementById("position-display-robot");
     robot.style.transform = "rotate(" + heading + "rad)";
-}
+}*/
 
 function rotateCompass(heading) {
     heading = Math.PI - heading; // gyro is the wrong way around
