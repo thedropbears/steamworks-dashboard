@@ -7,8 +7,8 @@
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <script src="/networktables/networktables.js"></script>
     <script src="js/jquery-2.2.0.min.js"></script>
+    <script src="js/keypress-2.1.4.min.js"></script>
     <script src="js/d3.min.js"></script>
-    <script src="js/jquery.blink.js"></script>
 
     <!-- some utility functions that are highly useful -->
     <script src="/networktables/utils.js"></script>
@@ -19,7 +19,8 @@
 <body>
     <div class="topPanel">
         <ul id="topList ">
-            <li id="cycleTimer">21</li>
+            <li class="timer" id="cycleTimer">21</li>
+            <li class="timer" id="timerInfo">1</li>
             <li> <button class="button" id="camChange">
               <a>Switch Camera</a>
             </button></li>
@@ -32,18 +33,15 @@
             <li> <button class="button" id="reverseControl">
               <a>Reverse Controls</a>
             </button></li>
-            <li id="sideList">
-                <li id="Connection">Connected</li>
+                <li id="Connection">Disconnected</li>
                 <li class="dropdown"><select>
                   <option value="2">Robot Modes</option>
                   </select>
-                </li>
             </li>
         </ul>
         <ul id="cameraName">Front Camera</ul>
     </div>
-    <!-- <img id="camera" src="http://10.47.74.2:5800/?action=stream" /> -->
-    <img id="camera" src="img/camera.jpg" />
+    <img id="camera" src="http://10.47.74.2:5800/?action=stream" alt="Stream not found"/>
     <div id="space"></div>
     <div id="main-body">
         <ul>

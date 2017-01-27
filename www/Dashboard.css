@@ -13,7 +13,16 @@
 }
 
 body {
-    background-color: #E0E0E0
+    background-color: #ADADAD
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+  color: red;
+}
+
+@keyframes blinker {
+  0% { opacity: 0}
 }
 
 .topPanel div {
@@ -23,7 +32,7 @@ body {
 .topPanel li {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 3.5vw;
+    margin-right: 3vw;
     margin-bottom: 1vw;
 }
 
@@ -39,6 +48,7 @@ ul {
 .dropdown {
     background-color: #101828;
     color: #3565bf;
+    border-radius: 0.1vw;
 }
 
 .button {
@@ -65,13 +75,21 @@ ul {
     opacity: 0.3;
 }
 
-#cycleTimer {
-    width: 20.9vw;
-    font-size: 800%;
+.timer {
+    width: auto;
     font-weight: 600;
-    margin-left: 2vw;
     color: #3565bf;
     background-color: #101828;
+}
+#cycleTimer{
+  font-size: 800%;
+  margin-left: 2vw;
+
+}
+#timerInfo{
+  font-size: 500%;
+  width: 14vw
+
 }
 
 #topList {
@@ -87,7 +105,7 @@ ul {
 }
 
 #Connection {
-    color: #00CC18;
+    color: red;
     font-weight: 700;
     background-color: #101828;
     font-size: 150%;
@@ -96,7 +114,7 @@ ul {
 }
 
 #main-body {
-    background-color: #E0E0E0;
+    background-color: #ADADAD;
     display: inline-block;
     width: 50%;
     border-right: medium solid #3565bf;
@@ -105,7 +123,7 @@ ul {
 #main-body li {
     display: inline-block;
     vertical-align: top;
-    background-color: #E0E0E0;
+    background-color: #ADADAD;
 }
 
 #camera {
@@ -115,7 +133,7 @@ ul {
     display: inline-block;
     vertical-align: text-top;
     width: 50%;
-    background-color: #E0E0E0;
+    background-color: #ADADAD;
 }
 
 #robotState {
@@ -125,7 +143,7 @@ ul {
     border-left: medium solid #3565bf;
     width: 18vw;
     height: 18vw;
-    background-color: #E0E0E0;
+    background-color: #ADADAD;
     margin-right: auto;
     margin: 0 0 0 0;
 }
@@ -136,25 +154,27 @@ ul {
     align-items: center;
     width: 18vw;
     height: 18vw;
-    background-color: #E0E0E0;
+    background-color: #ADADAD;
 }
 
 #compass {
     height: 12vw;
-    background-color: #E0E0E0;
+    background-color: #ADADAD;
     margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
 }
 
 #pegPostion {
-    background-color: #E0E0E0;
+    background-color: #ADADAD;
     border: medium solid #3565bf;
     margin: -4px 0 0 0;
+    width: 50%;
+    float: right;
 }
 
 #cameraName {
-    background-color: #E0E0E0;
+    background-color: #ADADAD;
     margin: 0 50vw 0 0;
     border-left: medium solid #3565bf;
     border-right: medium solid #3565bf;
@@ -162,6 +182,7 @@ ul {
     font-size: 250%;
     font-weight: 600;
     font-family: arial;
+    color: #3565bf;
     width: 100%;
 }
 

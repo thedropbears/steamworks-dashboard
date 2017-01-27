@@ -2,32 +2,26 @@ var targetRange = 1.6; // TODO work out how far we can see
 var camera = 1;
 var loop = 1;
 $(document).ready(function() {
-    $("#reverseControl").click(function() {
-        $("#reverseControl").toggleClass("activeReverse");
-    });
+    var listener = new window.keypress.Listener();
 
-    $("#camChange").click(function() {
-        camera = camera + 1;
-        if (camera > 2) {
-            camera = 1;
-        }
-        if (camera === 1) {
-            $("#camera").attr("src", "img/camera.jpg");
-            $("#cameraName").text("Front Camera");
+    listener.simple_combo("space", switchCamera);
+    $("#camChange").click(switchCamera);
 
-        } else if (camera === 2) {
-            $("#camera").attr("src", "img/robot.png");
-            $("#cameraName").text("Back Camera");
-        }
-    });
+    listener.simple_combo(",", resetVideo);
+    $("#resetVideo").click(resetVideo);
 
+    listener.simple_combo(".", resetGyro);
+    $("#resetGyro").click(resetGyro);
+
+    listener.simple_combo("/", reverseControl);
+    $("#reverseControl").click(reverseControl);
 
     timerCycle();
 
     // sets a function that will be called when the websocket connects/disconnects
     NetworkTables.addWsConnectionListener(onNetworkTablesConnection, true);
 
-    // sets a function that will be called when the robot connects/disconnects
+    // sets a function that will be called  when the robot connects/disconnects
     NetworkTables.addRobotConnectionListener(onRobotConnection, true);
 
 
@@ -37,8 +31,38 @@ $(document).ready(function() {
     // hook up our SendableChoosers to combo boxes
     attachSelectToSendableChooser("#auto-select", "/SmartDashboard/autonomous_mode");
 });
+//buttons
+function switchCamera() {
+    console.log("words");
+    camera = camera + 1;
+    if (camera > 2) {
+        camera = 1;
+    }
+    if (camera === 1) {
+        $("#camera").attr("src", "http://10.47.74.2:5800/?action=stream");
+        $("#cameraName").text("Front Camera");
 
-function onRobotConnection(connected) {
+    } else if (camera === 2) {
+        $("#camera").attr("src", "img/camera.jpg");
+        $("#cameraName").text("Back Camera");
+    }
+}
+
+function resetVideo(){
+
+}
+
+function resetGyro(){
+
+}
+
+function reverseControl() {
+    $("#reverseControl").toggleClass("activeReverse");
+
+}
+
+
+function onNetworkTablesConnection(connected) {
     // TODO
     if (connected) {
 
@@ -47,7 +71,7 @@ function onRobotConnection(connected) {
     }
 }
 
-function onNetworkTablesConnection(connected) {
+function onRobotConnection(connected) {
     if (connected) {
         $("#Connection").text("Connected");
         $("#Connection").css({
@@ -77,11 +101,11 @@ function onValueChanged(key, value, isNew) {
 
 function changeRobotRange(dist) {
     var robot = document.getElementById("position-display-robot");
-    var xpos = (dist-targetRange) / targetRange;
+    var xpos = (dist - targetRange) / targetRange;
     if (xpos >= 1.0) {
         xpos = 1.0;
     }
-    xpos = xpos*10.0 + 10.0 - 1.0;
+    xpos = xpos * 10.0 + 10.0 - 1.0;
     robot.style.top = xpos + "vw";
 }
 
@@ -89,7 +113,7 @@ function changeRobotStrafePos(visionX) {
     visionX = -visionX;
     if (visionX >= -1.0 && visionX <= 1.0) {
         var robot = document.getElementById("position-display-robot");
-        var ypos = visionX*10.0 - 0.75 + 10.0;
+        var ypos = visionX * 10.0 - 0.75 + 10.0;
         robot.style.left = ypos + "vw";
     }
 }
@@ -107,8 +131,9 @@ function rotateCompass(heading) {
 }
 
 function timerCycle() {
-    var countDownDate = Math.floor(Date.now() / 1000) + 22;
-    var loop = 1;
+    var countDownDate = Math.floor(Date.now() / 1000) + 21;
+    var loop = 0;
+    var climb = false;
     var x = setInterval(function() {
         var now = Math.floor(Date.now() / 1000);
         var distance = countDownDate - now;
@@ -118,18 +143,36 @@ function timerCycle() {
         } else {
             document.getElementById("cycleTimer").innerHTML = distance;
         }
-        if (distance === 1) {
+
+        if (distance <= 0) {
             loop = loop + 1;
-            if (loop <= 5) {
-                countDownDate = Math.floor(Date.now() / 1000) + 22;
-            } else {
-                clearInterval(x);
-                $("#cycleTimer").text("CLIMB");
-                $("#cycleTimer").css({
+            if (loop <= 4){
+              document.getElementById("cycleTimer").innerHTML = "21";
+              $("#timerInfo").text(loop+1);
+                countDownDate = Math.floor(Date.now() / 1000) + 21;
+            }
+            else if (climb === false){
+              document.getElementById("cycleTimer").innerHTML = "30";
+                countDownDate = Math.floor(Date.now() / 1000) + 30;
+                $("#timerInfo").text("CLIMB");
+                $("#timerInfo").css({
                     "color": "red"
                 });
-                $("#cycleTimer").blink();
+                $("#timerInfo").toggleClass("blink");
+              climb = true;
             }
-        }
+
+            else if (climb) {
+              clearInterval(x);
+                  document.getElementById("cycleTimer").innerHTML = "00";
+                  $("#timerInfo").toggleClass("blink");
+                  $("#timerInfo").css({
+                      "color": "#3565bf"
+                  });
+                  $("#timerInfo").text("");
+
+                }}
+
+
     }, 1000);
 }
