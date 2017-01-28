@@ -18,6 +18,9 @@ $(document).ready(function() {
     listener.simple_combo("4", reverseControl);
     $("#reverseControl").click(reverseControl);
 
+    listener.simple_combo("5", miniButton);
+    $("#miniButton").click(miniButton);
+
     timerCycle();
 
     // sets a function that will be called when the websocket connects/disconnects
@@ -83,6 +86,10 @@ function reverseControl() {
 
 }
 
+function allianceSwitch() {
+    $("#miniButton").toggleClass("click");
+    setTimeout(function(){$("#miniButton").toggleClass("click");}, 50);
+}
 
 function onNetworkTablesConnection(connected) {
     // TODO

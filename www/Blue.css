@@ -1,6 +1,6 @@
 /* http://www.colors.commutercreative.com/grid/ */
 :root {
-  --accent-colour: #C62828;
+  --accent-colour: #3565bf;
   --bg-colour: #161616;
 }
 
@@ -38,7 +38,7 @@ body {
 .topPanel li {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 3vw;
+    margin-right: 1.5vw;
     margin-bottom: 1vw;
 }
 
@@ -70,11 +70,26 @@ ul {
     border: 0vw solid var(--accent-colour);;
     border-bottom: 1vw solid var(--accent-colour);;
     opacity: 0.85;
-    margin: 0.5vw 0vw;
+    margin: 0.5vw 0 0 0;
 }
 
 .button:active {
     opacity: 0.3;
+}
+.miniButton {
+    font-size: 90%;
+    border-radius: 0.2vw;
+    height: 5vw;
+    width: 4vw;
+    background: white;
+    color: var(--accent-colour);;
+    text-align: center;
+    line-height: 2vw;
+    cursor: pointer;
+    border: 0vw solid var(--accent-colour);;
+    border-bottom: 1vw solid var(--accent-colour);;
+    opacity: 0.85;
+    margin: 0.5vw 0 0 0;
 }
 .click{
     opacity: 0.3;
@@ -187,6 +202,7 @@ ul {
     margin: -4px 0 0 0;
     width: 50%;
     float: right;
+    border-bottom: medium solid var(--accent-colour);;
 }
 
 #cameraName {
@@ -205,4 +221,10 @@ ul {
 #space {
     border-bottom: medium solid var(--accent-colour);;
     margin: -4px 0 0 0;
+}
+
+#pegstyle {
+    border-bottom: medium solid var(--accent-colour);;
+    width: 100; 
+    height: 3em;
 }
