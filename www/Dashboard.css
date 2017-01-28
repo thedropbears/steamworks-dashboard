@@ -136,19 +136,29 @@ ul {
     width: 50%;
     background-color: #ADADAD;
 }
-
-#robotState {
-    font-size: 24pt;
-    font-weight: 600;
+#robotState li {
     border-right: medium solid #3565bf;
     border-left: medium solid #3565bf;
     width: 18vw;
     height: 18vw;
     background-color: #ADADAD;
-    margin-right: auto;
-    margin: 0 0 0 0;
+    align-items: center 
 }
 
+#robotState {
+    width: auto;
+    height: auto;
+    background-color: #ADADAD;
+    align-items: center;
+    margin: 5vw 0 0 2vw;
+}
+#stateDiv {
+    border-right: medium solid #3565bf;
+    border-left: medium solid #3565bf;
+    width: 18vw;
+    height: 18vw;
+    align-self: center;
+}
 #compassDiv {
     display: flex;
     justify-content: center;
