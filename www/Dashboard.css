@@ -1,8 +1,6 @@
 /* http://www.colors.commutercreative.com/grid/ */
-:root{
-    --backgroundColor: #161616;
-    --mainColor: #C62828;
-}
+
+
 * {
     border: 0px dotted rgb(24, 218, 0);
     box-sizing: border-box;
@@ -16,7 +14,7 @@
 }
 
 body {
-    background-color: --backgroundColor
+    background-color: var(--nice-black);
 }
 
 .blink {
@@ -31,7 +29,7 @@ body {
 }
 
 .topPanel div {
-    background-color: --backgroundColor;
+    background-color: var(--nice-black);;
 }
 
 .topPanel li {
@@ -42,8 +40,8 @@ body {
 }
 
 .topPanel ul {
-    background-color: --backgroundColor;
-    border-bottom: medium solid --mainColor;
+    background-color: var(--nice-black);;
+    border-bottom: medium solid var(--nice-red);;
 }
 
 ul {
@@ -51,8 +49,8 @@ ul {
 }
 
 .dropdown {
-    background-color: --backgroundColor;
-    color: --mainColor;
+    background-color: var(--nice-black);;
+    color: var(--nice-red);;
     border-radius: 0.1vw;
 }
 
@@ -62,12 +60,12 @@ ul {
     height: 5vw;
     width: 8vw;
     background: white;
-    color: --mainColor;
+    color: var(--nice-red);;
     text-align: center;
     line-height: 2vw;
     cursor: pointer;
-    border: 0vw solid --mainColor;
-    border-bottom: 1vw solid --mainColor;
+    border: 0vw solid var(--nice-red);;
+    border-bottom: 1vw solid var(--nice-red);;
     opacity: 0.85;
     margin: 0.5vw 0vw;
 }
@@ -83,8 +81,8 @@ ul {
 .timer {
     width: auto;
     font-weight: 600;
-    color: --mainColor;
-    background-color: --backgroundColor;
+    color: var(--nice-red);;
+    background-color: var(--nice-black);;
 }
 
 #cycleTimer {
@@ -98,66 +96,66 @@ ul {
 }
 
 #topList {
-    border-bottom: medium solid --mainColor;
+    border-bottom: medium solid var(--nice-red);;
 }
 
 .sideList {
     vertical-align: middle;
     text-align: right;
-    color: --mainColor;
-    background-color: --backgroundColor;
+    color: var(--nice-red);;
+    background-color: var(--nice-black);;
 }
 
 #Connection {
     color: red;
     font-weight: 700;
-    background-color: --backgroundColor;
+    background-color: var(--nice-black);;
     font-size: 150%;
     width: 12vw;
     margin-right: 1vw;
 }
 
 #main-body {
-    background-color: --backgroundColor;
+    background-color: var(--nice-black);;
     display: inline-block;
     width: 50%;
-    border-right: medium solid --mainColor;
+    border-right: medium solid var(--nice-red);;
 }
 
 #main-body li {
     display: inline-block;
     vertical-align: top;
-    background-color: --backgroundColor;
+    background-color: var(--nice-black);;
 }
 
 #camera {
     float: left;
-    border-left: medium solid --mainColor;
-    border-bottom: medium solid --mainColor;
+    border-left: medium solid var(--nice-red);;
+    border-bottom: medium solid var(--nice-red);;
     display: inline-block;
     vertical-align: text-top;
     width: 50%;
-    background-color: --backgroundColor;
+    background-color: var(--nice-black);;
 }
 #robotState li {
-    border-right: medium solid --mainColor;
-    border-left: medium solid --mainColor;
+    border-right: medium solid var(--nice-red);;
+    border-left: medium solid var(--nice-red);;
     width: 18vw;
     height: 18vw;
-    background-color: --backgroundColor;
-    align-items: center 
+    background-color: var(--nice-black);;
+    align-items: center
 }
 
 #robotState {
     width: auto;
     height: auto;
-    background-color: --backgroundColor;
+    background-color: var(--nice-black);;
     align-items: center;
     margin: 5vw 0 0 2vw;
 }
 #stateDiv {
-    border-right: medium solid --mainColor;
-    border-left: medium solid --mainColor;
+    border-right: medium solid var(--nice-red);;
+    border-left: medium solid var(--nice-red);;
     width: 18vw;
     height: 18vw;
     align-self: center;
@@ -168,39 +166,39 @@ ul {
     align-items: center;
     width: 18vw;
     height: 18vw;
-    background-color: --backgroundColor;
+    background-color: var(--nice-black);;
 }
 
 #compass {
     height: 12vw;
-    background-color: --backgroundColor;
+    background-color: var(--nice-black);;
     margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
 }
 
 #pegPostion {
-    background-color: --backgroundColor;
-    border: medium solid --mainColor;
+    background-color: var(--nice-black);;
+    border: medium solid var(--nice-red);;
     margin: -4px 0 0 0;
     width: 50%;
     float: right;
 }
 
 #cameraName {
-    background-color: --backgroundColor;
+    background-color: var(--nice-black);;
     margin: 0 50vw 0 0;
-    border-left: medium solid --mainColor;
-    border-right: medium solid --mainColor;
+    border-left: medium solid var(--nice-red);;
+    border-right: medium solid var(--nice-red);;
     border-bottom-width: 0px;
     font-size: 250%;
     font-weight: 600;
     font-family: arial;
-    color: --mainColor;
+    color: var(--nice-red);;
     width: 100%;
 }
 
 #space {
-    border-bottom: medium solid --mainColor;
+    border-bottom: medium solid var(--nice-red);;
     margin: -4px 0 0 0;
 }
