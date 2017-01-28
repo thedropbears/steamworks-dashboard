@@ -39,7 +39,7 @@ function switchCamera() {
     setTimeout(function(){$("#camChange").toggleClass("click");}, 50);
 
     camera = camera + 1;
-    if (camera > 2) { 
+    if (camera > 2) {
         camera = 1;
     }
     if (camera === 1) {
@@ -75,7 +75,7 @@ function resetGyro(){
     setTimeout(function(){$("#resetGyro").toggleClass("click");}, 50);
 
     offsetGyro = currentGyro;
-    rotateCompass(offsetGyro)
+    rotateCompass(currentGyro + Math.PI)
 }
 
 function reverseControl() {
@@ -115,13 +115,12 @@ function onValueChanged(key, value, isNew) {
             break;
 
         case "/SmartDashboard/gyro":
-            rotateCompass(value);
-            //rotateRobot(value);
+            rotateCompass(value + Math.PI);
             currentGyro = value;
             break;
         case "/SmartDashboard/climb":
-            
-    }       
+
+    }
 }
 
 function changeRobotRange(dist) {
@@ -142,19 +141,14 @@ function changeRobotStrafePos(visionX) {
         robot.style.left = ypos + "vw";
     }
 }
-/*
-function rotateRobot(heading) {
-    heading = -heading; // gyro is the wrong way around (ccw, not clockwise)
-    var robot = document.getElementById("position-display-robot");
-    robot.style.transform = "rotate(" + heading + "rad)";
-}*/
+
 
 function rotateCompass(heading) {
-   // heading = Math.PI - heading; // gyro is the wrong way around
     heading = heading - offsetGyro;
+    heading = Math.PI - heading; // gyro is the wrong way around
     var robot = document.getElementById("compass");
     robot.style.transform = "rotate(" + heading + "rad)";
- 
+
 }
 
 function timerCycle() {
