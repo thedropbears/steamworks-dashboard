@@ -13,7 +13,7 @@
 }
 
 body {
-    background-color: #ADADAD
+    background-color: #161616
 }
 
 .blink {
@@ -28,7 +28,7 @@ body {
 }
 
 .topPanel div {
-    background-color: #101828;
+    background-color: #161616;
 }
 
 .topPanel li {
@@ -39,8 +39,8 @@ body {
 }
 
 .topPanel ul {
-    background-color: #101828;
-    border-bottom: medium solid #3565bf;
+    background-color: #161616;
+    border-bottom: medium solid #C62828;
 }
 
 ul {
@@ -48,8 +48,8 @@ ul {
 }
 
 .dropdown {
-    background-color: #101828;
-    color: #3565bf;
+    background-color: #161616;
+    color: #C62828;
     border-radius: 0.1vw;
 }
 
@@ -59,12 +59,12 @@ ul {
     height: 5vw;
     width: 8vw;
     background: white;
-    color: #3565bf;
+    color: #C62828;
     text-align: center;
     line-height: 2vw;
     cursor: pointer;
-    border: 0vw solid #3565bf;
-    border-bottom: 1vw solid #3565bf;
+    border: 0vw solid #C62828;
+    border-bottom: 1vw solid #C62828;
     opacity: 0.85;
     margin: 0.5vw 0vw;
 }
@@ -80,8 +80,8 @@ ul {
 .timer {
     width: auto;
     font-weight: 600;
-    color: #3565bf;
-    background-color: #101828;
+    color: #C62828;
+    background-color: #161616;
 }
 
 #cycleTimer {
@@ -95,66 +95,66 @@ ul {
 }
 
 #topList {
-    border-bottom: medium solid #3565bf;
+    border-bottom: medium solid #C62828;
 }
 
 .sideList {
     vertical-align: middle;
     text-align: right;
-    color: #3565bf;
-    background-color: #101828;
+    color: #C62828;
+    background-color: #161616;
 }
 
 #Connection {
     color: red;
     font-weight: 700;
-    background-color: #101828;
+    background-color: #161616;
     font-size: 150%;
     width: 12vw;
     margin-right: 1vw;
 }
 
 #main-body {
-    background-color: #ADADAD;
+    background-color: #161616;
     display: inline-block;
     width: 50%;
-    border-right: medium solid #3565bf;
+    border-right: medium solid #C62828;
 }
 
 #main-body li {
     display: inline-block;
     vertical-align: top;
-    background-color: #ADADAD;
+    background-color: #161616;
 }
 
 #camera {
     float: left;
-    border-left: medium solid #3565bf;
-    border-bottom: medium solid #3565bf;
+    border-left: medium solid #C62828;
+    border-bottom: medium solid #C62828;
     display: inline-block;
     vertical-align: text-top;
     width: 50%;
-    background-color: #ADADAD;
+    background-color: #161616;
 }
 #robotState li {
-    border-right: medium solid #3565bf;
-    border-left: medium solid #3565bf;
+    border-right: medium solid #C62828;
+    border-left: medium solid #C62828;
     width: 18vw;
     height: 18vw;
-    background-color: #ADADAD;
+    background-color: #161616;
     align-items: center 
 }
 
 #robotState {
     width: auto;
     height: auto;
-    background-color: #ADADAD;
+    background-color: #161616;
     align-items: center;
     margin: 5vw 0 0 2vw;
 }
 #stateDiv {
-    border-right: medium solid #3565bf;
-    border-left: medium solid #3565bf;
+    border-right: medium solid #C62828;
+    border-left: medium solid #C62828;
     width: 18vw;
     height: 18vw;
     align-self: center;
@@ -165,39 +165,39 @@ ul {
     align-items: center;
     width: 18vw;
     height: 18vw;
-    background-color: #ADADAD;
+    background-color: #161616;
 }
 
 #compass {
     height: 12vw;
-    background-color: #ADADAD;
+    background-color: #161616;
     margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
 }
 
 #pegPostion {
-    background-color: #ADADAD;
-    border: medium solid #3565bf;
+    background-color: #161616;
+    border: medium solid #C62828;
     margin: -4px 0 0 0;
     width: 50%;
     float: right;
 }
 
 #cameraName {
-    background-color: #ADADAD;
+    background-color: #161616;
     margin: 0 50vw 0 0;
-    border-left: medium solid #3565bf;
-    border-right: medium solid #3565bf;
+    border-left: medium solid #C62828;
+    border-right: medium solid #C62828;
     border-bottom-width: 0px;
     font-size: 250%;
     font-weight: 600;
     font-family: arial;
-    color: #3565bf;
+    color: #C62828;
     width: 100%;
 }
 
 #space {
-    border-bottom: medium solid #3565bf;
+    border-bottom: medium solid #C62828;
     margin: -4px 0 0 0;
 }
