@@ -17,7 +17,7 @@ body {
 }
 
 .blink {
-    animation: blinker 1s linear infinite;
+    animation: blinker 0.75s linear infinite;
     color: red;
 }
 

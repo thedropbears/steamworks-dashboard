@@ -49,8 +49,19 @@ function switchCamera() {
 }
 
 function resetVideo(){
+    $("#camera").attr("src", "#");
+        if (camera === 1){
+        $("#camera").attr("src", "http://10.47.74.2:5800/?action=stream");
+        console.log("1");
 
-}
+    }
+    else if (camera === 2) {
+        $("#camera").attr("src", "img/camera.jpg");
+                    console.log("2");
+
+
+}}
+
 
 function resetGyro(){
 
