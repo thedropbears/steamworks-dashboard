@@ -1,4 +1,4 @@
-var targetRange = 1.6; // TODO work out how far we can see
+var targetRange = 3; // TODO work out how far we can see
 var camera = 1;
 var loop = 1;
 var currentGyro = 0
