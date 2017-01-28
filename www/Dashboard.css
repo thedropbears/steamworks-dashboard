@@ -1,7 +1,7 @@
 /* http://www.colors.commutercreative.com/grid/ */
 :root{
-    --backgroundColor: --backgroundColor;
-    --mainColor: --mainColor;
+    --backgroundColor: #161616;
+    --mainColor: #C62828;
 }
 * {
     border: 0px dotted rgb(24, 218, 0);
