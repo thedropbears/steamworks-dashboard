@@ -1,5 +1,12 @@
 /* http://www.colors.commutercreative.com/grid/ */
+<<<<<<< HEAD
 
+=======
+:root {
+  --accent-colour: #C62828;
+  --bg-colour: #161616;
+}
+>>>>>>> 06279365aeda34a838af7ea4fa3ddf9cb5ae0b1b
 
 * {
     border: 0px dotted rgb(24, 218, 0);
@@ -14,7 +21,7 @@
 }
 
 body {
-    background-color: var(--nice-black);
+    background-color: var(--bg-colour);
 }
 
 .blink {
@@ -29,7 +36,7 @@ body {
 }
 
 .topPanel div {
-    background-color: var(--nice-black);;
+    background-color: var(--bg-colour);;
 }
 
 .topPanel li {
@@ -40,8 +47,8 @@ body {
 }
 
 .topPanel ul {
-    background-color: var(--nice-black);;
-    border-bottom: medium solid var(--nice-red);;
+    background-color: var(--bg-colour);;
+    border-bottom: medium solid var(--accent-colour);;
 }
 
 ul {
@@ -49,8 +56,8 @@ ul {
 }
 
 .dropdown {
-    background-color: var(--nice-black);;
-    color: var(--nice-red);;
+    background-color: var(--bg-colour);;
+    color: var(--accent-colour);;
     border-radius: 0.1vw;
 }
 
@@ -60,12 +67,12 @@ ul {
     height: 5vw;
     width: 8vw;
     background: white;
-    color: var(--nice-red);;
+    color: var(--accent-colour);;
     text-align: center;
     line-height: 2vw;
     cursor: pointer;
-    border: 0vw solid var(--nice-red);;
-    border-bottom: 1vw solid var(--nice-red);;
+    border: 0vw solid var(--accent-colour);;
+    border-bottom: 1vw solid var(--accent-colour);;
     opacity: 0.85;
     margin: 0.5vw 0vw;
 }
@@ -81,8 +88,8 @@ ul {
 .timer {
     width: auto;
     font-weight: 600;
-    color: var(--nice-red);;
-    background-color: var(--nice-black);;
+    color: var(--accent-colour);;
+    background-color: var(--bg-colour);;
 }
 
 #cycleTimer {
@@ -96,66 +103,66 @@ ul {
 }
 
 #topList {
-    border-bottom: medium solid var(--nice-red);;
+    border-bottom: medium solid var(--accent-colour);;
 }
 
 .sideList {
     vertical-align: middle;
     text-align: right;
-    color: var(--nice-red);;
-    background-color: var(--nice-black);;
+    color: var(--accent-colour);;
+    background-color: var(--bg-colour);;
 }
 
 #Connection {
     color: red;
     font-weight: 700;
-    background-color: var(--nice-black);;
+    background-color: var(--bg-colour);;
     font-size: 150%;
     width: 12vw;
     margin-right: 1vw;
 }
 
 #main-body {
-    background-color: var(--nice-black);;
+    background-color: var(--bg-colour);;
     display: inline-block;
     width: 50%;
-    border-right: medium solid var(--nice-red);;
+    border-right: medium solid var(--accent-colour);;
 }
 
 #main-body li {
     display: inline-block;
     vertical-align: top;
-    background-color: var(--nice-black);;
+    background-color: var(--bg-colour);;
 }
 
 #camera {
     float: left;
-    border-left: medium solid var(--nice-red);;
-    border-bottom: medium solid var(--nice-red);;
+    border-left: medium solid var(--accent-colour);;
+    border-bottom: medium solid var(--accent-colour);;
     display: inline-block;
     vertical-align: text-top;
     width: 50%;
-    background-color: var(--nice-black);;
+    background-color: var(--bg-colour);;
 }
 #robotState li {
-    border-right: medium solid var(--nice-red);;
-    border-left: medium solid var(--nice-red);;
+    border-right: medium solid var(--accent-colour);;
+    border-left: medium solid var(--accent-colour);;
     width: 18vw;
     height: 18vw;
-    background-color: var(--nice-black);;
+    background-color: var(--bg-colour);;
     align-items: center
 }
 
 #robotState {
     width: auto;
     height: auto;
-    background-color: var(--nice-black);;
+    background-color: var(--bg-colour);;
     align-items: center;
     margin: 5vw 0 0 2vw;
 }
 #stateDiv {
-    border-right: medium solid var(--nice-red);;
-    border-left: medium solid var(--nice-red);;
+    border-right: medium solid var(--accent-colour);;
+    border-left: medium solid var(--accent-colour);;
     width: 18vw;
     height: 18vw;
     align-self: center;
@@ -166,39 +173,39 @@ ul {
     align-items: center;
     width: 18vw;
     height: 18vw;
-    background-color: var(--nice-black);;
+    background-color: var(--bg-colour);;
 }
 
 #compass {
     height: 12vw;
-    background-color: var(--nice-black);;
+    background-color: var(--bg-colour);;
     margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
 }
 
 #pegPostion {
-    background-color: var(--nice-black);;
-    border: medium solid var(--nice-red);;
+    background-color: var(--bg-colour);;
+    border: medium solid var(--accent-colour);;
     margin: -4px 0 0 0;
     width: 50%;
     float: right;
 }
 
 #cameraName {
-    background-color: var(--nice-black);;
+    background-color: var(--bg-colour);;
     margin: 0 50vw 0 0;
-    border-left: medium solid var(--nice-red);;
-    border-right: medium solid var(--nice-red);;
+    border-left: medium solid var(--accent-colour);;
+    border-right: medium solid var(--accent-colour);;
     border-bottom-width: 0px;
     font-size: 250%;
     font-weight: 600;
     font-family: arial;
-    color: var(--nice-red);;
+    color: var(--accent-colour);;
     width: 100%;
 }
 
 #space {
-    border-bottom: medium solid var(--nice-red);;
+    border-bottom: medium solid var(--accent-colour);;
     margin: -4px 0 0 0;
 }
