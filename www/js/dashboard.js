@@ -35,9 +35,11 @@ $(document).ready(function() {
 });
 //buttons
 function switchCamera() {
-    console.log("words");
+    $("#camChange").toggleClass("click");
+    setTimeout(function(){$("#camChange").toggleClass("click");}, 50);
+
     camera = camera + 1;
-    if (camera > 2) {
+    if (camera > 2) { 
         camera = 1;
     }
     if (camera === 1) {
@@ -48,31 +50,36 @@ function switchCamera() {
         $("#camera").attr("src", "img/camera.jpg");
         $("#cameraName").text("Back Camera");
     }
+
 }
 
 function resetVideo(){
+        $("#resetVideo").toggleClass("click");
+        setTimeout(function(){$("#resetVideo").toggleClass("click");}, 50);
+
         if (camera === 1){
         $("#camera").removeAttr("src").attr("src", "http://10.47.74.2:5800/?action=stream");
         $("#camera").attr("src", "http://10.47.74.2:5800/?action=stream");
-        console.log("1");
 
     }
     else if (camera === 2) {
         $("#camera").removeAttr("src").attr("src", "img/camera.jpg");
         $("#camera").attr("src", "img/camera.jpg");
-                    console.log("2");
 
 
 }}
 
 
 function resetGyro(){
+    $("#resetGyro").toggleClass("click");
+    setTimeout(function(){$("#resetGyro").toggleClass("click");}, 50);
+
     offsetGyro = currentGyro;
     rotateCompass(offsetGyro)
 }
 
 function reverseControl() {
-    $("#reverseControl").toggleClass("activeReverse");
+    $("#reverseControl").toggleClass("click");
 
 }
 
