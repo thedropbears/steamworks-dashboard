@@ -118,7 +118,11 @@ function onValueChanged(key, value, isNew) {
             rotateCompass(value + Math.PI);
             currentGyro = value;
             break;
-        case "/SmartDashboard/climb":
+        case "/SmartDashboard/rail-pos":
+            var railPos = value + 1;
+            railPos = railPos * 50;
+            railPos = (railPos * 0.9) + 5;
+            break;
 
     }
 }
