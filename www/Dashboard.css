@@ -72,9 +72,9 @@ ul {
 .button:active {
     opacity: 0.3;
 }
-
-.activeReverse {
+.click{
     opacity: 0.3;
+
 }
 
 .timer {
