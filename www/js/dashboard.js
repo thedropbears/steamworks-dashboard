@@ -1,19 +1,21 @@
 var targetRange = 1.6; // TODO work out how far we can see
 var camera = 1;
 var loop = 1;
+var currentGyro = 0
+var offsetGyro = 0
 $(document).ready(function() {
     var listener = new window.keypress.Listener();
 
-    listener.simple_combo("space", switchCamera);
+    listener.simple_combo("1", switchCamera);
     $("#camChange").click(switchCamera);
 
-    listener.simple_combo(",", resetVideo);
+    listener.simple_combo("2", resetVideo);
     $("#resetVideo").click(resetVideo);
 
-    listener.simple_combo(".", resetGyro);
+    listener.simple_combo("3", resetGyro);
     $("#resetGyro").click(resetGyro);
 
-    listener.simple_combo("/", reverseControl);
+    listener.simple_combo("4", reverseControl);
     $("#reverseControl").click(reverseControl);
 
     timerCycle();
@@ -49,7 +51,7 @@ function switchCamera() {
 }
 
 function resetVideo(){
-    $("#camera").attr("src", "#");
+    $("#camera").attr("src", "img/camera.jpg");
         if (camera === 1){
         $("#camera").attr("src", "http://10.47.74.2:5800/?action=stream");
         console.log("1");
@@ -64,7 +66,8 @@ function resetVideo(){
 
 
 function resetGyro(){
-
+    offsetGyro = currentGyro;
+    rotateCompass(offsetGyro)
 }
 
 function reverseControl() {
@@ -106,6 +109,7 @@ function onValueChanged(key, value, isNew) {
         case "/SmartDashboard/gyro":
             rotateCompass(value);
             //rotateRobot(value);
+            currentGyro = value;
             break;
     }
 }
@@ -136,9 +140,11 @@ function rotateRobot(heading) {
 }*/
 
 function rotateCompass(heading) {
-    heading = Math.PI - heading; // gyro is the wrong way around
+   // heading = Math.PI - heading; // gyro is the wrong way around
+    heading = heading - offsetGyro;
     var robot = document.getElementById("compass");
     robot.style.transform = "rotate(" + heading + "rad)";
+ 
 }
 
 function timerCycle() {
