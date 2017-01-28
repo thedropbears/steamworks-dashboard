@@ -1,8 +1,12 @@
 /* http://www.colors.commutercreative.com/grid/ */
+<<<<<<< HEAD
+
+=======
 :root {
   --accent-colour: #C62828;
   --bg-colour: #161616;
 }
+>>>>>>> 06279365aeda34a838af7ea4fa3ddf9cb5ae0b1b
 
 * {
     border: 0px dotted rgb(24, 218, 0);
