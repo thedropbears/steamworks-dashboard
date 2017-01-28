@@ -1,5 +1,8 @@
 /* http://www.colors.commutercreative.com/grid/ */
-
+:root{
+    --backgroundColor: black;
+    --mainColor: red;
+}
 * {
     border: 0px dotted rgb(24, 218, 0);
     box-sizing: border-box;
