@@ -51,13 +51,14 @@ function switchCamera() {
 }
 
 function resetVideo(){
-    $("#camera").attr("src", "img/camera.jpg");
         if (camera === 1){
+        $("#camera").removeAttr("src").attr("src", "http://10.47.74.2:5800/?action=stream");
         $("#camera").attr("src", "http://10.47.74.2:5800/?action=stream");
         console.log("1");
 
     }
     else if (camera === 2) {
+        $("#camera").removeAttr("src").attr("src", "img/camera.jpg");
         $("#camera").attr("src", "img/camera.jpg");
                     console.log("2");
 
@@ -111,7 +112,9 @@ function onValueChanged(key, value, isNew) {
             //rotateRobot(value);
             currentGyro = value;
             break;
-    }
+        case "/SmartDashboard/climb":
+            
+    }       
 }
 
 function changeRobotRange(dist) {
