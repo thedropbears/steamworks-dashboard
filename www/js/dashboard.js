@@ -3,7 +3,7 @@ var camera = 1;
 var loop = 1;
 var currentGyro = 0
 var offsetGyro = 0
-$(document).ready(function() {
+$(document).ready(function () {
     var listener = new window.keypress.Listener();
 
     listener.simple_combo("1", switchCamera);
@@ -17,9 +17,6 @@ $(document).ready(function() {
 
     listener.simple_combo("4", reverseControl);
     $("#reverseControl").click(reverseControl);
-
-    listener.simple_combo("5", miniButton);
-    $("#miniButton").click(miniButton);
 
     timerCycle();
 
@@ -39,7 +36,9 @@ $(document).ready(function() {
 //buttons
 function switchCamera() {
     $("#camChange").toggleClass("click");
-    setTimeout(function(){$("#camChange").toggleClass("click");}, 50);
+    setTimeout(function () {
+        $("#camChange").toggleClass("click");
+    }, 50);
 
     camera = camera + 1;
     if (camera > 2) {
@@ -56,26 +55,30 @@ function switchCamera() {
 
 }
 
-function resetVideo(){
+function resetVideo() {
+    $("#resetVideo").toggleClass("click");
+    setTimeout(function () {
         $("#resetVideo").toggleClass("click");
-        setTimeout(function(){$("#resetVideo").toggleClass("click");}, 50);
+    }, 50);
 
-        if (camera === 1){
+    if (camera === 1) {
         $("#camera").removeAttr("src").attr("src", "http://10.47.74.2:5800/?action=stream");
         $("#camera").attr("src", "http://10.47.74.2:5800/?action=stream");
 
-    }
-    else if (camera === 2) {
+    } else if (camera === 2) {
         $("#camera").removeAttr("src").attr("src", "img/camera.jpg");
         $("#camera").attr("src", "img/camera.jpg");
 
 
-}}
+    }
+}
 
 
-function resetGyro(){
+function resetGyro() {
     $("#resetGyro").toggleClass("click");
-    setTimeout(function(){$("#resetGyro").toggleClass("click");}, 50);
+    setTimeout(function () {
+        $("#resetGyro").toggleClass("click");
+    }, 50);
 
     offsetGyro = currentGyro;
     rotateCompass(currentGyro + Math.PI)
@@ -86,10 +89,6 @@ function reverseControl() {
 
 }
 
-function allianceSwitch() {
-    $("#miniButton").toggleClass("click");
-    setTimeout(function(){$("#miniButton").toggleClass("click");}, 50);
-}
 
 function onNetworkTablesConnection(connected) {
     // TODO
@@ -131,6 +130,12 @@ function onValueChanged(key, value, isNew) {
             railPos = (railPos * 0.9) + 5;
             break;
 
+        case "/SmartDashboard/aliance":
+            if (value === "red") {
+                document.documentElement.style.setProperty('--accent-colour', '#C62828')
+            } else if (value === "blue") {
+                document.documentElement.style.setProperty('--accent-colour', '#3565bf')
+            }
     }
 }
 
@@ -166,7 +171,7 @@ function timerCycle() {
     var countDownDate = Math.floor(Date.now() / 1000) + 21;
     var loop = 0;
     var climb = false;
-    var x = setInterval(function() {
+    var x = setInterval(function () {
         var now = Math.floor(Date.now() / 1000);
         var distance = countDownDate - now;
 
@@ -178,32 +183,30 @@ function timerCycle() {
 
         if (distance <= 0) {
             loop = loop + 1;
-            if (loop <= 4){
-              document.getElementById("cycleTimer").innerHTML = "21";
-              $("#timerInfo").text(loop+1);
+            if (loop <= 4) {
+                document.getElementById("cycleTimer").innerHTML = "21";
+                $("#timerInfo").text(loop + 1);
                 countDownDate = Math.floor(Date.now() / 1000) + 21;
-            }
-            else if (climb === false){
-              document.getElementById("cycleTimer").innerHTML = "30";
+            } else if (climb === false) {
+                document.getElementById("cycleTimer").innerHTML = "30";
                 countDownDate = Math.floor(Date.now() / 1000) + 30;
                 $("#timerInfo").text("CLIMB");
                 $("#timerInfo").css({
                     "color": "red"
                 });
                 $("#timerInfo").toggleClass("blink");
-              climb = true;
+                climb = true;
+            } else if (climb) {
+                clearInterval(x);
+                document.getElementById("cycleTimer").innerHTML = "00";
+                $("#timerInfo").toggleClass("blink");
+                $("#timerInfo").css({
+                    "color": "#3565bf"
+                });
+                $("#timerInfo").text("");
+
             }
-
-            else if (climb) {
-              clearInterval(x);
-                  document.getElementById("cycleTimer").innerHTML = "00";
-                  $("#timerInfo").toggleClass("blink");
-                  $("#timerInfo").css({
-                      "color": "#3565bf"
-                  });
-                  $("#timerInfo").text("");
-
-                }}
+        }
 
 
     }, 1000);
