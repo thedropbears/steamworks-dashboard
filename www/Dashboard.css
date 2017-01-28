@@ -94,7 +94,7 @@ ul {
 }
 
 #timerInfo {
-    font-size: 500%;
+    font-size: 200%;
     width: 14vw
 }
 
@@ -151,10 +151,10 @@ ul {
 
 #robotState {
     width: auto;
-    height: auto;
+    height: 6vw;
     background-color: var(--bg-colour);;
     align-items: center;
-    margin: 5vw 0 0 2vw;
+    margin: 5vw 0 0 2.5vw;
 }
 #stateDiv {
     border-right: medium solid var(--accent-colour);;
@@ -170,6 +170,7 @@ ul {
     width: 18vw;
     height: 18vw;
     background-color: var(--bg-colour);;
+    margin: 0 0 0 6vw;
 }
 
 #compass {
