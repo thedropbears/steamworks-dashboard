@@ -127,10 +127,13 @@ function onValueChanged(key, value, isNew) {
         case "/SmartDashboard/rail-pos":
             var railPos = value + 1;
             railPos = railPos * 50;
-            railPos = (railPos * 0.9) + 5;
+            railPos = railPos * 0.9;
+            railPos = railPos.toString();
+            railPos = railPos.concat("%")
+            document.getElementById("railRect").setAttribute("x", railPos);
             break;
 
-        case "/SmartDashboard/aliance":
+        case "/SmartDashboard/alliance":
             if (value === "red") {
                 document.documentElement.style.setProperty('--accent-colour', '#C62828')
             } else if (value === "blue") {
