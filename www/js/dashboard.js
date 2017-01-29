@@ -125,9 +125,10 @@ function onRobotConnection(connected) {
 function onValueChanged(key, value, isNew) {
     switch (key) {
         case "/SmartDashboard/teleopStart":
-        if (! timerStart){
-            timerCycle();}
-        break;
+            if (!timerStart) {
+                timerCycle();
+            }
+            break;
 
         case "/SmartDashboard/gyro":
             rotateCompass(value + Math.PI);
@@ -147,16 +148,15 @@ function onValueChanged(key, value, isNew) {
             if (value === "red") {
                 alliance = "red"
                 document.documentElement.style.setProperty('--accent-colour', '#C62828')
-            } 
-            else if (value === "blue") {
+            } else if (value === "blue") {
                 alliance = "blue"
                 document.documentElement.style.setProperty('--accent-colour', '#3565bf')
             }
-                $("#compass").attr("src", "img/robot"+alliance+".png");
-                $("#robotSVG").attr("src", "img/robot"+alliance+".png");
-                $("#state").attr("src", "img/icons/"+currentState+alliance+".png")
-                $("#robotSVG").attr("xlink:href", "img/robot"+alliance+".png");
-            
+            $("#compass").attr("src", "img/robot" + alliance + ".png");
+            $("#robotSVG").attr("src", "img/robot" + alliance + ".png");
+            $("#state").attr("src", "img/icons/" + currentState + alliance + ".png")
+            $("#robotSVG").attr("xlink:href", "img/robot" + alliance + ".png");
+
             break;
 
         case "/SmartDashboard/state":
