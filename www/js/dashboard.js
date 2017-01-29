@@ -10,6 +10,8 @@ $(document).ready(function () {
     var listener = new window.keypress.Listener();
 
     $("#camera").attr("src", cameraStream1);
+    $("#state").attr("src", "img/icons/stationary.png");
+
     
     listener.simple_combo("1", switchCamera);
     $("#camChange").click(switchCamera);
@@ -149,6 +151,7 @@ function onValueChanged(key, value, isNew) {
         case "/SmartDashboard/state":
             $("#state").attr("src", "img/icons/" + value + ".png");
             break;
+
         case "/SmartDashboard/visionX":
             changeRobotStrafePos(value);
             break;
@@ -165,7 +168,9 @@ function changeRobotRange(dist) {
         ypos = 1.0;
     }
     ypos = ypos * 10.0 + 10.0 - 1.0;
-    robot.style.top = ypos + "vw";
+    ypos = ypos + "vw";
+    document.getElementById("railRect").setAttribute("x", ypos);
+
 }
 
 function changeRobotStrafePos(visionX) {
@@ -173,7 +178,9 @@ function changeRobotStrafePos(visionX) {
     if (visionX >= -1.0 && visionX <= 1.0) {
         var robot = document.getElementById("robotSVG");
         var xpos = visionX * 10.0 - 0.75 + 10.0;
-        robot.style.left = xpos + "vw";
+        xpos = xpos + "vw";
+        document.getElementById("railRect").setAttribute("x", xpos);
+
     }
 }
 
