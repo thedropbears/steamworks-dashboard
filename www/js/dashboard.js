@@ -3,9 +3,13 @@ var camera = 1;
 var loop = 1;
 var currentGyro = 0
 var offsetGyro = 0
+var cameraStream1 = "http://10.74.74.2:8083/stream.mjpg"
+
 $(document).ready(function () {
     var listener = new window.keypress.Listener();
 
+    $("#camera").removeAttr("src").attr("src", cameraStream1);
+    
     listener.simple_combo("1", switchCamera);
     $("#camChange").click(switchCamera);
 
@@ -45,7 +49,7 @@ function switchCamera() {
         camera = 1;
     }
     if (camera === 1) {
-        $("#camera").attr("src", "http://10.47.74.2:5800/?action=stream");
+        $("#camera").attr("src", cameraStream1);
         $("#cameraName").text("Front Camera");
 
     } else if (camera === 2) {
@@ -62,8 +66,8 @@ function resetVideo() {
     }, 50);
 
     if (camera === 1) {
-        $("#camera").removeAttr("src").attr("src", "http://10.47.74.2:5800/?action=stream");
-        $("#camera").attr("src", "http://10.47.74.2:5800/?action=stream");
+        $("#camera").removeAttr("src").attr("src", cameraStream1);
+        $("#camera").attr("src", cameraStream1);
 
     } else if (camera === 2) {
         $("#camera").removeAttr("src").attr("src", "img/camera.jpg");
