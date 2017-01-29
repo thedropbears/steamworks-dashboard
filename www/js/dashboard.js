@@ -6,12 +6,15 @@ var offsetGyro = 0
 var cameraStream1 = "http://10.74.74.2:8083/stream.mjpg"
 var reverse = false;
 var alliance = ""
+var currentState = "stationary"
 
 $(document).ready(function () {
     var listener = new window.keypress.Listener();
 
     $("#camera").attr("src", cameraStream1);
     $("#state").attr("src", "img/icons/stationaryred.png");
+    $("#compass").attr("src", "img/robotred.png");
+    $("#robotSVG").attr("xlink:href", "img/robotred.png");
 
     listener.simple_combo("1", switchCamera);
     $("#camChange").click(switchCamera);
@@ -151,10 +154,13 @@ function onValueChanged(key, value, isNew) {
             }
                 $("#compass").attr("src", "img/robot"+alliance+".png");
                 $("#robotSVG").attr("src", "img/robot"+alliance+".png");
+                $("#state").attr("src", "img/icons/"+currentState+alliance+".png")
+                $("#robotSVG").attr("xlink:href", "img/robot"+alliance+".png");
             
             break;
 
         case "/SmartDashboard/state":
+            currentState = value;
             $("#state").attr("src", "img/icons/" + value + alliance + ".png");
             break;
 
