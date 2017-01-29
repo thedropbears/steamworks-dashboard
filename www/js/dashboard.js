@@ -4,11 +4,12 @@ var loop = 1;
 var currentGyro = 0
 var offsetGyro = 0
 var cameraStream1 = "http://10.74.74.2:8083/stream.mjpg"
+var reverse = false;
 
 $(document).ready(function () {
     var listener = new window.keypress.Listener();
 
-    $("#camera").removeAttr("src").attr("src", cameraStream1);
+    $("#camera").attr("src", cameraStream1);
     
     listener.simple_combo("1", switchCamera);
     $("#camChange").click(switchCamera);
@@ -67,11 +68,9 @@ function resetVideo() {
 
     if (camera === 1) {
         $("#camera").removeAttr("src").attr("src", cameraStream1);
-        $("#camera").attr("src", cameraStream1);
 
     } else if (camera === 2) {
         $("#camera").removeAttr("src").attr("src", "img/camera.jpg");
-        $("#camera").attr("src", "img/camera.jpg");
 
 
     }
@@ -90,7 +89,8 @@ function resetGyro() {
 
 function reverseControl() {
     $("#reverseControl").toggleClass("click");
-
+    reverse = !reverse;
+    NetworkTables.putValue("/SmartDashboard/reverse", reverse);
 }
 
 
