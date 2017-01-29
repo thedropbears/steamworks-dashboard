@@ -11,7 +11,7 @@ $(document).ready(function () {
     var listener = new window.keypress.Listener();
 
     $("#camera").attr("src", cameraStream1);
-    $("#state").attr("src", "img/icons/stationary.png");
+    $("#state").attr("src", "img/icons/stationaryred.png");
 
     listener.simple_combo("1", switchCamera);
     $("#camChange").click(switchCamera);
@@ -142,12 +142,16 @@ function onValueChanged(key, value, isNew) {
 
         case "/SmartDashboard/alliance":
             if (value === "red") {
-                document.documentElement.style.setProperty('--accent-colour', '#C62828')
                 alliance = "red"
-            } else if (value === "blue") {
-                document.documentElement.style.setProperty('--accent-colour', '#3565bf')
+                document.documentElement.style.setProperty('--accent-colour', '#C62828')
+            } 
+            else if (value === "blue") {
                 alliance = "blue"
+                document.documentElement.style.setProperty('--accent-colour', '#3565bf')
             }
+                $("#compass").attr("src", "img/robot"+alliance+".png");
+                $("#robotSVG").attr("src", "img/robot"+alliance+".png");
+            
             break;
 
         case "/SmartDashboard/state":
