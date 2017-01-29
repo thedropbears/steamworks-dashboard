@@ -191,18 +191,12 @@ function timerCycle() {
                 document.getElementById("cycleTimer").innerHTML = "30";
                 countDownDate = Math.floor(Date.now() / 1000) + 30;
                 $("#timerInfo").text("CLIMB");
-                $("#timerInfo").css({
-                    "color": "red"
-                });
                 $("#timerInfo").toggleClass("blink");
                 climb = true;
             } else if (climb) {
                 clearInterval(x);
                 document.getElementById("cycleTimer").innerHTML = "00";
                 $("#timerInfo").toggleClass("blink");
-                $("#timerInfo").css({
-                    "color": "#3565bf"
-                });
                 $("#timerInfo").text("");
 
             }

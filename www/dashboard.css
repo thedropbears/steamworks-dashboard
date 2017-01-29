@@ -86,24 +86,6 @@ ul {
     opacity: 0.3;
 }
 
-.miniButton {
-    font-size: 90%;
-    border-radius: 0.2vw;
-    height: 5vw;
-    width: 4vw;
-    background: white;
-    color: var(--accent-colour);
-    ;
-    text-align: center;
-    line-height: 2vw;
-    cursor: pointer;
-    border: 0vw solid var(--accent-colour);
-    ;
-    border-bottom: 1vw solid var(--accent-colour);
-    ;
-    opacity: 0.85;
-    margin: 0.5vw 0 0 0;
-}
 
 .click {
     opacity: 0.3;
@@ -125,7 +107,9 @@ ul {
 
 #timerInfo {
     font-size: 425%;
-    width: 14vw
+    width: 14vw;
+    color: var(--accent-colour);
+
 }
 
 #topList {
