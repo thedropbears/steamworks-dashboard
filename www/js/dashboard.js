@@ -10,7 +10,7 @@ $(document).ready(function () {
     var listener = new window.keypress.Listener();
 
     $("#camera").attr("src", cameraStream1);
-    
+
     listener.simple_combo("1", switchCamera);
     $("#camChange").click(switchCamera);
 
