@@ -165,35 +165,22 @@ ul {
     ;
 }
 
-#robotState li {
-    border-right: medium solid var(--accent-colour);
-    ;
-    border-left: medium solid var(--accent-colour);
-    ;
-    width: 18vw;
-    height: 18vw;
+#state {
     background-color: var(--bg-colour);
-    ;
+    align: center;
+    width: 16vw;
+    background-color: var(--bg-colour);
     align-items: center
-}
-
-#robotState {
-    width: auto;
-    height: 6vw;
-    background-color: var(--bg-colour);
-    ;
-    align-items: center;
-    margin: 5vw 0 0 2.5vw;
 }
 
 #stateDiv {
     border-right: medium solid var(--accent-colour);
-    ;
     border-left: medium solid var(--accent-colour);
-    ;
     width: 18vw;
     height: 18vw;
-    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #compassDiv {

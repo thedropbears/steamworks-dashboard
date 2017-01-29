@@ -143,6 +143,20 @@ function onValueChanged(key, value, isNew) {
             } else if (value === "blue") {
                 document.documentElement.style.setProperty('--accent-colour', '#3565bf')
             }
+        case "/SmartDashboard/state":
+            if (value === "climbing") {
+                $("#state").attr("src", "img/icons/Climbing.png");
+            } else if (value === "gear to airship") {
+                $("#state").attr("src", "img/icons/Transporting gear to airship.png");
+            } else if (value === "moving with gear") {
+                $("#state").attr("src", "img/icons/Transporting to loadstation.png");
+            } else if (value === "receiving gear") {
+                $("#state").attr("src", "img/icons/Receiving gear.png");
+            } else if (value === "stationary") {
+                $("#state").attr("src", "img/icons/Stationary.png");
+            } else if (value === "unloading gear") {
+                $("#state").attr("src", "img/icons/Unloading gear.png");
+            }
     }
 }
 
