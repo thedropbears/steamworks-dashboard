@@ -5,6 +5,7 @@ var currentGyro = 0
 var offsetGyro = 0
 var cameraStream1 = "http://10.74.74.2:8083/stream.mjpg"
 var reverse = false;
+var alliance = ""
 
 $(document).ready(function () {
     var listener = new window.keypress.Listener();
@@ -142,13 +143,15 @@ function onValueChanged(key, value, isNew) {
         case "/SmartDashboard/alliance":
             if (value === "red") {
                 document.documentElement.style.setProperty('--accent-colour', '#C62828')
+                alliance = "red"
             } else if (value === "blue") {
                 document.documentElement.style.setProperty('--accent-colour', '#3565bf')
+                alliance = "blue"
             }
             break;
 
         case "/SmartDashboard/state":
-            $("#state").attr("src", "img/icons/" + value + ".png");
+            $("#state").attr("src", "img/icons/" + value + alliance + ".png");
             break;
 
         case "/SmartDashboard/visionX":
