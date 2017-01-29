@@ -5,12 +5,17 @@ var currentGyro = 0
 var offsetGyro = 0
 var cameraStream1 = "http://10.74.74.2:8083/stream.mjpg"
 var reverse = false;
+var alliance = ""
+var currentState = "stationary"
+var timerStart = false;
 
 $(document).ready(function () {
     var listener = new window.keypress.Listener();
 
     $("#camera").attr("src", cameraStream1);
-    $("#state").attr("src", "img/icons/stationary.png");
+    $("#state").attr("src", "img/icons/stationaryred.png");
+    $("#compass").attr("src", "img/robotred.png");
+    $("#robotSVG").attr("xlink:href", "img/robotred.png");
 
     listener.simple_combo("1", switchCamera);
     $("#camChange").click(switchCamera);
@@ -23,8 +28,6 @@ $(document).ready(function () {
 
     listener.simple_combo("4", reverseControl);
     $("#reverseControl").click(reverseControl);
-
-    timerCycle();
 
     // sets a function that will be called when the websocket connects/disconnects
     NetworkTables.addWsConnectionListener(onNetworkTablesConnection, true);
@@ -121,8 +124,10 @@ function onRobotConnection(connected) {
 
 function onValueChanged(key, value, isNew) {
     switch (key) {
-        case "/SmartDashboard/range_finder":
-            changeRobotRange(value);
+        case "/SmartDashboard/teleopStart":
+            if (!timerStart) {
+                timerCycle();
+            }
             break;
 
         case "/SmartDashboard/gyro":
@@ -141,14 +146,22 @@ function onValueChanged(key, value, isNew) {
 
         case "/SmartDashboard/alliance":
             if (value === "red") {
+                alliance = "red"
                 document.documentElement.style.setProperty('--accent-colour', '#C62828')
             } else if (value === "blue") {
+                alliance = "blue"
                 document.documentElement.style.setProperty('--accent-colour', '#3565bf')
             }
+            $("#compass").attr("src", "img/robot" + alliance + ".png");
+            $("#robotSVG").attr("src", "img/robot" + alliance + ".png");
+            $("#state").attr("src", "img/icons/" + currentState + alliance + ".png")
+            $("#robotSVG").attr("xlink:href", "img/robot" + alliance + ".png");
+
             break;
 
         case "/SmartDashboard/state":
-            $("#state").attr("src", "img/icons/" + value + ".png");
+            currentState = value;
+            $("#state").attr("src", "img/icons/" + value + alliance + ".png");
             break;
 
         case "/SmartDashboard/visionX":
@@ -166,7 +179,8 @@ function changeRobotRange(dist) {
     if (ypos >= 1.0) {
         ypos = 1.0;
     }
-    ypos = ypos * 10.0 + 10.0 - 1.0;
+    ypos += 1;
+    ypos = ypos * 50;
     ypos = ypos + "vw";
     document.getElementById("railRect").setAttribute("x", ypos);
 
@@ -176,7 +190,10 @@ function changeRobotStrafePos(visionX) {
     visionX = -visionX;
     if (visionX >= -1.0 && visionX <= 1.0) {
         var robot = document.getElementById("robotSVG");
-        var xpos = visionX * 10.0 - 0.75 + 10.0;
+
+        var xpos = visionX
+        xpos += 1;
+        xpos = xpos * 50;
         xpos = xpos + "vw";
         document.getElementById("railRect").setAttribute("x", xpos);
 
