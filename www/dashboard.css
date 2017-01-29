@@ -165,7 +165,7 @@ ul {
     ;
 }
 
-#robotState li {
+#state li {
     border-right: medium solid var(--accent-colour);
     ;
     border-left: medium solid var(--accent-colour);
@@ -177,7 +177,7 @@ ul {
     align-items: center
 }
 
-#robotState {
+#state {
     width: auto;
     height: 6vw;
     background-color: var(--bg-colour);

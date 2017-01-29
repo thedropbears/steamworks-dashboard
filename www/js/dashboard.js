@@ -141,17 +141,17 @@ function onValueChanged(key, value, isNew) {
             }
         case "/SmartDashboard/state":
             if (value === "climbing") {
-                $("#camera").attr("src", "img/icons/climbing");
+                $("#state").attr("src", "img/icons/Climbing.png");
             } else if (value === "gear to airship") {
-                $("#camera").attr("src", "img/icons/movingGearToAiship.png");
+                $("#state").attr("src", "img/icons/movingGearToAiship.png");
             } else if (value === "moving to loading station") {
-                $("#camera").attr("src", "img/icons/movingGearToAiship.png");
+                $("#state").attr("src", "img/icons/movingGearToAiship.png");
             } else if (value === "receiving gear") {
-                $("#camera").attr("src", "img/icons/receivingGear.png");
+                $("#state").attr("src", "img/icons/receivingGear.png");
             } else if (value === "stationary") {
-                $("#camera").attr("src", "img/icons/Stationary.png");
+                $("#state").attr("src", "img/icons/Stationary.png");
             } else if (value === "unloading gear") {
-                $("#camera").attr("src", "img/icons/unloadingGear.png");
+                $("#state").attr("src", "img/icons/unloadingGear.png");
             }
     }
 }
