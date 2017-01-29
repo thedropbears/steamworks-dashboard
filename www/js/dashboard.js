@@ -128,6 +128,7 @@ function onValueChanged(key, value, isNew) {
             rotateCompass(value + Math.PI);
             currentGyro = value;
             break;
+
         case "/SmartDashboard/rail-pos":
             var railPos = value + 1;
             railPos = railPos * 50;
@@ -143,39 +144,36 @@ function onValueChanged(key, value, isNew) {
             } else if (value === "blue") {
                 document.documentElement.style.setProperty('--accent-colour', '#3565bf')
             }
+            break;
+
         case "/SmartDashboard/state":
-            if (value === "climbing") {
-                $("#state").attr("src", "img/icons/Climbing.png");
-            } else if (value === "gear to airship") {
-                $("#state").attr("src", "img/icons/Transporting gear to airship.png");
-            } else if (value === "moving with gear") {
-                $("#state").attr("src", "img/icons/Transporting to loadstation.png");
-            } else if (value === "receiving gear") {
-                $("#state").attr("src", "img/icons/Receiving gear.png");
-            } else if (value === "stationary") {
-                $("#state").attr("src", "img/icons/Stationary.png");
-            } else if (value === "unloading gear") {
-                $("#state").attr("src", "img/icons/Unloading gear.png");
-            }
+            $("#state").attr("src", "img/icons/" + value + ".png");
+            break;
+        case "/SmartDashboard/visionX":
+            changeRobotStrafePos(value);
+            break;
+        case "changeRobotStrafePos/visionY":
+            changeRobotRange(value)
+            break;
     }
 }
 
 function changeRobotRange(dist) {
-    var robot = document.getElementById("position-display-robot");
-    var xpos = (dist - targetRange) / targetRange;
-    if (xpos >= 1.0) {
-        xpos = 1.0;
+    var robot = document.getElementById("robotSVG");
+    var ypos = (dist - targetRange) / targetRange;
+    if (ypos >= 1.0) {
+        ypos = 1.0;
     }
-    xpos = xpos * 10.0 + 10.0 - 1.0;
-    robot.style.top = xpos + "vw";
+    ypos = ypos * 10.0 + 10.0 - 1.0;
+    robot.style.top = ypos + "vw";
 }
 
 function changeRobotStrafePos(visionX) {
     visionX = -visionX;
     if (visionX >= -1.0 && visionX <= 1.0) {
-        var robot = document.getElementById("position-display-robot");
-        var ypos = visionX * 10.0 - 0.75 + 10.0;
-        robot.style.left = ypos + "vw";
+        var robot = document.getElementById("robotSVG");
+        var xpos = visionX * 10.0 - 0.75 + 10.0;
+        robot.style.left = xpos + "vw";
     }
 }
 
