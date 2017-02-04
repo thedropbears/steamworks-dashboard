@@ -3,7 +3,7 @@ var camera = 1;
 var loop = 1;
 var currentGyro = 0
 var offsetGyro = 0
-var cameraStream1 = "http://10.74.74.2:8083/stream.mjpg"
+var cameraStream1 = "http://10.47.74.196:8083/stream.mjpg"
 var reverse = false;
 var alliance = ""
 var currentState = "stationary"
@@ -135,7 +135,7 @@ function onValueChanged(key, value, isNew) {
             currentGyro = value;
             break;
 
-        case "/SmartDashboard/rail-pos":
+        case "/SmartDashboard/rail_pos":
             var railPos = value + 1;
             railPos = railPos * 50;
             railPos = railPos * 0.9;
@@ -143,6 +143,14 @@ function onValueChanged(key, value, isNew) {
             railPos = railPos.concat("%")
             document.getElementById("railRect").setAttribute("x", railPos);
             break;
+        case "/SmartDashboard/railVision_pos":
+           var railVisionpos = value + 1;
+           railVisionpos = railVisionpos * 50;
+           railVisionpos = railVisionpos * 0.9;
+           railVisionpos = railVisionpos.toString();
+           railVisionpos = railVisionpos.concat("%")
+           document.getElementById("railVision").setAttribute("x", railVisionpos);
+           break;
 
         case "/SmartDashboard/alliance":
             if (value === "red") {
