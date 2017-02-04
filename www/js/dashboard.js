@@ -143,14 +143,7 @@ function onValueChanged(key, value, isNew) {
             railPos = railPos.concat("%")
             document.getElementById("railRect").setAttribute("x", railPos);
             break;
-        case "/SmartDashboard/railVision_pos":
-           var railVisionpos = value + 1;
-           railVisionpos = railVisionpos * 50;
-           railVisionpos = railVisionpos * 0.9;
-           railVisionpos = railVisionpos.toString();
-           railVisionpos = railVisionpos.concat("%")
-           document.getElementById("railVision").setAttribute("x", railVisionpos);
-           break;
+         
 
         case "/SmartDashboard/alliance":
             if (value === "red") {
@@ -174,6 +167,15 @@ function onValueChanged(key, value, isNew) {
 
         case "/SmartDashboard/visionX":
             changeRobotStrafePos(value);
+
+            var railVisionpos = value + 1;
+            railVisionpos = railVisionpos * 50;
+            railVisionpos = railVisionpos * 0.9;
+            railVisionpos = railVisionpos.toString();
+            railVisionpos = railVisionpos.concat("%")
+            document.getElementById("railVision").setAttribute("x", railVisionpos);
+           break;
+
             break;
         case "changeRobotStrafePos/visionY":
             changeRobotRange(value)
