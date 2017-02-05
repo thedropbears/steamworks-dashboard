@@ -3,7 +3,7 @@ var camera = 1;
 var loop = 1;
 var currentGyro = 0
 var offsetGyro = 0
-var cameraStream1 = "http://10.47.74.196:8083/stream.mjpg"
+var cameraStream1 = "http://10.74.74.2:8083/stream.mjpg"
 var reverse = false;
 var alliance = ""
 var currentState = "stationary"
@@ -165,7 +165,7 @@ function onValueChanged(key, value, isNew) {
             $("#state").attr("src", "img/icons/" + value + alliance + ".png");
             break;
 
-        case "/SmartDashboard/visionX":
+        case "/SmartDashboard/vision_x":
             changeRobotStrafePos(value);
 
             var railVisionpos = value + 1;
@@ -176,7 +176,6 @@ function onValueChanged(key, value, isNew) {
             document.getElementById("railVision").setAttribute("x", railVisionpos);
            break;
 
-            break;
         case "changeRobotStrafePos/visionY":
             changeRobotRange(value)
             break;
@@ -184,15 +183,15 @@ function onValueChanged(key, value, isNew) {
 }
 
 function changeRobotRange(dist) {
-    var robot = document.getElementById("robotSVG");
     var ypos = (dist - targetRange) / targetRange;
     if (ypos >= 1.0) {
         ypos = 1.0;
     }
     ypos += 1;
     ypos = ypos * 50;
-    ypos = ypos + "vw";
-    document.getElementById("railRect").setAttribute("x", ypos);
+    ypos = ypos + "%";
+    console.log(ypos)
+    document.getElementById("robotSVG").setAttribute("y", ypos);
 
 }
 
@@ -204,8 +203,9 @@ function changeRobotStrafePos(visionX) {
         var xpos = visionX
         xpos += 1;
         xpos = xpos * 50;
-        xpos = xpos + "vw";
-        document.getElementById("railRect").setAttribute("x", xpos);
+        xpos = xpos + "%";
+        console.log(xpos)
+        document.getElementById("robotSVG").setAttribute("x", xpos);
 
     }
 }
