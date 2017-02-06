@@ -187,9 +187,11 @@ function changeRobotRange(dist) {
     if (ypos >= 1.0) {
         ypos = 1.0;
     }
-    ypos += 1;
+    ypos += 1; // value from -1 to 1
+    console.log(ypos)
     ypos = ypos * 50;
-    ypos = ypos + "%";
+    ypos = (ypos / 100) * 15
+    ypos = ypos + "em";
     console.log(ypos)
     document.getElementById("robotSVG").setAttribute("y", ypos);
 
@@ -200,11 +202,11 @@ function changeRobotStrafePos(visionX) {
     if (visionX >= -1.0 && visionX <= 1.0) {
         var robot = document.getElementById("robotSVG");
 
-        var xpos = visionX
-        xpos += 1;
-        xpos = xpos * 50;
-        xpos = xpos + "%";
-        console.log(xpos)
+        var xpos = visionX + 1; // -1 -to 1 now 0 to 2
+            xpos = xpos * 50; // percentage 
+            xpos = xpos * 0.8; // width of picture  
+            xpos = xpos.toString();
+            xpos = xpos.concat("%")
         document.getElementById("robotSVG").setAttribute("x", xpos);
 
     }
