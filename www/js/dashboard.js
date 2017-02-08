@@ -174,6 +174,12 @@ function onValueChanged(key, value, isNew) {
             railVisionpos = railVisionpos.toString();
             railVisionpos = railVisionpos.concat("%")
             document.getElementById("railVision").setAttribute("x", railVisionpos);
+            if (-0.1 <= value && value <= 0.1){
+                document.getElementById("railVision").setAttribute("fill", "green");
+            }
+            else{
+                document.getElementById("railVision").setAttribute("fill", "yellow");                
+            }
            break;
 
         case "changeRobotStrafePos/visionY":
