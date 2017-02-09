@@ -210,7 +210,7 @@ function changeRobotStrafePos(visionX) {
 
         var xpos = visionX + 1; // -1 -to 1 now 0 to 2
             xpos = xpos * 50; // percentage 
-            xpos = xpos * 0.8; // width of picture  
+            xpos = xpos * 0.65; // width of picture  
             xpos = xpos.toString();
             xpos = xpos.concat("%")
         document.getElementById("robotSVG").setAttribute("x", xpos);
