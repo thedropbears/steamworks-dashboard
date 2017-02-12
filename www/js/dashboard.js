@@ -124,10 +124,11 @@ function onRobotConnection(connected) {
 
 function onValueChanged(key, value, isNew) {
     switch (key) {
-        case "/SmartDashboard/teleopStart":
+        case "/robot/mode":
+            if (value == "teleop"){
             if (!timerStart) {
                 timerCycle();
-            }
+            }}
             break;
 
         case "/SmartDashboard/gyro":
@@ -135,14 +136,14 @@ function onValueChanged(key, value, isNew) {
             currentGyro = value;
             break;
 
-        case "/SmartDashboard/rail-pos":
+        case "/SmartDashboard/rail_pos":
             var railPos = value + 1;
+            // XXX wtf does this do
             railPos = railPos * 50;
             railPos = railPos * 0.9;
-            railPos = railPos.toString();
-            railPos = railPos.concat("%")
-            document.getElementById("railRect").setAttribute("x", railPos);
+            document.getElementById("railRect").setAttribute("x", railPos + "%");
             break;
+         
 
         case "/SmartDashboard/alliance":
             if (value === "red") {
@@ -164,9 +165,22 @@ function onValueChanged(key, value, isNew) {
             $("#state").attr("src", "img/icons/" + value + alliance + ".png");
             break;
 
-        case "/SmartDashboard/visionX":
+        case "/SmartDashboard/vision_x":
             changeRobotStrafePos(value);
-            break;
+
+            var railVisionpos = value + 1;
+            // XXX wtf does this do
+            railVisionpos = railVisionpos * 50;
+            railVisionpos = railVisionpos * 0.9;
+            document.getElementById("railVision").setAttribute("x", railVisionpos + "%");
+            if (-0.1 <= value && value <= 0.1){
+                document.getElementById("railVision").setAttribute("fill", "green");
+            }
+            else{
+                document.getElementById("railVision").setAttribute("fill", "yellow");                
+            }
+           break;
+
         case "changeRobotStrafePos/visionY":
             changeRobotRange(value)
             break;
@@ -174,15 +188,17 @@ function onValueChanged(key, value, isNew) {
 }
 
 function changeRobotRange(dist) {
-    var robot = document.getElementById("robotSVG");
     var ypos = (dist - targetRange) / targetRange;
     if (ypos >= 1.0) {
         ypos = 1.0;
     }
-    ypos += 1;
+    ypos += 1; // value from -1 to 1
+    console.log(ypos)
     ypos = ypos * 50;
-    ypos = ypos + "vw";
-    document.getElementById("railRect").setAttribute("x", ypos);
+    ypos = (ypos / 100) * 15
+    ypos = ypos + "em";
+    console.log(ypos)
+    document.getElementById("robotSVG").setAttribute("y", ypos);
 
 }
 
@@ -191,11 +207,10 @@ function changeRobotStrafePos(visionX) {
     if (visionX >= -1.0 && visionX <= 1.0) {
         var robot = document.getElementById("robotSVG");
 
-        var xpos = visionX
-        xpos += 1;
-        xpos = xpos * 50;
-        xpos = xpos + "vw";
-        document.getElementById("railRect").setAttribute("x", xpos);
+        var xpos = visionX + 1; // -1 -to 1 now 0 to 2
+        xpos = xpos * 50; // percentage 
+        xpos = xpos * 0.65; // width of picture  
+        document.getElementById("robotSVG").setAttribute("x", xpos + "%");
 
     }
 }
