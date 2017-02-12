@@ -124,10 +124,11 @@ function onRobotConnection(connected) {
 
 function onValueChanged(key, value, isNew) {
     switch (key) {
-        case "/SmartDashboard/teleopStart":
+        case "/robot/mode":
+            if (value == "teleop"){
             if (!timerStart) {
                 timerCycle();
-            }
+            }}
             break;
 
         case "/SmartDashboard/gyro":
