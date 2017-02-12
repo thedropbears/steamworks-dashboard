@@ -138,11 +138,10 @@ function onValueChanged(key, value, isNew) {
 
         case "/SmartDashboard/rail_pos":
             var railPos = value + 1;
+            // XXX wtf does this do
             railPos = railPos * 50;
             railPos = railPos * 0.9;
-            railPos = railPos.toString();
-            railPos = railPos.concat("%")
-            document.getElementById("railRect").setAttribute("x", railPos);
+            document.getElementById("railRect").setAttribute("x", railPos + "%");
             break;
          
 
@@ -170,11 +169,10 @@ function onValueChanged(key, value, isNew) {
             changeRobotStrafePos(value);
 
             var railVisionpos = value + 1;
+            // XXX wtf does this do
             railVisionpos = railVisionpos * 50;
             railVisionpos = railVisionpos * 0.9;
-            railVisionpos = railVisionpos.toString();
-            railVisionpos = railVisionpos.concat("%")
-            document.getElementById("railVision").setAttribute("x", railVisionpos);
+            document.getElementById("railVision").setAttribute("x", railVisionpos + "%");
             if (-0.1 <= value && value <= 0.1){
                 document.getElementById("railVision").setAttribute("fill", "green");
             }
@@ -210,11 +208,9 @@ function changeRobotStrafePos(visionX) {
         var robot = document.getElementById("robotSVG");
 
         var xpos = visionX + 1; // -1 -to 1 now 0 to 2
-            xpos = xpos * 50; // percentage 
-            xpos = xpos * 0.65; // width of picture  
-            xpos = xpos.toString();
-            xpos = xpos.concat("%")
-        document.getElementById("robotSVG").setAttribute("x", xpos);
+        xpos = xpos * 50; // percentage 
+        xpos = xpos * 0.65; // width of picture  
+        document.getElementById("robotSVG").setAttribute("x", xpos + "%");
 
     }
 }
