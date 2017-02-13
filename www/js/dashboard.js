@@ -5,7 +5,7 @@ var currentGyro = 0
 var offsetGyro = 0
 var cameraStream1 = "http://10.74.74.2:8083/stream.mjpg"
 var reverse = false;
-var alliance = ""
+var alliance = "red"
 var currentState = "stationary"
 var timerStart = false;
 
