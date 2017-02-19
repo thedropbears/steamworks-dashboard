@@ -4,30 +4,19 @@ var loop = 1;
 var currentGyro = 0
 var offsetGyro = 0
 var cameraStream1 = "http://10.47.74.2:8083/stream.mjpg"
+var cameraStream2 = "http://10.47.74.2:8082/stream.mjpg"
 var reverse = false;
 var alliance = "red"
 var currentState = "stationary"
 var timerStart = false;
 
 $(document).ready(function () {
-    var listener = new window.keypress.Listener();
 
     $("#camera").attr("src", cameraStream1);
     $("#state").attr("src", "img/icons/stationaryred.png");
     $("#compass").attr("src", "img/robotred.png");
     $("#robotSVG").attr("xlink:href", "img/robotred.png");
 
-    listener.simple_combo("1", switchCamera);
-    $("#camChange").click(switchCamera);
-
-    listener.simple_combo("2", resetVideo);
-    $("#resetVideo").click(resetVideo);
-
-    listener.simple_combo("3", resetGyro);
-    $("#resetGyro").click(resetGyro);
-
-    listener.simple_combo("4", reverseControl);
-    $("#reverseControl").click(reverseControl);
 
     // sets a function that will be called when the websocket connects/disconnects
     NetworkTables.addWsConnectionListener(onNetworkTablesConnection, true);
@@ -43,58 +32,36 @@ $(document).ready(function () {
     attachSelectToSendableChooser("#auto-select", "/SmartDashboard/autonomous_mode");
 });
 //buttons
-function switchCamera() {
-    $("#camChange").toggleClass("click");
-    setTimeout(function () {
-        $("#camChange").toggleClass("click");
-    }, 50);
-
-    camera = camera + 1;
-    if (camera > 2) {
-        camera = 1;
-    }
-    if (camera === 1) {
-        $("#camera").attr("src", cameraStream1);
+function switchCamera(value) {
+    if (value === "front") {
+        $("#camera").attr("src", cameraStream1);        
         $("#cameraName").text("Front Camera");
+        camera = 1
 
-    } else if (camera === 2) {
-        $("#camera").attr("src", "img/camera.jpg");
+    } else if (value === "back") {
+        $("#camera").attr("src", cameraStream2);        
         $("#cameraName").text("Back Camera");
+        camera = 2
     }
 
 }
 
 function resetVideo() {
-    $("#resetVideo").toggleClass("click");
-    setTimeout(function () {
-        $("#resetVideo").toggleClass("click");
-    }, 50);
 
     if (camera === 1) {
         $("#camera").removeAttr("src").attr("src", cameraStream1);
 
     } else if (camera === 2) {
-        $("#camera").removeAttr("src").attr("src", "img/camera.jpg");
+        $("#camera").removeAttr("src").attr("src", cameraStream2);
 
 
     }
 }
 
-
 function resetGyro() {
-    $("#resetGyro").toggleClass("click");
-    setTimeout(function () {
-        $("#resetGyro").toggleClass("click");
-    }, 50);
 
     offsetGyro = currentGyro;
     rotateCompass(currentGyro + Math.PI)
-}
-
-function reverseControl() {
-    $("#reverseControl").toggleClass("click");
-    reverse = !reverse;
-    NetworkTables.putValue("/SmartDashboard/reverse", reverse);
 }
 
 
@@ -181,8 +148,20 @@ function onValueChanged(key, value, isNew) {
             }
            break;
 
-        case "changeRobotStrafePos/visionY":
+        case "/SmartDashboard/vision_y":
             changeRobotRange(value)
+            break;
+        
+        case "/SmartDashboard/camera":
+            switchCamera(value)
+            break;
+
+        case "/SmartDashboard/reset_video":
+            resetVideo()
+            break;
+        
+        case "/SmartDashboard/resetGyro":
+            resetGyro()
             break;
     }
 }
