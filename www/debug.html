@@ -87,6 +87,8 @@ function restartGraph() {
     var maxVal = parseFloat(document.getElementById("graph-max-val").value);
     var buffer = parseInt(document.getElementById("graph-buffer-length").value);
     plotVariable = document.getElementById("graph-variable-name").value;
+    if (!plotVariable.startsWith("/"))
+        plotVariable = "/SmartDashboard/" + plotVariable;
     data = d3.range(buffer).map(function() {return 0.0});
     var margin = {top: 20, right: 20, bottom: 20, left: 40},
         width = 450 - margin.left - margin.right,
@@ -145,7 +147,7 @@ function onValueChanged(key, value, isNew) {
 	// the id of the elements that we're appending, for simplicity. However,
 	// the key names aren't always valid HTML identifiers, so we use
 	// the NetworkTables.keyToId() function to convert them appropriately
-    if(key == "/SmartDashboard/"+plotVariable && graphing) {
+    if(key == plotVariable && graphing) {
         tick(value);
     }
 
