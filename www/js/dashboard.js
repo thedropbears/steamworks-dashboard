@@ -132,7 +132,7 @@ function onValueChanged(key, value, isNew) {
             $("#state").attr("src", "img/icons/" + value + alliance + ".png");
             break;
 
-        case "/SmartDashboard/vision_x":
+        case "/components/vision/x":
             changeRobotStrafePos(value);
 
             var railVisionpos = value + 1;
