@@ -98,10 +98,10 @@ function onValueChanged(key, value, isNew) {
                 timerCycle();
             }}
             if (value != "disabled"){
-                if !started:
+                if (!started){
                 resetGyro();
                 started = true;
-            }
+            }}
 
             break;
 
