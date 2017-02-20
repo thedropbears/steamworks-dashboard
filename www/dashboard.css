@@ -103,6 +103,7 @@ ul {
 #cycleTimer {
     font-size: 800%;
     margin-left: 2vw;
+    margin-bottom:
 }
 
 #timerInfo {
@@ -115,6 +116,11 @@ ul {
 #topList {
     border-bottom: medium solid var(--accent-colour);
     ;
+}
+
+ul#topList {
+    height: 10vw; 
+    
 }
 
 .sideList {
@@ -143,6 +149,8 @@ ul {
     width: 50%;
     border-right: medium solid var(--accent-colour);
     ;
+    margin-top: -12.3vw;
+    margin-bottom: -0.2vw;
 }
 
 #main-body li {
@@ -181,6 +189,7 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 0vw;
 }
 
 #compassDiv {
@@ -208,28 +217,31 @@ ul {
     ;
     border: medium solid var(--accent-colour);
     ;
-    margin: -4px 0 0 0;
+    border-bottom: 10vw;
     width: 50%;
     float: right;
     border-bottom: medium solid var(--accent-colour);
     ;
+    height: 100%;
 }
 
 #cameraName {
     background-color: var(--bg-colour);
     ;
-    margin: 0 50vw 0 0;
+    margin-bottom: 0vw;
     border-left: medium solid var(--accent-colour);
     ;
     border-right: medium solid var(--accent-colour);
     ;
-    border-bottom-width: 0px;
+    border-bottom: medium solid var(--accent-colour);
+    ;
     font-size: 250%;
     font-weight: 600;
     font-family: arial;
     color: var(--accent-colour);
     ;
-    width: 100%;
+    width: 50.15%;
+    float: left;
 }
 
 #space {
