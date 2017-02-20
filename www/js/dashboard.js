@@ -9,6 +9,7 @@ var reverse = false;
 var alliance = "red"
 var currentState = "stationary"
 var timerStart = false;
+var firstReset = false;
 
 $(document).ready(function () {
 
@@ -92,10 +93,16 @@ function onRobotConnection(connected) {
 function onValueChanged(key, value, isNew) {
     switch (key) {
         case "/robot/mode":
-            if (value == "teleop"){
+            if (value === "teleop"){
             if (!timerStart) {
                 timerCycle();
             }}
+            if (value != "disabled"){
+                if !started:
+                resetGyro();
+                started = true;
+            }
+
             break;
 
         case "/SmartDashboard/gyro":
@@ -160,9 +167,6 @@ function onValueChanged(key, value, isNew) {
             resetVideo()
             break;
         
-        case "/SmartDashboard/resetGyro":
-            resetGyro()
-            break;
     }
 }
 
