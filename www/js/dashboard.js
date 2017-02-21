@@ -102,11 +102,11 @@ function onValueChanged(key, value, isNew) {
             if (!timerStart) {
                 timerCycle();
             }}
-            if (value != "disabled"){
+            /*if (value != "disabled"){
                 if (!started){
                 resetGyro();
                 started = true;
-            }}
+            }}*/
 
             break;
 
@@ -161,7 +161,9 @@ function onValueChanged(key, value, isNew) {
            break;
 
         case "/SmartDashboard/range":
+            if (currentState === "unloadingGear") {
             changeRobotRange(value)
+            }
             break;
         
         case "/SmartDashboard/camera":
