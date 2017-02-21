@@ -86,7 +86,6 @@ ul {
     opacity: 0.3;
 }
 
-
 .click {
     opacity: 0.3;
 }
@@ -110,7 +109,6 @@ ul {
     font-size: 425%;
     width: 14vw;
     color: var(--accent-colour);
-
 }
 
 #topList {
@@ -119,8 +117,7 @@ ul {
 }
 
 ul#topList {
-    height: 10vw; 
-    
+    height: 10vw;
 }
 
 .sideList {
@@ -160,7 +157,11 @@ ul#topList {
     ;
 }
 
-#camera {
+.camera {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 300%;
     float: left;
     border-left: medium solid var(--accent-colour);
     ;

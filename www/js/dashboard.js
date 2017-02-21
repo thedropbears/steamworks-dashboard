@@ -13,7 +13,10 @@ var firstReset = false;
 
 $(document).ready(function () {
 
-    $("#camera").attr("src", cameraStream1);
+    $("#camera1").attr("src", cameraStream1);
+    $("#camera2").css("display", "none")
+    $("#camera2").attr("src", cameraStream2);
+
     $("#state").attr("src", "img/icons/stationaryred.png");
     $("#compass").attr("src", "img/robotred.png");
     $("#robotSVG").attr("xlink:href", "img/robotred.png");
@@ -35,12 +38,16 @@ $(document).ready(function () {
 //buttons
 function switchCamera(value) {
     if (value === "front") {
-        $("#camera").attr("src", cameraStream1);        
+        $("#camera2").css("display", "none");
+        
+        $("#camera1").css("display", "inline");
         $("#cameraName").text("Front Camera");
         camera = 1
 
     } else if (value === "back") {
-        $("#camera").attr("src", cameraStream2);        
+        $("#camera1").css("display", "none");
+
+        $("#camera2").css("display", "inline")
         $("#cameraName").text("Back Camera");
         camera = 2
     }
