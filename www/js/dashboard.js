@@ -181,11 +181,9 @@ function changeRobotRange(dist) {
         ypos = 1.0;
     }
     ypos += 1; // value from -1 to 1
-    console.log(ypos)
     ypos = ypos * 50;
     ypos = (ypos / 100) * 15
     ypos = ypos + "em";
-    console.log(ypos)
     document.getElementById("robotSVG").setAttribute("y", ypos);
 
 }
