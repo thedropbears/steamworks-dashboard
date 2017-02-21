@@ -160,7 +160,7 @@ function onValueChanged(key, value, isNew) {
             }
            break;
 
-        case "/SmartDashboard/vision_y":
+        case "/SmartDashboard/range":
             changeRobotRange(value)
             break;
         
