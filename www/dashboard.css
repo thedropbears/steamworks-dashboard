@@ -169,9 +169,8 @@ ul#topList {
     ;
     display: inline-block;
     vertical-align: text-top;
-    width: 50%;
+    height: 30vw;
     background-color: var(--bg-colour);
-    ;
 }
 
 #state {
