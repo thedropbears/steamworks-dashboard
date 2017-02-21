@@ -30,7 +30,7 @@ $(document).ready(function () {
     NetworkTables.addGlobalListener(onValueChanged, true);
 
     // hook up our SendableChoosers to combo boxes
-    attachSelectToSendableChooser("#auto-select", "/SmartDashboard/autonomous_mode");
+    attachSelectToSendableChooser("#auto-select", "/SmartDashboard/Autonomous Mode");
 });
 //buttons
 function switchCamera(value) {
