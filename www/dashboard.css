@@ -226,25 +226,6 @@ ul#topList {
     height: 100%;
 }
 
-#cameraName {
-    background-color: var(--bg-colour);
-    ;
-    margin-bottom: 0vw;
-    border-left: medium solid var(--accent-colour);
-    ;
-    border-right: medium solid var(--accent-colour);
-    ;
-    border-bottom: medium solid var(--accent-colour);
-    ;
-    font-size: 250%;
-    font-weight: 600;
-    font-family: arial;
-    color: var(--accent-colour);
-    ;
-    width: 50.15%;
-    float: left;
-}
-
 #space {
     border-bottom: medium solid var(--accent-colour);
     ;

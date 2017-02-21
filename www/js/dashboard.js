@@ -39,16 +39,14 @@ $(document).ready(function () {
 function switchCamera(value) {
     if (value === "front") {
         $("#camera2").css("display", "none");
-        
+
         $("#camera1").css("display", "inline");
-        $("#cameraName").text("Front Camera");
         camera = 1
 
     } else if (value === "back") {
         $("#camera1").css("display", "none");
 
         $("#camera2").css("display", "inline")
-        $("#cameraName").text("Back Camera");
         camera = 2
     }
 
