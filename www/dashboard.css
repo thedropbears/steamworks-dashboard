@@ -163,13 +163,11 @@ ul#topList {
     text-align: center;
     font-size: 300%;
     float: left;
-    border-left: medium solid var(--accent-colour);
-    ;
-    border-bottom: medium solid var(--accent-colour);
-    ;
+    margin: medium solid var(--accent-colour)
     display: inline-block;
     vertical-align: text-top;
     height: 30vw;
+    width: 50vw;
     background-color: var(--bg-colour);
 }
 
@@ -196,11 +194,11 @@ ul#topList {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 18vw;
+    width: 50vw;
     height: 18vw;
     background-color: var(--bg-colour);
     ;
-    margin: 0 0 0 6vw;
+    margin: 0;
 }
 
 #compass {

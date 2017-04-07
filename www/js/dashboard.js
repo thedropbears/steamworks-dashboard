@@ -14,9 +14,7 @@ var firstReset = false;
 $(document).ready(function () {
 
     $("#camera1").attr("src", cameraStream1);
-    $("#camera2").css("display", "none")
-    $("#camera2").attr("src", cameraStream2);
-
+    $('#camera2').attr("src", cameraStream2)
     $("#state").attr("src", "img/icons/stationaryred.png");
     $("#compass").attr("src", "img/robotred.png");
     $("#robotSVG").attr("xlink:href", "img/robotred.png");
