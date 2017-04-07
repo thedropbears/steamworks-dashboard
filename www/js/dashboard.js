@@ -34,6 +34,7 @@ $(document).ready(function () {
     attachSelectToSendableChooser("#auto-select", "/SmartDashboard/Autonomous Mode");
 });
 //buttons
+/*
 function switchCamera(value) {
     if (value === "front") {
         $("#camera2").css("display", "none");
@@ -49,7 +50,7 @@ function switchCamera(value) {
     }
 
 }
-
+*/
 function resetVideo() {
 
     if (camera === 1) {
