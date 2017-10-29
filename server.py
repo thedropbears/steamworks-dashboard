@@ -5,6 +5,7 @@
     your robot via NetworkTables.
     Run this application with python, then you can open your browser to
     http://localhost:8888/ to view the index.html page.
+    Yay!
 '''
 
 from os.path import abspath, dirname, exists, join
