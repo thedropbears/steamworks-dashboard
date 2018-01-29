@@ -107,8 +107,7 @@ ul {
 
 #timerInfo {
     font-size: 425%;
-    width: 14vw;
-    color: var(--accent-colour);
+    color: #4CAF50;
 }
 
 #topList {

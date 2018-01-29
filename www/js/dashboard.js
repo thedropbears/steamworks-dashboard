@@ -3,7 +3,7 @@ var camera = 1;
 var loop = 1;
 var currentGyro = 0
 var offsetGyro = 0
-var cameraStream1 = "http://10.47.74.11:5801/?action=stream"
+var cameraStream1 = "http://rpi3-4774.local:1181/"
 var cameraStream2 = "http://10.47.74.11:5802/?action=stream"
 var reverse = false;
 var alliance = "red"
@@ -121,7 +121,7 @@ function onValueChanged(key, value, isNew) {
             railPos = railPos * 0.9;
             document.getElementById("railRect").setAttribute("x", railPos + "%");
             break;
-         
+
 
         case "/SmartDashboard/alliance":
             if (value === "red") {
@@ -212,40 +212,23 @@ function rotateCompass(heading) {
 }
 
 function timerCycle() {
-    var countDownDate = Math.floor(Date.now() / 1000) + 21;
-    var loop = 0;
-    var climb = false;
+    var countDownDate = Math.floor(Date.now() / 1000) + 005;
     var x = setInterval(function () {
         var now = Math.floor(Date.now() / 1000);
-        var distance = countDownDate - now;
+        var difference = countDownDate - now;
 
-        if (distance < 10) {
-            document.getElementById("cycleTimer").innerHTML = "0" + distance;
-        } else {
-            document.getElementById("cycleTimer").innerHTML = distance;
+		if (difference <= 0) {
+            document.getElementById("cycleTimer").innerHTML = "";
+			$("#timerInfo").text("GOOD JOB!");
+			$("#timerInfo").toggleClass("blink");
+		}
+		else if (difference < 10) {
+            document.getElementById("cycleTimer").innerHTML = "00" + difference;
+        } else if (difference < 100) {
+            document.getElementById("cycleTimer").innerHTML = "0" + difference;
         }
-
-        if (distance <= 0) {
-            loop = loop + 1;
-            if (loop <= 4) {
-                document.getElementById("cycleTimer").innerHTML = "21";
-                $("#timerInfo").text(loop + 1);
-                countDownDate = Math.floor(Date.now() / 1000) + 21;
-            } else if (climb === false) {
-                document.getElementById("cycleTimer").innerHTML = "30";
-                countDownDate = Math.floor(Date.now() / 1000) + 30;
-                $("#timerInfo").text("CLIMB");
-                $("#timerInfo").toggleClass("blink");
-                climb = true;
-            } else if (climb) {
-                clearInterval(x);
-                document.getElementById("cycleTimer").innerHTML = "00";
-                $("#timerInfo").toggleClass("blink");
-                $("#timerInfo").text("");
-
-            }
-        }
-
-
+		else {
+            document.getElementById("cycleTimer").innerHTML = difference;
+		}
     }, 1000);
 }

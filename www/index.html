@@ -3,6 +3,7 @@
 
 <head>
     <title>4774 Dashboard</title>
+	<meta charset="utf-8">
     <link id="pagestyle" rel="stylesheet" type="text/css" href="dashboard.css">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <script src="/networktables/networktables.js"></script>
@@ -16,48 +17,27 @@
 <body>
     <div class="topPanel">
         <ul id="topList ">
-            <li class="timer" id="cycleTimer">21</li>
-            <li class="timer" id="timerInfo">1</li>
-
+            <li class="timer" id="cycleTimer">135</li>
+			<h1 id="timerInfo"></h1>
             <li class="dropdown">
                 <select id="auto-select">
-                </select>
+                  </select>
             </li>
             <li id="Connection">Disconnected</li>
         </ul>
     </div>
-    <img id="camera1" class="camera hide" alt="Stream not found" />
-
-    <div class="checklist">
-        <b>
-            <h1></h1>Checklist:</h1>
-            <form>
-                <input type="checkbox" required> Is robot connected?
-                <br>
-                <input type="checkbox" required> Select Auto
-                <br>
-                <input type="checkbox" required> Is cube loaded?
-                <br>
-                <input type="checkbox" required> Is controller connected?
-                <br>
-                <input type="checkbox" required> Is robot connected?
-                <br>
-                <input type="submit">
-
-            </form>
-
-        </b>
-    </div>
-
+     
+    <img id="camera1" class="camera" alt="Stream not found" />
+    
     <div id="main-body" style="float: right;">
         <div>
             <li>
-                <div id="compassDiv" class="hide">
-                    <img id="compass" class="hide" />
+                <div id="compassDiv">
+                    <img id="compass" />
                 </div>
             </li>
         </div>
-    </div>
+        </div>
     </div>
 </body>
 
