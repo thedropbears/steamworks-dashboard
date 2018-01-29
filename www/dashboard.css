@@ -228,3 +228,19 @@ ul#topList {
     ;
     margin: -4px 0 0 0;
 }
+
+.checklist {
+    padding-top: 10vh;
+    padding-left: 10vh;
+    color: white;
+    font-size: 5vh;
+}
+
+.hide {
+    display: none;
+}
+
+input[type=checkbox] {
+    width: 7vh; 
+    height: 7vh;
+}
