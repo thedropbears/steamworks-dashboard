@@ -3,7 +3,7 @@
 
 <head>
     <title>4774 Dashboard</title>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <link id="pagestyle" rel="stylesheet" type="text/css" href="dashboard.css">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <script src="/networktables/networktables.js"></script>
@@ -18,29 +18,29 @@
     <div class="topPanel">
         <ul id="topList ">
             <li class="timer" id="cycleTimer">135</li>
-			<h1 id="timerInfo"></h1>
+            <h1 id="timerInfo"></h1>
             <li class="dropdown">
                 <select id="auto-select">
-                  </select>
+                </select>
             </li>
             <li id="Connection">Disconnected</li>
         </ul>
     </div>
-     
+
     <img id="camera1" class="camera inital-hide" alt="Stream not found" />
     <div class="checklist-div">
         <b>
             <h1></h1>Checklist:</h1>
             <form id="checklist" onsubmit="return false">
-                <input type="checkbox" required> Is robot connected?
+                <input type="checkbox" required checked> Is robot connected?
                 <br>
-                <input type="checkbox" required> Select Auto
+                <input type="checkbox" required checked> Select Auto
                 <br>
-                <input type="checkbox" required> Is cube loaded?
+                <input type="checkbox" required checked> Is cube loaded?
                 <br>
-                <input type="checkbox" required> Is controller connected?
+                <input type="checkbox" required checked> Is controller connected?
                 <br>
-                <input type="checkbox" required> Is robot connected?
+                <input type="checkbox" required checked> Is robot connected?
                 <br>
                 <input type="submit">
 
@@ -48,15 +48,87 @@
 
         </b>
     </div>
-    <div id="main-body" style="float: right;">
+    <div id="main-body" style="float: left;">
         <div>
             <li>
                 <div id="compassDiv" class="inital-hide">
-                    <img id="compass" class="inital-hide"/>
+                    <img id="compass" class="inital-hide" />
                 </div>
             </li>
         </div>
-        </div>
+        <div id="robot-info">
+        <table>
+            <tr>
+                <td style="padding-right: 100px;">
+                    <table class="inital-hide">
+                        <tr>
+                            <td>
+                                <div class="square blue"></div>
+                            </td>
+                            <td>
+                                <div class="square red"></div>
+                            </td>
+                            <td>Enemy Switch</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="square blue"></div>
+                            </td>
+                            <td>
+                                <div class="square red"></div>
+                            </td>
+                            <td>Scale</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="square blue"></div>
+                            </td>
+                            <td>
+                                <div class="square red"></div>
+                            </td>
+                            <td>Switch</td>
+
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table class="inital-hide">
+                        <tr>
+                            <td>
+                                <div class="square green"></div>
+                            </td>
+
+                            <td>Upper Scale</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="square light-green"></div>
+                            </td>
+
+                            <td>Balanced Scale</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="square green"></div>
+                            </td>
+
+                            <td>Lower Scale</td>
+
+                            <tr>
+                                <td>
+                                    <div class="square green"></div>
+                                </td>
+
+                                <td>Switch</td>
+
+                            </tr>
+                    </table>
+                </td>
+                </tr>
+        </table>
+    </div>
+
+    </div>
     </div>
 </body>
 
