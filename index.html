@@ -7,7 +7,7 @@
     <link id="pagestyle" rel="stylesheet" type="text/css" href="dashboard.css">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <script src="/networktables/networktables.js"></script>
-    <script src="jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/d3.min.js"></script>
     <!-- some utility functions that are highly useful -->
     <script src="/networktables/utils.js"></script>
@@ -27,13 +27,32 @@
         </ul>
     </div>
      
-    <img id="camera1" class="camera" alt="Stream not found" />
-    
+    <img id="camera1" class="camera inital-hide" alt="Stream not found" />
+    <div class="checklist-div">
+        <b>
+            <h1></h1>Checklist:</h1>
+            <form id="checklist" onsubmit="return false">
+                <input type="checkbox" required> Is robot connected?
+                <br>
+                <input type="checkbox" required> Select Auto
+                <br>
+                <input type="checkbox" required> Is cube loaded?
+                <br>
+                <input type="checkbox" required> Is controller connected?
+                <br>
+                <input type="checkbox" required> Is robot connected?
+                <br>
+                <input type="submit">
+
+            </form>
+
+        </b>
+    </div>
     <div id="main-body" style="float: right;">
         <div>
             <li>
-                <div id="compassDiv">
-                    <img id="compass" />
+                <div id="compassDiv" class="inital-hide">
+                    <img id="compass" class="inital-hide"/>
                 </div>
             </li>
         </div>
