@@ -127,18 +127,20 @@ function timerCycle() {
         var now = Math.floor(Date.now() / 1000);
         var difference = countDownDate - now;
 
-        if (difference <= 0) {
+		if (difference <= 0) {
             document.getElementById("cycleTimer").innerHTML = "";
-            $("#timerInfo").text("GOOD JOB!");
-            $("#timerInfo").toggleClass("blink");
-        }
-        else if (difference < 10) {
+			$("#cycleTimer").text("GOOD JOB!");
+			$("#cycleTimer").css("font-size", "425%")
+			$("#cycleTimer").css("color", "#4CAF50")
+			$("#cycleTimer").toggleClass("blink");
+		}
+		else if (difference < 10) {
             document.getElementById("cycleTimer").innerHTML = "00" + difference;
         } else if (difference < 100) {
             document.getElementById("cycleTimer").innerHTML = "0" + difference;
         }
-        else {
+		else {
             document.getElementById("cycleTimer").innerHTML = difference;
-        }
+		}
     }, 1000);
 }
