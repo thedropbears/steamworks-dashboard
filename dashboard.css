@@ -134,19 +134,17 @@ ul#topList {
     background-color: var(--bg-colour);
     ;
     font-size: 150%;
-    width: 12vw;
-    margin-right: 1vw;
 }
 
 #main-body {
     background-color: var(--bg-colour);
     ;
-    display: inline-block;
     width: 50%;
-    border-right: medium solid var(--accent-colour);
+    border-left: medium solid var(--accent-colour);
     ;
     margin-top: -12.3vw;
     margin-bottom: -0.2vw;
+    height: 1000px;
 }
 
 #main-body li {
@@ -269,4 +267,9 @@ table{
 #robot-info{
     float: right;
     padding-right: 10vh;
+}
+
+#submit-button{
+    padding: 30px;
+    border-radius: 5px;
 }
