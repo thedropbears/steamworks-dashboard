@@ -220,11 +220,6 @@ ul#topList {
     height: 100%;
 }
 
-#space {
-    border-bottom: medium solid var(--accent-colour);
-    ;
-    margin: -4px 0 0 0;
-}
 
 .checklist-div {
     padding-top: 10vh;

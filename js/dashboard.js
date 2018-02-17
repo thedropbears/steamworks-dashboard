@@ -5,6 +5,9 @@ var alliance = "red"
 var timerStart = false;
 var firstReset = false;
 var current_height = ""
+var timerFrom = 135;
+var timerCounter = true;
+var intervalTimer;
 
 $(document).ready(function () {
     $("#camera1").attr("src", cameraStream1);
@@ -34,11 +37,15 @@ function onValueChanged(key, value, isNew) {
         case "/robot/mode":
             if (value === "teleop") {
                 if (!timerStart) {
-                    timerCycle();
+                    startTimer();
+                    remove_form();
+                    break;
                 }
             }
-            if (value != "disabled") {
-                remove_form()
+            if (value === "disabled") {
+                remove_form();
+                resetTimer();
+                break;
             }
 
             break;
@@ -143,26 +150,34 @@ function rotateCompass(heading) {
 
 }
 
-function timerCycle() {
-    var countDownDate = Math.floor(Date.now() / 1000) + 135;
-    var x = setInterval(function () {
-        var now = Math.floor(Date.now() / 1000);
-        var difference = countDownDate - now;
+function startTimer() {
+    if (intervalTimer == null) {
+        intervalTimer = setInterval(timer, 1000)
+    }
+}
 
-        if (difference <= 0) {
+function resetTimer() {2
+    clearInterval(intervalTimer);
+    timerFrom = 135;
+    intervalTimer = null;
+    document.getElementById("cycleTimer").innerHTML = "135";
+}
+
+function timer() {
+    if (timerCounter) {
+        timerFrom = timerFrom - 1
+        if (timerFrom <= 0) {
             document.getElementById("cycleTimer").innerHTML = "";
             $("#cycleTimer").text("GOOD JOB!");
             $("#cycleTimer").css("font-size", "425%")
             $("#cycleTimer").css("color", "#4CAF50")
             $("#cycleTimer").toggleClass("blink");
+        } else if (timerFrom < 10) {
+            document.getElementById("cycleTimer").innerHTML = "00" + timerFrom;
+        } else if (timerFrom < 100) {
+            document.getElementById("cycleTimer").innerHTML = "0" + timerFrom;
+        } else {
+            document.getElementById("cycleTimer").innerHTML = timerFrom;
         }
-        else if (difference < 10) {
-            document.getElementById("cycleTimer").innerHTML = "00" + difference;
-        } else if (difference < 100) {
-            document.getElementById("cycleTimer").innerHTML = "0" + difference;
-        }
-        else {
-            document.getElementById("cycleTimer").innerHTML = difference;
-        }
-    }, 1000);
+    }
 }
