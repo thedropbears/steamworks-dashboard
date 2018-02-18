@@ -247,6 +247,10 @@ div.square {
     border-radius: 5px
 }
 
+#cube_light.square {
+    padding: 50px;
+}
+
 table{
     color: white;
 }
@@ -259,4 +263,8 @@ table{
 #submit-button{
     padding: 30px;
     border-radius: 5px;
+}
+
+#main_table {
+    padding: 4px;
 }
