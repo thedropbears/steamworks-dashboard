@@ -6,6 +6,13 @@ var timerStart = false;
 var timerFrom = 135;
 var timerCounter = true;
 var intervalTimer;
+var music = false
+
+var sports_music = document.createElement('audio');
+sports_music.setAttribute('src', 'music/Sports.mp3');
+
+var mii_music = document.createElement('audio');
+mii_music.setAttribute('src', 'music/Mii.mp3');
 
 $(document).ready(function () {
     $("#state").attr("src", "img/icons/stationaryred.png");
@@ -31,21 +38,35 @@ $(document).ready(function () {
     attrs: {
         width: 640,
         height: 480
-    },},);
-}, );
+    }
+});
+
+    $("#checklist").submit(removeForm)
+});
 
 function onValueChanged(key, value, isNew) {
     switch (key) {
         case "/robot/mode":
             if (value === "teleop" && !timerStart) {
-                    startTimer();
-                    removeForm();
-                    break;
+                if (music){
+                    sports_music.currentTime = 0
+                    sports_music.play()
+                }
+                startTimer();
+                removeForm();
+                break;
             } else if (value === "disabled") {
                 resetTimer();
+                if (music){
+                    sports_music.pause()
+                    mii_music.currentTime = 0
+                    mii_music.play()}
                 break;
             }
-
+            break;
+        
+        case "/components/intake/is_cube_contained":
+            cubeContained(value);
             break;
 
         case "/SmartDashboard/imu_heading":
@@ -71,6 +92,14 @@ function onValueChanged(key, value, isNew) {
             $("#robotSVG").attr("src", "img/robot" + alliance + ".png");
             $("#robotSVG").attr("xlink:href", "img/robot" + alliance + ".png");
             break;
+    }
+}
+function cubeContained(status){
+    if (status){
+        $("#cube_light").addClass("light-green").removeClass("green")
+    }
+    else{
+        $("#cube_light").addClass("green").removeClass("light-green")
     }
 }
 
@@ -99,10 +128,8 @@ function sideSwitch(a){
 }
 
 function removeForm() {
-    if ($("input").length === $("input:checked").length){
-    	$(".checklist-div").hide()
-    	$(".inital-hide").show()
-    }
+    $(".checklist-div").hide()
+    $(".inital-hide").show()
 }
 
 function rotateCompass(heading) {
