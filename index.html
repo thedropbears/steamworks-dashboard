@@ -12,6 +12,8 @@
     <!-- some utility functions that are highly useful -->
     <script src="/networktables/utils.js"></script>
     <script src="js/dashboard.js"></script>
+    <script src="/networktables/camera.js"></script>
+
 </head>
 
 <body>
@@ -22,11 +24,11 @@
                 <select id="auto-select">
                 </select>
             </li>
-            <li id="Connection">Disconnected</li>
+            <li id="connection"></li>
         </ul>
     </div>
 
-    <img id="camera1" class="camera inital-hide" alt="Stream not found" />
+    <div id="camera1" class="camera inital-hide"></div>
     <div class="checklist-div">
         <b>
             <h1></h1>Checklist:</h1>

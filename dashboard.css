@@ -128,13 +128,6 @@ ul#topList {
     ;
 }
 
-#Connection {
-    color: red;
-    font-weight: 700;
-    background-color: var(--bg-colour);
-    ;
-    font-size: 150%;
-}
 
 #main-body {
     background-color: var(--bg-colour);
@@ -160,10 +153,9 @@ ul#topList {
     text-align: center;
     font-size: 300%;
     float: left;
-    margin: medium solid var(--accent-colour)
+    margin: medium solid var(--accent-colour);
     display: inline-block;
     vertical-align: text-top;
-    height: 30vw;
     width: 50vw;
     background-color: var(--bg-colour);
 }
@@ -260,8 +252,8 @@ table{
 }
 
 #robot-info{
-    float: right;
-    padding-right: 10vh;
+    float: left;
+    padding: 3vh;
 }
 
 #submit-button{

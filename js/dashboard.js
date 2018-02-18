@@ -1,33 +1,38 @@
 var currentGyro = 0
 var offsetGyro = 0
-var cameraStream1 = "http://rpi3-4774.local:1181/"
+var cameraStream1 = "http://rpi3-4774.local:1181/stream.mjpg"
 var alliance = "red"
+var other_alliance = "blue"
 var timerStart = false;
 var firstReset = false;
-var current_height = ""
 var timerFrom = 135;
 var timerCounter = true;
 var intervalTimer;
 
 $(document).ready(function () {
-    $("#camera1").attr("src", cameraStream1);
     $("#state").attr("src", "img/icons/stationaryred.png");
     $("#compass").attr("src", "img/robotred.png");
     $("#robotSVG").attr("xlink:href", "img/robotred.png");
 
-
-    // sets a function that will be called when the websocket connects/disconnects
-    NetworkTables.addWsConnectionListener(onNetworkTablesConnection, true);
-
-    // sets a function that will be called  when the robot connects/disconnects
-    NetworkTables.addRobotConnectionListener(onRobotConnection, true);
-
-
     // sets a function that will be called when any NetworkTables key/value changes
     NetworkTables.addGlobalListener(onValueChanged, true);
 
+    attachRobotConnectionIndicator("#connection", 35)
+
     // hook up our SendableChoosers to combo boxes
     attachSelectToSendableChooser("#auto-select", "/SmartDashboard/Autonomous Mode");
+
+    loadCameraOnConnect(
+    {container: '#camera1',
+    port: 1181,
+    image_url: '/stream.mjpg',
+    host: "rpi3-4774.local",
+    data_url: '/settings.json',
+    attrs: {
+        width: 640,
+        height: 480
+    }
+});
 
     $("#checklist").submit(remove_form)
 });
@@ -43,25 +48,28 @@ function onValueChanged(key, value, isNew) {
                 }
             }
             if (value === "disabled") {
-                remove_form();
                 resetTimer();
                 break;
             }
 
             break;
 
-        case "/SmartDashboard/gyro":
+        case "/SmartDashboard/imu_heading":
             rotateCompass(value + Math.PI);
             currentGyro = value;
             break;
 
+        case "/FMSInfo/GameSpecificMessage":
+            set_map_locations(value)
 
-        case "/SmartDashboard/alliance":
-            if (value === "red") {
+        case "/FMSInfo/IsRedAlliance":
+            if (value === true) {
                 alliance = "red"
+                other_alliance = "blue"
                 document.documentElement.style.setProperty('--accent-colour', '#C62828')
-            } else if (value === "blue") {
+            } else if (value === false) {
                 alliance = "blue"
+                other_alliance = "red"
                 document.documentElement.style.setProperty('--accent-colour', '#3565bf')
             }
             $("#compass").attr("src", "img/robot" + alliance + ".png");
@@ -70,73 +78,33 @@ function onValueChanged(key, value, isNew) {
 
             break;
 
-        case "/SmartDashboard/reset_video":
-            resetVideo()
-            break;
-
-        case "/SmartDashboard/default_height":
-            change_default_height(value)
-            break;
-
-
     }
 }
 
-function change_default_height(height) {
-    if (height == "UPPER_SCALE") { height = "H4" }
-    else if (height === "BALANCED_SCALE") { height = "H3" }
-    else if (height === "LOWER_SCALE") { height = "H2" }
-    else if (height === "SWITCH_HEIGHT") { height = "H1" }
 
-    $("#" + current_height).addClass("green")
-    $("#" + height).removeClass("green").addClass("light-green")
+function set_map_locations(locations) {
+    enemy_switch = locations[0] + "1"
+    scale = locations[1] + "2"
+    our_switch = locations[2] + "3"
 
-    current_height = height
+    $("#"+enemy_switch).addClass(alliance).removeClass(other_alliance)
+    $("#"+scale).addClass(alliance).removeClass(other_alliance)
+    $("#"+our_switch).addClass(alliance).removeClass(other_alliance)
 
+    $("#"+side_switch(enemy_switch)).addClass(other_alliance).removeClass(alliance)
+    $("#"+side_switch(scale)).addClass(other_alliance).removeClass(alliance)
+    $("#"+side_switch(our_switch)).addClass(other_alliance).removeClass(alliance)
 }
 
-function set_map_locations() {
-    
-}
-
-function resetVideo() {
-
-    if (camera === 1) {
-        $("#camera").removeAttr("src").attr("src", cameraStream1);
-
+function side_switch(a){
+    if (a[0] === "L"){
+        return "R"+a[1]
+    }
+    else if (a[0] === "R"){
+        return "L"+a[1]
     }
 }
 
-function resetGyro() {
-
-    offsetGyro = currentGyro;
-    rotateCompass(currentGyro + Math.PI)
-}
-
-
-function onNetworkTablesConnection(connected) {
-    // TODO
-    if (connected) {
-
-    } else {
-
-    }
-}
-
-function onRobotConnection(connected) {
-    if (connected) {
-        $("#Connection").text("Connected");
-        $("#Connection").css({
-            "color": "lime"
-        });
-    } else {
-        $("#Connection").text("Disconnected");
-        $("#Connection").css({
-            "color": "red"
-        });
-
-    }
-}
 function remove_form() {
     $(".checklist-div").hide()
     $(".inital-hide").show()
