@@ -11,9 +11,11 @@ var developing = false
 
 var sports_music = document.createElement('audio');
 sports_music.setAttribute('src', 'music/Sports.mp3');
+sports_music.loop = true
 
 var mii_music = document.createElement('audio');
 mii_music.setAttribute('src', 'music/Mii.mp3');
+mii_music.loop = true
 
 $(document).ready(function () {
     $("#state").attr("src", "img/icons/stationaryred.png");
@@ -54,6 +56,7 @@ function onValueChanged(key, value, isNew) {
         case "/robot/mode":
             if (value === "teleop" && !timerStart) {
                 if (music){
+                    mii_music.pause()
                     sports_music.currentTime = 0
                     sports_music.play()
                 }
