@@ -6,18 +6,14 @@ var timerStart = false;
 var timerFrom = 135;
 var timerCounter = true;
 var intervalTimer;
-var music = false
 var developing = false
 
 var sports_music = document.createElement('audio');
-sports_music.setAttribute('src', 'music/Sports.mp3');
-sports_music.loop = true
-
-var mii_music = document.createElement('audio');
-mii_music.setAttribute('src', 'music/Mii.mp3');
-mii_music.loop = true
+sports_music.setAttribute('src', 'music/Sports.ogg');
 
 $(document).ready(function () {
+    sports_music.play()
+
     $("#state").attr("src", "img/icons/stationaryred.png");
     $("#compass").attr("src", "img/robotred.png");
     $("#robotSVG").attr("xlink:href", "img/robotred.png");
@@ -55,20 +51,11 @@ function onValueChanged(key, value, isNew) {
     switch (key) {
         case "/robot/mode":
             if (value === "teleop" && !timerStart) {
-                if (music){
-                    mii_music.pause()
-                    sports_music.currentTime = 0
-                    sports_music.play()
-                }
                 startTimer();
                 removeForm();
                 break;
             } else if (value === "disabled") {
                 resetTimer();
-                if (music){
-                    sports_music.pause()
-                    mii_music.currentTime = 0
-                    mii_music.play()}
                 break;
             }
             break;
