@@ -7,6 +7,7 @@ var timerFrom = 135;
 var timerCounter = true;
 var intervalTimer;
 var music = false
+var developing = false
 
 var sports_music = document.createElement('audio');
 sports_music.setAttribute('src', 'music/Sports.mp3');
@@ -26,6 +27,10 @@ $(document).ready(function () {
 
     // hook up our SendableChoosers to combo boxes
     attachSelectToSendableChooser("#auto-select", "/SmartDashboard/Autonomous Mode");
+
+    if (developing) {
+	removeForm()
+    }
 
     $("input").click(removeForm);
 
@@ -128,8 +133,10 @@ function sideSwitch(a){
 }
 
 function removeForm() {
-    $(".checklist-div").hide()
-    $(".inital-hide").show()
+    if ($("input").length === $("input:checked").length){
+        $(".checklist-div").hide()
+        $(".inital-hide").show()
+    }
 }
 
 function rotateCompass(heading) {
@@ -156,7 +163,6 @@ function timer() {
         timerFrom = timerFrom - 1
         if (timerFrom <= 0) {
             $("#cycleTimer").text("GOOD JOB!");
-            $("#cycleTimer").css("font-size", "425%")
             $("#cycleTimer").css("color", "#4CAF50")
             $("#cycleTimer").toggleClass("blink");
         } else if (timerFrom < 10) {
