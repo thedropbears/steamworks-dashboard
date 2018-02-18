@@ -13,10 +13,10 @@
     <script src="/networktables/utils.js"></script>
     <script src="js/dashboard.js"></script>
     <script src="/networktables/camera.js"></script>
-
 </head>
 
 <body>
+
     <div class="topPanel">
         <ul id="topList ">
             <li class="timer" id="cycleTimer">135</li>
@@ -29,27 +29,23 @@
     </div>
 
     <div id="camera1" class="camera inital-hide"></div>
+
     <div class="checklist-div">
         <b>
             <h1></h1>Checklist:</h1>
-            <form id="checklist" onsubmit="return false">
-                <input type="checkbox" required checked> Is robot connected?
-                <br>
-                <input type="checkbox" required checked> Select Auto
-                <br>
-                <input type="checkbox" required checked> Is cube loaded?
-                <br>
-                <input type="checkbox" required checked> Is controller connected?
-                <br>
-                <input type="checkbox" required checked> Is robot connected?
-                <br>
-                <input type="submit" id="submit-button">
-
+            <form id="checklist">
+                <input type="checkbox" required> Is robot connected?<br>
+                <input type="checkbox" required> Select Auto<br>
+                <input type="checkbox" required> Is cube loaded?<br>
+                <input type="checkbox" required> Is controller connected?<br>
+                <input type="checkbox" required> Is robot connected?<br>
             </form>
 
         </b>
     </div>
+
     <div id="main-body" class="inital-hide" style="float: left;">
+
         <div>
             <li>
                 <div id="compassDiv">
@@ -57,6 +53,7 @@
                 </div>
             </li>
         </div>
+
         <div id="robot-info">
             <table>
                 <tr>
@@ -85,13 +82,12 @@
                         <div id="R3" class="square red"></div>
                     </td>
                     <td>Switch</td>
-
                 </tr>
             </table>
         </div>
 
     </div>
-    </div>
+
 </body>
 
 </html>
