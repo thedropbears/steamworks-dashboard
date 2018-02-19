@@ -14,10 +14,6 @@ sports_music.setAttribute('src', 'music/Sports.ogg');
 $(document).ready(function () {
     sports_music.play()
 
-    $("#state").attr("src", "img/icons/stationaryred.png");
-    $("#compass").attr("src", "img/robotred.png");
-    $("#robotSVG").attr("xlink:href", "img/robotred.png");
-
     // sets a function that will be called when any NetworkTables key/value changes
     NetworkTables.addGlobalListener(onValueChanged, true);
 
@@ -27,10 +23,15 @@ $(document).ready(function () {
     attachSelectToSendableChooser("#auto-select", "/SmartDashboard/Autonomous Mode");
 
     if (developing) {
-	removeForm()
+	   removeForm();
     }
 
-    $("input").click(removeForm);
+    NetworkTables.addWsConnectionListener(function(connected){
+        console.log("connected");
+        $("#check-connection").prop("checked", true);
+    }, true);
+
+    autoChecker()
 
     loadCameraOnConnect(
     {container: '#camera1',
@@ -44,7 +45,6 @@ $(document).ready(function () {
     }
 });
 
-    $("#checklist").submit(removeForm)
 });
 
 function onValueChanged(key, value, isNew) {
@@ -96,6 +96,16 @@ function cubeContained(status){
     else{
         $("#cube_light").addClass("green").removeClass("light-green")
     }
+}
+
+function autoChecker() {
+    $("#auto-select").val("None");
+    $( "#auto-select" ).change(function() {
+        if ($(this).val() != "None") {
+            $("#auto").prop("checked", true);
+        }
+    });
+    $("input").click(removeForm);
 }
 
 
