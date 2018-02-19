@@ -26,8 +26,7 @@ $(document).ready(function () {
 	   removeForm();
     }
 
-    NetworkTables.addWsConnectionListener(function(connected){
-        console.log("connected");
+    NetworkTables.addRobotConnectionListener(function(connected){
         $("#check-connection").prop("checked", true);
     }, true);
 
