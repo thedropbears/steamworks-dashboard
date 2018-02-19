@@ -6,7 +6,6 @@
 }
 
 * {
-    border: 0px dotted rgb(24, 218, 0);
     box-sizing: border-box;
     font-family: arial;
     margin: 0;
@@ -32,9 +31,8 @@ body {
     }
 }
 
-.topPanel div {
-    background-color: var(--bg-colour);
-    ;
+.topPanel {
+    border-bottom: medium solid var(--accent-colour);
 }
 
 .topPanel li {
@@ -46,9 +44,6 @@ body {
 
 .topPanel ul {
     background-color: var(--bg-colour);
-    ;
-    border-bottom: medium solid var(--accent-colour);
-    ;
 }
 
 ul {
@@ -57,9 +52,7 @@ ul {
 
 .dropdown {
     background-color: var(--bg-colour);
-    ;
     color: var(--accent-colour);
-    ;
     border-radius: 0.1vw;
 }
 
@@ -70,14 +63,11 @@ ul {
     width: 8vw;
     background: white;
     color: var(--accent-colour);
-    ;
     text-align: center;
     line-height: 2vw;
     cursor: pointer;
     border: 0vw solid var(--accent-colour);
-    ;
     border-bottom: 1vw solid var(--accent-colour);
-    ;
     opacity: 0.85;
     margin: 0.5vw 0 0 0;
 }
@@ -94,9 +84,8 @@ ul {
     width: auto;
     font-weight: 600;
     color: var(--accent-colour);
-    ;
     background-color: var(--bg-colour);
-    ;
+    vertical-align: middle;
 }
 
 #cycleTimer {
@@ -182,17 +171,16 @@ ul#topList {
 
 #compassDiv {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 50vw;
+    width: 55vw;
     height: 18vw;
     background-color: var(--bg-colour);
-    ;
-    margin: 0;
+    margin-top: 12vh;
+    border-bottom: medium solid var(--accent-colour);
 }
 
 #compass {
-    height: 12vw;
+    height: 18vw;
     background-color: var(--bg-colour);
     margin-top: 0px;
     margin-left: auto;
@@ -202,21 +190,15 @@ ul#topList {
 
 #pegPostion {
     background-color: var(--bg-colour);
-    ;
     border: medium solid var(--accent-colour);
-    ;
     border-bottom: 10vw;
     width: 100%;
     float: right;
     border-bottom: medium solid var(--accent-colour);
-    ;
     height: 100%;
 }
 
-
-.checklist-div {
-    padding-top: 10vh;
-    padding-left: 10vh;
+form {
     color: white;
     font-size: 5vh;
 }
@@ -233,15 +215,19 @@ input[type=checkbox] {
 .red {
     background: #f23030;
 }
+
 .blue{
     background: #4380f2;
 }
+
 .light-green {
     background: #22f92a;
 }
+
 .green{
     background: #125915;
 }
+
 div.square {
     width: 50px;
     height: 50px;
@@ -254,7 +240,7 @@ div.square {
 
 table{
     color: white;
-    padding: 3vw;
+    padding-left: 3vw;
 }
 
 #robot-info{
@@ -268,5 +254,6 @@ table{
 }
 
 #main_table {
+    margin-left: 2.5vw;
     padding: 4px;
 }

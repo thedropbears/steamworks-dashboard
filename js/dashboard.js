@@ -4,10 +4,10 @@ var alliance = "red";
 var other_alliance = "blue";
 var timerStart = false;
 var timerFrom = 135;
-var counting = 132;
+var counting = 0;
 var timerCounter = true;
 var intervalTimer;
-var developing = false;
+var developing = true;
 var sports_music = document.createElement('audio');
 sports_music.setAttribute('src', 'music/Sports.ogg');
 
@@ -42,14 +42,14 @@ $(document).ready(function () {
     autoChecker()
 
     loadCameraOnConnect(
-    {container: '#camera1',
+    {container: '#camera',
     port: 1181,
     image_url: '/stream.mjpg',
     host: "rpi3-4774.local",
     data_url: '/settings.json',
     attrs: {
-        width: 640,
-        height: 480
+        width: 583,
+        height: 438
     }
 });
 
@@ -67,6 +67,11 @@ function onValueChanged(key, value, isNew) {
                 break;
             }
             break;
+	
+	case "/SmartDashboard/cycle_completed":
+	    resetTimer();
+	    startTimer();
+	    break;
         
         case "/components/intake/is_cube_contained":
             cubeContained(value);
@@ -161,9 +166,9 @@ function startTimer() {
     }
 }
 
-function resetTimer() {2
+function resetTimer() {
     clearInterval(intervalTimer);
-    timerFrom = 135;
+    counting = 0;
     intervalTimer = null;
     $("#cycleTimer").text("000");
 }
@@ -176,9 +181,9 @@ function timer() {
 	} if (counting < 10) {
             $("#cycleTimer").text("00" + counting);
         } else if (counting < timerFrom) {
-            $("#cycleTimer").text(counting);
+            $("#cycleTimer").text("0" + counting);
         } else {
-            $("#cycleTimer").text(timerFrom);
+            $("#cycleTimer").text(counting);
         }
     }
 }
