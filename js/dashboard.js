@@ -1,15 +1,15 @@
-var currentGyro = 0
-var offsetGyro = 0
-var alliance = "red"
-var other_alliance = "blue"
+var currentGyro = 0;
+var offsetGyro = 0;
+var alliance = "red";
+var other_alliance = "blue";
 var timerStart = false;
 var timerFrom = 135;
 var timerCounter = true;
 var intervalTimer;
-var developing = false
-
+var developing = false;
 var sports_music = document.createElement('audio');
 sports_music.setAttribute('src', 'music/Sports.ogg');
+
 
 $(document).ready(function () {
     sports_music.play()
@@ -23,11 +23,19 @@ $(document).ready(function () {
     attachSelectToSendableChooser("#auto-select", "/SmartDashboard/Autonomous Mode");
 
     if (developing) {
-	   removeForm();
+	   removeForm(true);
     }
 
+    $("input").click(function() {
+	if ($("input").length === $("input:checked").length) {
+	    removeForm();
+	}
+    });
+
     NetworkTables.addRobotConnectionListener(function(connected){
-        $("#check-connection").prop("checked", true);
+	if (connected) {
+            $("#check-connection").prop("checked", true);
+    	}
     }, true);
 
     autoChecker()
@@ -104,7 +112,6 @@ function autoChecker() {
             $("#auto").prop("checked", true);
         }
     });
-    $("input").click(removeForm);
 }
 
 
@@ -131,8 +138,11 @@ function sideSwitch(a){
     }
 }
 
-function removeForm() {
+function removeForm(force) {
     if ($("input").length === $("input:checked").length){
+        $(".checklist-div").hide()
+        $(".inital-hide").show()
+    } else if (force) {
         $(".checklist-div").hide()
         $(".inital-hide").show()
     }
