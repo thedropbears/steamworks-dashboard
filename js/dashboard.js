@@ -59,7 +59,7 @@ function onValueChanged(key, value, isNew) {
     switch (key) {
         case "/robot/mode":
             if (value === "teleop" && !timerStart) {
-                startTimer();
+                // startTimer();
                 removeForm();
                 break;
             } else if (value === "disabled") {
@@ -69,9 +69,11 @@ function onValueChanged(key, value, isNew) {
             break;
 	
 	case "/SmartDashboard/cycle_completed":
-	    resetTimer();
-	    startTimer();
-	    break;
+	    if (value) {
+		resetTimer();
+		startTimer();
+		break;
+	    }
         
         case "/components/intake/is_cube_contained":
             cubeContained(value);
@@ -176,14 +178,14 @@ function resetTimer() {
 function timer() {
     if (timerCounter) {
         counting = counting + 1
-	if (counting >= timerFrom) {
-	    counting = timerFrom
-	} if (counting < 10) {
+	if (counting < 10) {
             $("#cycleTimer").text("00" + counting);
-        } else if (counting < timerFrom) {
+        } else if (counting < 100) {
             $("#cycleTimer").text("0" + counting);
-        } else {
+        } else if (counting < timerFrom) {
             $("#cycleTimer").text(counting);
-        }
+	} else {
+            $("#cycleTimer").text(timerFrom);
+	}
     }
 }
