@@ -4,6 +4,7 @@ var alliance = "red";
 var other_alliance = "blue";
 var timerStart = false;
 var timerFrom = 135;
+var counting = 132;
 var timerCounter = true;
 var intervalTimer;
 var developing = false;
@@ -164,20 +165,18 @@ function resetTimer() {2
     clearInterval(intervalTimer);
     timerFrom = 135;
     intervalTimer = null;
-    $("#cycleTimer").text(135);
+    $("#cycleTimer").text("000");
 }
 
 function timer() {
     if (timerCounter) {
-        timerFrom = timerFrom - 1
-        if (timerFrom <= 0) {
-            $("#cycleTimer").text("GOOD JOB!");
-            $("#cycleTimer").css("color", "#4CAF50")
-            $("#cycleTimer").toggleClass("blink");
-        } else if (timerFrom < 10) {
-            $("#cycleTimer").text("00" + timerFrom);
-        } else if (timerFrom < 100) {
-            $("#cycleTimer").text("0" + timerFrom);
+        counting = counting + 1
+	if (counting >= timerFrom) {
+	    counting = timerFrom
+	} if (counting < 10) {
+            $("#cycleTimer").text("00" + counting);
+        } else if (counting < timerFrom) {
+            $("#cycleTimer").text(counting);
         } else {
             $("#cycleTimer").text(timerFrom);
         }
