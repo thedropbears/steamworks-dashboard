@@ -117,7 +117,6 @@ ul#topList {
     ;
 }
 
-
 #main-body {
     background-color: var(--bg-colour);
     ;
@@ -154,8 +153,7 @@ ul#topList {
     align: center;
     width: 16vw;
     background-color: var(--bg-colour);
-    align-items: center
-    content:url("img/icons/stationaryred.png");
+    align-items: center content:url("img/icons/stationaryred.png");
 }
 
 #stateDiv {
@@ -185,7 +183,7 @@ ul#topList {
     margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
-    content:url("img/robotred.png");
+    content: url("img/robotred.png");
 }
 
 #pegPostion {
@@ -208,7 +206,7 @@ form {
 }
 
 input[type=checkbox] {
-    width: 4vh; 
+    width: 4vh;
     height: 4vh;
 }
 
@@ -216,7 +214,7 @@ input[type=checkbox] {
     background: #f23030;
 }
 
-.blue{
+.blue {
     background: #4380f2;
 }
 
@@ -224,7 +222,7 @@ input[type=checkbox] {
     background: transparent;
 }
 
-.light_on{
+.light_on {
     background: #22f92a;
 }
 
@@ -239,17 +237,17 @@ div.square {
     border: 3px solid #22f92a;
 }
 
-table{
+table {
     color: white;
     padding-left: 3vw;
 }
 
-#robot-info{
+#robot-info {
     float: left;
     padding: 3vh;
 }
 
-#submit-button{
+#submit-button {
     padding: 30px;
     border-radius: 5px;
 }
@@ -257,4 +255,8 @@ table{
 #main_table {
     margin-left: 2.5vw;
     padding: 4px;
+}
+
+#connection svg {
+    vertical-align: middle;
 }
