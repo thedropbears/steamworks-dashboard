@@ -220,22 +220,23 @@ input[type=checkbox] {
     background: #4380f2;
 }
 
-.light-green {
-    background: #22f92a;
+.light_off {
+    background: transparent;
 }
 
-.green{
-    background: #125915;
+.light_on{
+    background: #22f92a;
 }
 
 div.square {
     width: 50px;
     height: 50px;
-    border-radius: 5px
+    border-radius: 5px;
 }
 
 #cube_light.square {
     padding: 50px;
+    border: 3px solid #22f92a;
 }
 
 table{

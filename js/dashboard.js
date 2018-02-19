@@ -7,7 +7,7 @@ var timerFrom = 135;
 var counting = 0;
 var timerCounter = true;
 var intervalTimer;
-var developing = true;
+var developing = false;
 var sports_music = document.createElement('audio');
 sports_music.setAttribute('src', 'music/Sports.ogg');
 
@@ -106,10 +106,10 @@ function onValueChanged(key, value, isNew) {
 }
 function cubeContained(status){
     if (status){
-        $("#cube_light").addClass("light-green").removeClass("green")
+        $("#cube_light").addClass("light_on").removeClass("light_off")
     }
     else{
-        $("#cube_light").addClass("green").removeClass("light-green")
+        $("#cube_light").addClass("light_off").removeClass("light_on")
     }
 }
 
@@ -127,11 +127,11 @@ function setMapLocations(locations) {
     enemy_switch = locations[0] + "1"
     scale = locations[1] + "2"
     our_switch = locations[2] + "3"
-
+    
     $("#"+enemy_switch).addClass(alliance).removeClass(other_alliance)
     $("#"+scale).addClass(alliance).removeClass(other_alliance)
     $("#"+our_switch).addClass(alliance).removeClass(other_alliance)
-
+    
     $("#"+sideSwitch(enemy_switch)).addClass(other_alliance).removeClass(alliance)
     $("#"+sideSwitch(scale)).addClass(other_alliance).removeClass(alliance)
     $("#"+sideSwitch(our_switch)).addClass(other_alliance).removeClass(alliance)
