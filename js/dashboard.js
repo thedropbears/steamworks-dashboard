@@ -7,10 +7,14 @@ var timerFrom = 135;
 var counting = 0;
 var timerCounter = true;
 var intervalTimer;
-var developing = false;
 var sports_music = document.createElement('audio');
 sports_music.setAttribute('src', 'music/Sports.ogg');
 
+$(document).on("keypress", function (e) {
+    if (e.key === "]") {
+        removeForm(true);
+    }
+});
 
 $(document).ready(function () {
     sports_music.play()
@@ -24,10 +28,6 @@ $(document).ready(function () {
 
     // hook up our SendableChoosers to combo boxes
     attachSelectToSendableChooser("#auto-select", "/SmartDashboard/Autonomous Mode");
-
-    if (developing) {
-        removeForm(true);
-    }
 
     $("input").click(function () {
         if ($("input").length === $("input:checked").length) {
@@ -62,7 +62,7 @@ function onValueChanged(key, value, isNew) {
         case "/robot/mode":
             if (value === "teleop") {
                 startTimer();
-                removeForm();
+                removeForm(true);
                 break;
             } else if (value === "disabled") {
                 resetTimer();
@@ -101,7 +101,7 @@ function onValueChanged(key, value, isNew) {
                 document.documentElement.style.setProperty('--accent-colour', '#3565bf')
             }
             $("#compass").removeAttr("src")
-            $("#compass").attr("src", "img/robot" + alliance  + ".png");
+            $("#compass").attr("src", "img/robot" + alliance + ".png");
             break;
     }
 }
@@ -119,9 +119,9 @@ function autoChecker() {
     $("#auto-select").change(function () {
         if ($(this).val() != "None") {
             $("#auto").prop("checked", true);
-	} else {
+        } else {
             $("#auto").prop("checked", false);
-	}
+        }
     });
 }
 
