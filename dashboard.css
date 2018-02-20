@@ -99,7 +99,8 @@ ul {
     background-color: var(--bg-colour);
     margin-top: 0px;
     margin: 0 auto;
-    /* content: url("img/robotred.png"); */
+    display: block;
+    content: url("img/robotred.png");
 }
 
 form {

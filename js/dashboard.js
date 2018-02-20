@@ -19,8 +19,6 @@ $(document).on("keypress", function (e) {
 $(document).ready(function () {
     sports_music.play();
 
-    $("#compass").attr("src", "img/robotred.png");
-
     // sets a function that will be called when any NetworkTables key/value changes
     NetworkTables.addGlobalListener(onValueChanged, true);
 
