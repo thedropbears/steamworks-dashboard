@@ -7,7 +7,7 @@ var timerFrom = 135;
 var counting = 0;
 var timerCounter = true;
 var intervalTimer;
-var developing = true;
+var developing = false;
 var sports_music = document.createElement('audio');
 sports_music.setAttribute('src', 'music/Sports.ogg');
 
