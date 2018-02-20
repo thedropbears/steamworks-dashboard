@@ -14,6 +14,8 @@ sports_music.setAttribute('src', 'music/Sports.ogg');
 
 $(document).ready(function () {
     sports_music.play()
+    
+    $("#compass").attr("src", "img/robotred.png")
 
     // sets a function that will be called when any NetworkTables key/value changes
     NetworkTables.addGlobalListener(onValueChanged, true);
@@ -58,8 +60,8 @@ $(document).ready(function () {
 function onValueChanged(key, value, isNew) {
     switch (key) {
         case "/robot/mode":
-            if (value === "teleop" && !timerStart) {
-                // startTimer();
+            if (value === "teleop") {
+                startTimer();
                 removeForm();
                 break;
             } else if (value === "disabled") {
