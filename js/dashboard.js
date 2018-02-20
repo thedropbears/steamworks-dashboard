@@ -49,7 +49,7 @@ $(document).ready(function () {
         container: '#camera',
         port: 1181,
         image_url: '/stream.mjpg',
-        host: "rpi3-4774.local",
+        host: "10.47.74.36",
         data_url: '/settings.json',
         attrs: {
             width: 583,
