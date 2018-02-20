@@ -184,7 +184,7 @@ ul#topList {
     background-color: var(--bg-colour);
     margin-top: 0px;
     margin: 0 auto;
-    content: url("img/robotred.png");
+    /* content: url("img/robotred.png"); */
 }
 
 #pegPostion {

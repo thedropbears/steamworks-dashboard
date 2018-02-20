@@ -14,7 +14,7 @@ sports_music.setAttribute('src', 'music/Sports.ogg');
 
 $(document).ready(function () {
     sports_music.play()
-    
+
     $("#compass").attr("src", "img/robotred.png")
 
     // sets a function that will be called when any NetworkTables key/value changes
@@ -100,9 +100,8 @@ function onValueChanged(key, value, isNew) {
                 other_alliance = "red"
                 document.documentElement.style.setProperty('--accent-colour', '#3565bf')
             }
-            $("#compass").attr("src", "img/robot" + alliance + ".png");
-            $("#robotSVG").attr("src", "img/robot" + alliance + ".png");
-            $("#robotSVG").attr("xlink:href", "img/robot" + alliance + ".png");
+            $("#compass").removeAttr("src")
+            $("#compass").attr("src", "img/robot" + alliance  + ".png");
             break;
     }
 }
