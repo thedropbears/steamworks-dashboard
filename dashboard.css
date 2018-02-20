@@ -38,11 +38,13 @@ ul {
 }
 
 .timer {
+    display: inline;
     width: auto;
     font-weight: 600;
     color: var(--accent-colour);
     background-color: var(--bg-colour);
     vertical-align: middle;
+    margin-right: 5vw;
 }
 
 #cycleTimer {
@@ -158,4 +160,5 @@ table {
 
 #connection svg {
     vertical-align: middle;
+    margin-left: 5vw;
 }
