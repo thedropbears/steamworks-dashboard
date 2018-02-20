@@ -38,6 +38,8 @@ $(document).ready(function () {
     NetworkTables.addRobotConnectionListener(function (connected) {
         if (connected) {
             $("#check-connection").prop("checked", true);
+        } else {
+            $("#check-connection").prop("checked", false);
         }
     }, true);
 
@@ -74,7 +76,7 @@ function onValueChanged(key, value, isNew) {
             if (value === "eject_cube") {
                 resetTimer();
                 startTimer();
-            
+
             }
             break;
         case "/components/intake/is_cube_contained":
