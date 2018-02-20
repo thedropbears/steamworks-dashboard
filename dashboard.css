@@ -6,7 +6,6 @@
 }
 
 * {
-    border: 0px dotted rgb(24, 218, 0);
     box-sizing: border-box;
     font-family: arial;
     margin: 0;
@@ -32,9 +31,8 @@ body {
     }
 }
 
-.topPanel div {
-    background-color: var(--bg-colour);
-    ;
+.topPanel {
+    border-bottom: medium solid var(--accent-colour);
 }
 
 .topPanel li {
@@ -46,9 +44,6 @@ body {
 
 .topPanel ul {
     background-color: var(--bg-colour);
-    ;
-    border-bottom: medium solid var(--accent-colour);
-    ;
 }
 
 ul {
@@ -57,9 +52,7 @@ ul {
 
 .dropdown {
     background-color: var(--bg-colour);
-    ;
     color: var(--accent-colour);
-    ;
     border-radius: 0.1vw;
 }
 
@@ -70,14 +63,11 @@ ul {
     width: 8vw;
     background: white;
     color: var(--accent-colour);
-    ;
     text-align: center;
     line-height: 2vw;
     cursor: pointer;
     border: 0vw solid var(--accent-colour);
-    ;
     border-bottom: 1vw solid var(--accent-colour);
-    ;
     opacity: 0.85;
     margin: 0.5vw 0 0 0;
 }
@@ -94,9 +84,8 @@ ul {
     width: auto;
     font-weight: 600;
     color: var(--accent-colour);
-    ;
     background-color: var(--bg-colour);
-    ;
+    vertical-align: middle;
 }
 
 #cycleTimer {
@@ -127,7 +116,6 @@ ul#topList {
     background-color: var(--bg-colour);
     ;
 }
-
 
 #main-body {
     background-color: var(--bg-colour);
@@ -165,8 +153,7 @@ ul#topList {
     align: center;
     width: 16vw;
     background-color: var(--bg-colour);
-    align-items: center
-    content:url("img/icons/stationaryred.png");
+    align-items: center content:url("img/icons/stationaryred.png");
 }
 
 #stateDiv {
@@ -182,41 +169,31 @@ ul#topList {
 
 #compassDiv {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 50vw;
-    height: 18vw;
     background-color: var(--bg-colour);
-    ;
-    margin: 0;
+    border-bottom: medium solid var(--accent-colour);
+    padding: 5vw 0 5vw 0;
 }
 
 #compass {
-    height: 12vw;
+    height: 18vw;
     background-color: var(--bg-colour);
     margin-top: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    content:url("img/robotred.png");
+    margin: 0 auto;
+    content: url("img/robotred.png");
 }
 
 #pegPostion {
     background-color: var(--bg-colour);
-    ;
     border: medium solid var(--accent-colour);
-    ;
     border-bottom: 10vw;
     width: 100%;
     float: right;
     border-bottom: medium solid var(--accent-colour);
-    ;
     height: 100%;
 }
 
-
-.checklist-div {
-    padding-top: 10vh;
-    padding-left: 10vh;
+form {
     color: white;
     font-size: 5vh;
 }
@@ -226,47 +203,57 @@ ul#topList {
 }
 
 input[type=checkbox] {
-    width: 4vh; 
+    width: 4vh;
     height: 4vh;
 }
 
 .red {
     background: #f23030;
 }
-.blue{
+
+.blue {
     background: #4380f2;
 }
-.light-green {
+
+.light_off {
+    background: transparent;
+}
+
+.light_on {
     background: #22f92a;
 }
-.green{
-    background: #125915;
-}
+
 div.square {
     width: 50px;
     height: 50px;
-    border-radius: 5px
+    border-radius: 5px;
 }
 
 #cube_light.square {
     padding: 50px;
+    border: 3px solid #22f92a;
 }
 
-table{
+table {
     color: white;
-    padding: 3vw;
+    padding-left: 3vw;
 }
 
-#robot-info{
+#robot-info {
     float: left;
     padding: 3vh;
 }
 
-#submit-button{
+#submit-button {
     padding: 30px;
     border-radius: 5px;
 }
 
 #main_table {
+    margin-left: 4.5vw;
     padding: 4px;
+}
+
+#connection svg {
+    vertical-align: middle;
 }

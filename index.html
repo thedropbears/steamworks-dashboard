@@ -18,51 +18,36 @@
 <body>
 
     <div class="topPanel">
-        <ul id="topList ">
-            <li class="timer" id="cycleTimer">000</li>
-            <li class="dropdown">
-                <select id="auto-select">
-                </select>
-            </li>
-            <li id="connection"></li>
-        </ul>
+        <p style="display: inline" class="timer" id="cycleTimer">000</p>
+        <select id="auto-select"></select>
+        <span id="connection"></span>
     </div>
 
-    <div id="camera1" class="camera inital-hide"></div>
+    <div id="camera" class="camera inital-hide"></div>
 
-    <div class="checklist-div">
-        <b>
-            <h1></h1>Checklist:</h1>
-            <form id="checklist">
-                <input id="check-connection" type="checkbox"> Is robot connected?<br>
-                <input id="auto" type="checkbox"> Select Auto<br>
-                <input type="checkbox"> Is cube loaded?<br>
-                <input type="checkbox"> Is controller connected?<br>
-                <input type="checkbox"> Is pneumatics charged?<br>
-                <input type="checkbox"> Is battery loaded and charged?<br>
-                <input type="checkbox"> Is robot book on hand?<br>
-                <input type="checkbox"> Are arms retracted?<br>
-                <input type="checkbox"> Is everything plugged in?<br>
-            </form>
-
-        </b>
-    </div>
+    <form class="checklist-div" id="checklist">
+        <input id="check-connection" type="checkbox"> Is robot connected?<br>
+        <input id="auto" type="checkbox"> Select Auto<br>
+        <input type="checkbox"> Is cube loaded?<br>
+        <input type="checkbox"> Is controller connected?<br>
+        <input type="checkbox"> Is pneumatics charged?<br>
+        <input type="checkbox"> Is battery loaded and charged?<br>
+        <input type="checkbox"> Is robot book on hand?<br>
+        <input type="checkbox"> Are arms retracted?<br>
+        <input type="checkbox"> Is everything plugged in?<br>
+    </form>
 
     <div id="main-body" class="inital-hide" style="float: left;">
 
-        <div>
-            <li>
-                <div id="compassDiv">
-                    <img id="compass" />
-                </div>
-            </li>
-        </div>
+    <div id="compassDiv">
+        <img id="compass" />
+    </div>
 
         <div id="robot-info">
         <table id=main_table><td>
         <table>
             <td>
-                <div id="cube_light" class="square green"></div>
+                <div id="cube_light" class="square light_off"></div>
             </td>
             <td>Cube Inside</td>
     </table></td><td>

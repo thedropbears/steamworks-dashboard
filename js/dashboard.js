@@ -4,16 +4,18 @@ var alliance = "red";
 var other_alliance = "blue";
 var timerStart = false;
 var timerFrom = 135;
-var counting = 132;
+var counting = 0;
 var timerCounter = true;
 var intervalTimer;
-var developing = false;
+var developing = true;
 var sports_music = document.createElement('audio');
 sports_music.setAttribute('src', 'music/Sports.ogg');
 
 
 $(document).ready(function () {
     sports_music.play()
+    
+    $("#compass").attr("src", "img/robotred.png")
 
     // sets a function that will be called when any NetworkTables key/value changes
     NetworkTables.addGlobalListener(onValueChanged, true);
@@ -24,41 +26,41 @@ $(document).ready(function () {
     attachSelectToSendableChooser("#auto-select", "/SmartDashboard/Autonomous Mode");
 
     if (developing) {
-	   removeForm(true);
+        removeForm(true);
     }
 
-    $("input").click(function() {
-	if ($("input").length === $("input:checked").length) {
-	    removeForm();
-	}
+    $("input").click(function () {
+        if ($("input").length === $("input:checked").length) {
+            removeForm();
+        }
     });
 
-    NetworkTables.addRobotConnectionListener(function(connected){
-	if (connected) {
+    NetworkTables.addRobotConnectionListener(function (connected) {
+        if (connected) {
             $("#check-connection").prop("checked", true);
-    	}
+        }
     }, true);
 
     autoChecker()
 
-    loadCameraOnConnect(
-    {container: '#camera1',
-    port: 1181,
-    image_url: '/stream.mjpg',
-    host: "rpi3-4774.local",
-    data_url: '/settings.json',
-    attrs: {
-        width: 640,
-        height: 480
-    }
-});
+    loadCameraOnConnect({
+        container: '#camera',
+        port: 1181,
+        image_url: '/stream.mjpg',
+        host: "rpi3-4774.local",
+        data_url: '/settings.json',
+        attrs: {
+            width: 583,
+            height: 438
+        }
+    });
 
 });
 
 function onValueChanged(key, value, isNew) {
     switch (key) {
         case "/robot/mode":
-            if (value === "teleop" && !timerStart) {
+            if (value === "teleop") {
                 startTimer();
                 removeForm();
                 break;
@@ -67,7 +69,14 @@ function onValueChanged(key, value, isNew) {
                 break;
             }
             break;
-        
+
+        case "/components/intake_automation/current_state":
+            if (value === "eject_cube") {
+                resetTimer();
+                startTimer();
+                break;
+            }
+
         case "/components/intake/is_cube_contained":
             cubeContained(value);
             break;
@@ -97,18 +106,18 @@ function onValueChanged(key, value, isNew) {
             break;
     }
 }
-function cubeContained(status){
-    if (status){
-        $("#cube_light").addClass("light-green").removeClass("green")
-    }
-    else{
-        $("#cube_light").addClass("green").removeClass("light-green")
+
+function cubeContained(status) {
+    if (status) {
+        $("#cube_light").addClass("light_on").removeClass("light_off")
+    } else {
+        $("#cube_light").addClass("light_off").removeClass("light_on")
     }
 }
 
 function autoChecker() {
     $("#auto-select").val("None");
-    $( "#auto-select" ).change(function() {
+    $("#auto-select").change(function () {
         if ($(this).val() != "None") {
             $("#auto").prop("checked", true);
         }
@@ -121,26 +130,25 @@ function setMapLocations(locations) {
     scale = locations[1] + "2"
     our_switch = locations[2] + "3"
 
-    $("#"+enemy_switch).addClass(alliance).removeClass(other_alliance)
-    $("#"+scale).addClass(alliance).removeClass(other_alliance)
-    $("#"+our_switch).addClass(alliance).removeClass(other_alliance)
+    $("#" + enemy_switch).addClass(alliance).removeClass(other_alliance)
+    $("#" + scale).addClass(alliance).removeClass(other_alliance)
+    $("#" + our_switch).addClass(alliance).removeClass(other_alliance)
 
-    $("#"+sideSwitch(enemy_switch)).addClass(other_alliance).removeClass(alliance)
-    $("#"+sideSwitch(scale)).addClass(other_alliance).removeClass(alliance)
-    $("#"+sideSwitch(our_switch)).addClass(other_alliance).removeClass(alliance)
+    $("#" + sideSwitch(enemy_switch)).addClass(other_alliance).removeClass(alliance)
+    $("#" + sideSwitch(scale)).addClass(other_alliance).removeClass(alliance)
+    $("#" + sideSwitch(our_switch)).addClass(other_alliance).removeClass(alliance)
 }
 
-function sideSwitch(a){
-    if (a[0] === "L"){
-        return "R"+a[1]
-    }
-    else if (a[0] === "R"){
-        return "L"+a[1]
+function sideSwitch(a) {
+    if (a[0] === "L") {
+        return "R" + a[1]
+    } else if (a[0] === "R") {
+        return "L" + a[1]
     }
 }
 
 function removeForm(force) {
-    if ($("input").length === $("input:checked").length){
+    if ($("input").length === $("input:checked").length) {
         $(".checklist-div").hide()
         $(".inital-hide").show()
     } else if (force) {
@@ -161,9 +169,9 @@ function startTimer() {
     }
 }
 
-function resetTimer() {2
+function resetTimer() {
     clearInterval(intervalTimer);
-    timerFrom = 135;
+    counting = 0;
     intervalTimer = null;
     $("#cycleTimer").text("000");
 }
@@ -171,10 +179,10 @@ function resetTimer() {2
 function timer() {
     if (timerCounter) {
         counting = counting + 1
-	if (counting >= timerFrom) {
-	    counting = timerFrom
-	} if (counting < 10) {
+        if (counting < 10) {
             $("#cycleTimer").text("00" + counting);
+        } else if (counting < 100) {
+            $("#cycleTimer").text("0" + counting);
         } else if (counting < timerFrom) {
             $("#cycleTimer").text(counting);
         } else {
