@@ -125,11 +125,11 @@ input[type=checkbox] {
     background: #4380f2;
 }
 
-.light_off {
+.transparent {
     background: transparent;
 }
 
-.light_on {
+.green {
     background: #22f92a;
 }
 

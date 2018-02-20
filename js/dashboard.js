@@ -70,7 +70,7 @@ function onValueChanged(key, value, isNew) {
             }
             break;
 
-        case "/components/intake_automation/current_state":
+        case "/components/intake_automation/state/current_state":
             if (value === "eject_cube") {
                 resetTimer();
                 startTimer();
@@ -108,9 +108,9 @@ function onValueChanged(key, value, isNew) {
 
 function cubeContained(status) {
     if (status) {
-        $("#cube_light").addClass("light_on").removeClass("light_off");
+        $("#cube_light").addClass("green").removeClass("transparent");
     } else {
-        $("#cube_light").addClass("light_off").removeClass("light_on");
+        $("#cube_light").addClass("transparent").removeClass("green");
     }
 }
 
