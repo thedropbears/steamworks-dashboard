@@ -10,25 +10,11 @@
     font-family: arial;
     margin: 0;
     padding: 0;
-    font-size: 80% -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
     overflow: hidden;
 }
 
 body {
     background-color: var(--bg-colour);
-}
-
-.blink {
-    animation: blinker 0.75s linear infinite;
-    color: var(--accent-colour);
-}
-
-@keyframes blinker {
-    0% {
-        opacity: 0
-    }
 }
 
 .topPanel {
@@ -50,36 +36,6 @@ ul {
     list-style-type: none;
 }
 
-.dropdown {
-    background-color: var(--bg-colour);
-    color: var(--accent-colour);
-    border-radius: 0.1vw;
-}
-
-.button {
-    font-size: 120%;
-    border-radius: 0.2vw;
-    height: 5vw;
-    width: 8vw;
-    background: white;
-    color: var(--accent-colour);
-    text-align: center;
-    line-height: 2vw;
-    cursor: pointer;
-    border: 0vw solid var(--accent-colour);
-    border-bottom: 1vw solid var(--accent-colour);
-    opacity: 0.85;
-    margin: 0.5vw 0 0 0;
-}
-
-.button:active {
-    opacity: 0.3;
-}
-
-.click {
-    opacity: 0.3;
-}
-
 .timer {
     width: auto;
     font-weight: 600;
@@ -91,34 +47,10 @@ ul {
 #cycleTimer {
     font-size: 800%;
     margin-left: 2vw;
-    margin-bottom:
-}
-
-#timerInfo {
-    font-size: 425%;
-    color: #4CAF50;
-}
-
-#topList {
-    border-bottom: medium solid var(--accent-colour);
-    ;
 }
 
 .checklist-div {
     margin: 5vw;
-}
-
-ul#topList {
-    height: 10vw;
-}
-
-.sideList {
-    vertical-align: middle;
-    text-align: right;
-    color: var(--accent-colour);
-    ;
-    background-color: var(--bg-colour);
-    ;
 }
 
 #main-body {
@@ -146,29 +78,9 @@ ul#topList {
     font-size: 300%;
     float: left;
     margin: medium solid var(--accent-colour);
-    display: inline-block;
     vertical-align: text-top;
     width: 50vw;
     background-color: var(--bg-colour);
-}
-
-#state {
-    background-color: var(--bg-colour);
-    align: center;
-    width: 16vw;
-    background-color: var(--bg-colour);
-    align-items: center content:url("img/icons/stationaryred.png");
-}
-
-#stateDiv {
-    border-right: medium solid var(--accent-colour);
-    border-left: medium solid var(--accent-colour);
-    width: 18vw;
-    height: 18vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0vw;
 }
 
 #compassDiv {
@@ -185,16 +97,6 @@ ul#topList {
     margin-top: 0px;
     margin: 0 auto;
     /* content: url("img/robotred.png"); */
-}
-
-#pegPostion {
-    background-color: var(--bg-colour);
-    border: medium solid var(--accent-colour);
-    border-bottom: 10vw;
-    width: 100%;
-    float: right;
-    border-bottom: medium solid var(--accent-colour);
-    height: 100%;
 }
 
 form {
@@ -246,11 +148,6 @@ table {
 #robot-info {
     float: left;
     padding: 3vh;
-}
-
-#submit-button {
-    padding: 30px;
-    border-radius: 5px;
 }
 
 #main_table {

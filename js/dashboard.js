@@ -17,14 +17,14 @@ $(document).on("keypress", function (e) {
 });
 
 $(document).ready(function () {
-    sports_music.play()
+    sports_music.play();
 
-    $("#compass").attr("src", "img/robotred.png")
+    $("#compass").attr("src", "img/robotred.png");
 
     // sets a function that will be called when any NetworkTables key/value changes
     NetworkTables.addGlobalListener(onValueChanged, true);
 
-    attachRobotConnectionIndicator("#connection", 35)
+    attachRobotConnectionIndicator("#connection", 35);
 
     // hook up our SendableChoosers to combo boxes
     attachSelectToSendableChooser("#auto-select", "/SmartDashboard/Autonomous Mode");
@@ -41,7 +41,7 @@ $(document).ready(function () {
         }
     }, true);
 
-    autoChecker()
+    autoChecker();
 
     loadCameraOnConnect({
         container: '#camera',
@@ -74,9 +74,9 @@ function onValueChanged(key, value, isNew) {
             if (value === "eject_cube") {
                 resetTimer();
                 startTimer();
-                break;
+            
             }
-
+            break;
         case "/components/intake/is_cube_contained":
             cubeContained(value);
             break;
@@ -87,20 +87,20 @@ function onValueChanged(key, value, isNew) {
             break;
 
         case "/FMSInfo/GameSpecificMessage":
-            setMapLocations(value)
+            setMapLocations(value);
             break;
 
         case "/FMSInfo/IsRedAlliance":
             if (value === true) {
-                alliance = "red"
-                other_alliance = "blue"
-                document.documentElement.style.setProperty('--accent-colour', '#C62828')
+                alliance = "red";
+                other_alliance = "blue";
+                document.documentElement.style.setProperty('--accent-colour', '#C62828');
             } else if (value === false) {
-                alliance = "blue"
-                other_alliance = "red"
-                document.documentElement.style.setProperty('--accent-colour', '#3565bf')
+                alliance = "blue";
+                other_alliance = "red";
+                document.documentElement.style.setProperty('--accent-colour', '#3565bf');
             }
-            $("#compass").removeAttr("src")
+            $("#compass").removeAttr("src");
             $("#compass").attr("src", "img/robot" + alliance + ".png");
             break;
     }
@@ -108,9 +108,9 @@ function onValueChanged(key, value, isNew) {
 
 function cubeContained(status) {
     if (status) {
-        $("#cube_light").addClass("light_on").removeClass("light_off")
+        $("#cube_light").addClass("light_on").removeClass("light_off");
     } else {
-        $("#cube_light").addClass("light_off").removeClass("light_on")
+        $("#cube_light").addClass("light_off").removeClass("light_on");
     }
 }
 
@@ -127,34 +127,34 @@ function autoChecker() {
 
 
 function setMapLocations(locations) {
-    enemy_switch = locations[0] + "1"
-    scale = locations[1] + "2"
-    our_switch = locations[2] + "3"
+    enemy_switch = locations[0] + "1";
+    scale = locations[1] + "2";
+    our_switch = locations[2] + "3";
 
-    $("#" + enemy_switch).addClass(alliance).removeClass(other_alliance)
-    $("#" + scale).addClass(alliance).removeClass(other_alliance)
-    $("#" + our_switch).addClass(alliance).removeClass(other_alliance)
+    $("#" + enemy_switch).addClass(alliance).removeClass(other_alliance);
+    $("#" + scale).addClass(alliance).removeClass(other_alliance);
+    $("#" + our_switch).addClass(alliance).removeClass(other_alliance);
 
-    $("#" + sideSwitch(enemy_switch)).addClass(other_alliance).removeClass(alliance)
-    $("#" + sideSwitch(scale)).addClass(other_alliance).removeClass(alliance)
-    $("#" + sideSwitch(our_switch)).addClass(other_alliance).removeClass(alliance)
+    $("#" + sideSwitch(enemy_switch)).addClass(other_alliance).removeClass(alliance);
+    $("#" + sideSwitch(scale)).addClass(other_alliance).removeClass(alliance);
+    $("#" + sideSwitch(our_switch)).addClass(other_alliance).removeClass(alliance);
 }
 
 function sideSwitch(a) {
     if (a[0] === "L") {
-        return "R" + a[1]
+        return "R" + a[1];
     } else if (a[0] === "R") {
-        return "L" + a[1]
+        return "L" + a[1];
     }
 }
 
 function removeForm(force) {
     if ($("input").length === $("input:checked").length) {
-        $(".checklist-div").hide()
-        $(".inital-hide").show()
+        $(".checklist-div").hide();
+        $(".inital-hide").show();
     } else if (force) {
-        $(".checklist-div").hide()
-        $(".inital-hide").show()
+        $(".checklist-div").hide();
+        $(".inital-hide").show();
     }
 }
 
@@ -166,7 +166,7 @@ function rotateCompass(heading) {
 
 function startTimer() {
     if (intervalTimer == null) {
-        intervalTimer = setInterval(timer, 1000)
+        intervalTimer = setInterval(timer, 1000);
     }
 }
 
@@ -179,7 +179,7 @@ function resetTimer() {
 
 function timer() {
     if (timerCounter) {
-        counting = counting + 1
+        counting = counting + 1;
         if (counting < 10) {
             $("#cycleTimer").text("00" + counting);
         } else if (counting < 100) {
