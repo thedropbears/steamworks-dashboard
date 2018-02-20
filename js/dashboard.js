@@ -119,7 +119,9 @@ function autoChecker() {
     $("#auto-select").change(function () {
         if ($(this).val() != "None") {
             $("#auto").prop("checked", true);
-        }
+	} else {
+            $("#auto").prop("checked", false);
+	}
     });
 }
 
