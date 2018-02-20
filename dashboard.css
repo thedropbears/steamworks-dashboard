@@ -170,19 +170,16 @@ ul#topList {
 #compassDiv {
     display: flex;
     align-items: center;
-    width: 55vw;
-    height: 18vw;
     background-color: var(--bg-colour);
-    margin-top: 12vh;
     border-bottom: medium solid var(--accent-colour);
+    padding: 5vw 0 5vw 0;
 }
 
 #compass {
     height: 18vw;
     background-color: var(--bg-colour);
     margin-top: 0px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     content: url("img/robotred.png");
 }
 
