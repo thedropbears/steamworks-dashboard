@@ -133,10 +133,30 @@ input[type=checkbox] {
     background: #22f92a;
 }
 
+.orange {
+    background: #ff9100;
+}
+
+.pink {
+    background: #ff00d4;
+}
+
+.yellow {
+    background: #d9ff00;
+}
 div.square {
     width: 50px;
     height: 50px;
     border-radius: 5px;
+}
+#arm_light{    
+    border: 3px solid #ff9100;
+}
+#intake_light{    
+    border: 3px solid #ff00d4;
+}
+#kicker_light{
+    border: 3px solid #d9ff00;
 }
 
 #cube_light.square {
