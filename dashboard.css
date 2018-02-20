@@ -104,6 +104,10 @@ ul {
     ;
 }
 
+.checklist-div {
+    margin: 5vw;
+}
+
 ul#topList {
     height: 10vw;
 }
