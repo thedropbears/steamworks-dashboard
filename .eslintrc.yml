@@ -1,0 +1,20 @@
+env:
+  browser: true
+  es6: true
+  jquery: true
+extends: 'eslint:recommended'
+globals:
+  NetworkTables: false
+  d3: false
+  attachSelectToSendableChooser: false
+  attachRobotConnectionIndicator: false
+  loadCameraOnConnect: false
+rules:
+  indent:
+    - warn
+    - 4
+    - SwitchCase: 1
+  no-console: 'off'
+  semi:
+    - warn
+    - always

@@ -1,8 +1,3 @@
-var currentGyro = 0;
-var offsetGyro = 0;
-var alliance = "red";
-var other_alliance = "blue";
-var timerStart = false;
 var timerFrom = 135;
 var counting = 0;
 var timerCounter = true;
@@ -12,36 +7,41 @@ sports_music.setAttribute('src', 'music/Sports.ogg');
 
 $(document).on("keypress", function (e) {
     if (e.key === "]") {
-        removeForm(true);
+        hideChecklist();
     }
 });
 
-$(document).ready(function () {
+$(function () {
     sports_music.play();
 
-    // sets a function that will be called when any NetworkTables key/value changes
-    NetworkTables.addGlobalListener(onValueChanged, true);
+    NetworkTables.addKeyListener("/robot/mode", robotModeCallback, true);
+    NetworkTables.addKeyListener("/components/intake_automation/state/current_state", intakeStateCallback, true);
+    NetworkTables.addKeyListener("/components/intake/is_cube_contained", (k, v) => cubeContained(v), true);
+    NetworkTables.addKeyListener("/SmartDashboard/imu_heading", (k, v) => rotateCompass(v), true);
+    NetworkTables.addKeyListener("/FMSInfo/GameSpecificMessage", (k, v) => setMapLocations(v), true);
+    NetworkTables.addKeyListener("/FMSInfo/IsRedAlliance", allianceCallback, true);
 
     attachRobotConnectionIndicator("#connection", 35);
 
     // hook up our SendableChoosers to combo boxes
-    attachSelectToSendableChooser("#auto-select", "/SmartDashboard/Autonomous Mode");
+    attachSelectToSendableChooser("#auto-select", "Autonomous Mode");
 
-    $("input").click(function () {
-        if ($("input").length === $("input:checked").length) {
-            removeForm();
+    $("#checklist input").click(function () {
+        if ($("#checklist input").length === $("#checklist input:checked").length) {
+            hideChecklist();
         }
     });
+    NetworkTables.addKeyListener("/SmartDashboard/Autonomous Mode/selected", () => $("#check-auto").prop("checked", true));
 
     NetworkTables.addRobotConnectionListener(function (connected) {
-        if (connected) {
-            $("#check-connection").prop("checked", true);
-        } else {
+        if (!connected) {
             $("#check-connection").prop("checked", false);
         }
     }, true);
-
-    autoChecker();
+    NetworkTables.addKeyListener(
+        "/robot/is_ds_attached",
+        (key, value) => $("#check-connection").prop("checked", value),
+        true);
 
     loadCameraOnConnect({
         container: '#camera',
@@ -55,113 +55,59 @@ $(document).ready(function () {
         }
     });
 
+    $(".checklist-hidden").hide();
 });
 
-function onValueChanged(key, value, isNew) {
-    switch (key) {
-        case "/robot/mode":
-            if (value === "teleop") {
-                startTimer();
-                removeForm(true);
-                break;
-            } else if (value === "disabled") {
-                resetTimer();
-                break;
-            }
-            break;
-
-        case "/components/intake_automation/state/current_state":
-            if (value === "eject_cube") {
-                resetTimer();
-                startTimer();
-
-            }
-            break;
-        case "/components/intake/is_cube_contained":
-            cubeContained(value);
-            break;
-
-        case "/SmartDashboard/imu_heading":
-            rotateCompass(value + Math.PI);
-            currentGyro = value;
-            break;
-
-        case "/FMSInfo/GameSpecificMessage":
-            setMapLocations(value);
-            break;
-
-        case "/FMSInfo/IsRedAlliance":
-            if (value === true) {
-                alliance = "red";
-                other_alliance = "blue";
-                document.documentElement.style.setProperty('--accent-colour', '#C62828');
-            } else if (value === false) {
-                alliance = "blue";
-                other_alliance = "red";
-                document.documentElement.style.setProperty('--accent-colour', '#3565bf');
-            }
-            $("#compass").removeAttr("src");
-            $("#compass").attr("src", "img/robot" + alliance + ".png");
-            break;
+function robotModeCallback(key, value) {
+    if (value === "teleop") {
+        startTimer();
+        hideChecklist();
+    } else if (value === "disabled") {
+        resetTimer();
     }
+}
+
+function intakeStateCallback(key, value) {
+    if (value === "eject_cube") {
+        resetTimer();
+        startTimer();
+    }
+}
+
+function allianceCallback(key, isRed) {
+    var alliance;
+    if (isRed) {
+        $(":root").addClass("red-alliance").removeClass("blue-alliance");
+        alliance = "red";
+    } else {
+        $(":root").removeClass("red-alliance").addClass("blue-alliance");
+        alliance = "blue";
+    }
+    $("#compass").attr("src", "img/robot" + alliance + ".png");
 }
 
 function cubeContained(status) {
     if (status) {
-        $("#cube_light").addClass("green").removeClass("transparent");
+        $("#cube-light").addClass("light-on");
     } else {
-        $("#cube_light").addClass("transparent").removeClass("green");
+        $("#cube-light").removeClass("light-on");
     }
 }
-
-function autoChecker() {
-    $("#auto-select").val("None");
-    $("#auto-select").change(function () {
-        if ($(this).val() != "None") {
-            $("#auto").prop("checked", true);
-        } else {
-            $("#auto").prop("checked", false);
-        }
-    });
-}
-
 
 function setMapLocations(locations) {
-    enemy_switch = locations[0] + "1";
-    scale = locations[1] + "2";
-    our_switch = locations[2] + "3";
-
-    $("#" + enemy_switch).addClass(alliance).removeClass(other_alliance);
-    $("#" + scale).addClass(alliance).removeClass(other_alliance);
-    $("#" + our_switch).addClass(alliance).removeClass(other_alliance);
-
-    $("#" + sideSwitch(enemy_switch)).addClass(other_alliance).removeClass(alliance);
-    $("#" + sideSwitch(scale)).addClass(other_alliance).removeClass(alliance);
-    $("#" + sideSwitch(our_switch)).addClass(other_alliance).removeClass(alliance);
+    $("#field-our-switch").attr("alignment", locations[0]);
+    $("#field-scale").attr("alignment", locations[1]);
+    $("#field-enemy-switch").attr("alignment", locations[2]);
 }
 
-function sideSwitch(a) {
-    if (a[0] === "L") {
-        return "R" + a[1];
-    } else if (a[0] === "R") {
-        return "L" + a[1];
-    }
-}
-
-function removeForm(force) {
-    if ($("input").length === $("input:checked").length) {
-        $(".checklist-div").hide();
-        $(".inital-hide").show();
-    } else if (force) {
-        $(".checklist-div").hide();
-        $(".inital-hide").show();
-    }
+function hideChecklist() {
+    $("#checklist").hide();
+    $(".checklist-hidden").show();
 }
 
 function rotateCompass(heading) {
-    heading = heading - offsetGyro;
-    heading = Math.PI - heading; // gyro is the wrong way around
-    document.getElementById("compass").style.transform = "rotate(" + heading + "rad)";
+    heading = -heading; // our coordinate system is the wrong way around
+    $("#compass").css("transform", "rotate(" + heading + "rad)");
 }
 
 function startTimer() {

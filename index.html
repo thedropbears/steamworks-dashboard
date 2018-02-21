@@ -11,23 +11,21 @@
     <script src="js/d3.min.js"></script>
     <!-- some utility functions that are highly useful -->
     <script src="/networktables/utils.js"></script>
-    <script src="js/dashboard.js"></script>
     <script src="/networktables/camera.js"></script>
+    <script src="js/dashboard.js"></script>
 </head>
 
 <body>
 
-    <div class="topPanel">
-        <p class="timer" id="cycleTimer">000</p>
+    <div id="top-pane">
+        <span class="timer" id="cycleTimer">000</span>
         <select id="auto-select"></select>
         <span id="connection"></span>
     </div>
 
-    <div id="camera" class="camera inital-hide"></div>
-
-    <form class="checklist-div" id="checklist">
+    <form id="checklist">
         <label><input id="check-connection" type="checkbox"> Is robot connected?<br></label>
-        <label><input id="auto" type="checkbox"> Select Auto<br></label>
+        <label><input id="check-auto" type="checkbox"> Select Auto<br></label>
         <label><input type="checkbox"> Is cube loaded?<br></label>
         <label><input type="checkbox"> Is controller connected and in correct order.?<br></label>
         <label><input type="checkbox"> Is pneumatics charged?<br></label>
@@ -37,57 +35,24 @@
         <label><input type="checkbox"> Is everything plugged in?<br></label>
     </form>
 
-    <div id="main-body" class="inital-hide">
+    <div id="camera"></div>
 
-    <div id="compassDiv">
-        <img id="compass" />
-    </div>
+    <div id="main-body">
+        <label id="cube-indicator"><span id="cube-light" class="square light"></span> Cube Inside</label>
 
-        <div id="robot-info">
-        <table id=main_table><td>
-        <table>
-            <td>
-                <div id="cube_light" class="square light_off"></div>
-            </td>
-            <td>Cube Inside</td>
-    </table></td>
-    <td><table>
-        <tr><td><div id="kicker_light" class="square light_off"></div></td><td>Kicker</td></tr>
-        <tr><td><div id="intake_light" class="square light_off"></div></td><td>Intake</td></tr>
-        <tr><td><div id="arm_light" class="square light_off"></div></td><td>Arm</td></tr>
-    </table></td>
-    <td>
-            <table> <!-- Field map table -->
-                <tr>
-                    <td>
-                        <div id="L1" class="square blue"></div>
-                    </td>
-                    <td>
-                        <div id="R1" class="square red"></div>
-                    </td>
-                    <td>Enemy Switch</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="L2" class="square blue"></div>
-                    </td>
-                    <td>
-                        <div id="R2" class="square red"></div>
-                    </td>
-                    <td>Scale</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="L3" class="square blue"></div>
-                    </td>
-                    <td>
-                        <div id="R3" class="square red"></div>
-                    </td>
-                    <td>Switch</td>
-                </tr>
-            </table></td></table>
+        <div id="robot-info" class="checklist-hidden">
+            <label><span id="kicker-light" class="square light"></span> Kicker</label>
+            <label><span id="intake-light" class="square light"></span> Intake</label>
+            <label><span id="arm-light" class="square light"></span> Arm</label>
         </div>
 
+        <div id="powerup-field" class="checklist-hidden">
+            <label id="field-enemy-switch"><span class="field-left square"></span> <span class="field-right square"></span> Enemy Switch</label>
+            <label id="field-scale"><span class="field-left square"></span> <span class="field-right square"></span> Scale</label>
+            <label id="field-our-switch"><span class="field-left square"></span> <span class="field-right square"></span> Switch</label>
+        </div>
+
+        <div id="compass-container"><img id="compass" src="image/robotred.png"></div>
     </div>
 
 </body>

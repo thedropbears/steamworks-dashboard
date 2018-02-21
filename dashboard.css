@@ -3,183 +3,166 @@
 :root {
     --accent-colour: grey;
     --bg-colour: #161616;
+    --alliance-colour: grey;
+    --enemy-colour: grey;
+
+    background-color: var(--bg-colour);
+    color: white;
+    font-family: Comic Sans MS, Comic Neue, Arial, sans-serif;
+    font-size: 20px;
+    user-select: none;
+}
+
+.red-alliance {
+    --alliance-colour: #f23030;
+    --enemy-colour: #4380f2;
+    --accent-colour: #c62828;
+}
+
+.blue-alliance {
+    --alliance-colour: #4380f2;
+    --enemy-colour: #f23030;
+    --accent-colour: #3565bf;
 }
 
 * {
     box-sizing: border-box;
-    font-family: arial;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    user-select: none;
 }
 
-body {
-    background-color: var(--bg-colour);
-}
-
-.topPanel {
+#top-pane {
     border-bottom: medium solid var(--accent-colour);
-}
-
-.topPanel li {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 1.5vw;
-    margin-bottom: 1vw;
-}
-
-.topPanel ul {
-    background-color: var(--bg-colour);
-}
-
-ul {
-    list-style-type: none;
+    color: var(--accent-colour);
+    position: absolute;
+    width: 50%;
 }
 
 .timer {
-    display: inline;
     width: auto;
     font-weight: 600;
-    color: var(--accent-colour);
-    background-color: var(--bg-colour);
     vertical-align: middle;
     margin-right: 5vw;
 }
 
 #cycleTimer {
-    font-size: 800%;
+    font-size: 6rem;
     margin-left: 2vw;
 }
 
-.checklist-div {
-    margin: 5vw;
+#checklist {
+    background-color: var(--bg-colour);
+    color: white;
+    font-size: 2em;
+    height: 100%;
+    width: 100%;
+    padding: 1em 4em;
+    margin-top: 7.5rem;
+    position: absolute;
+    z-index: 1000;
+    border-top: medium solid var(--accent-colour);
+}
+
+#checklist input {
+    width: 4vh;
+    height: 4vh;
 }
 
 #main-body {
-    background-color: var(--bg-colour);
-    ;
-    width: 50%;
     border-left: medium solid var(--accent-colour);
-    ;
-    margin-top: -12.3vw;
-    margin-bottom: -0.2vw;
-    height: 1000px;
+    float: right;
+    width: 50%;
+    height: 100%;
 }
 
-#main-body li {
-    display: inline-block;
-    vertical-align: top;
-    background-color: var(--bg-colour);
-    ;
-}
-
-.camera {
+#camera {
     color: white;
     font-weight: bold;
     text-align: center;
     font-size: 300%;
     float: left;
-    margin: medium solid var(--accent-colour);
     vertical-align: text-top;
-    width: 50vw;
-    background-color: var(--bg-colour);
+    margin: 9rem auto;
+    width: 50%;
 }
 
-#compassDiv {
-    display: flex;
-    align-items: center;
-    background-color: var(--bg-colour);
-    border-bottom: medium solid var(--accent-colour);
-    padding: 4vw 0 4vw 0;
+#compass-container {
+    border-top: medium solid var(--accent-colour);
+    padding: 1em;
 }
 
 #compass {
-    height: 18vw;
-    background-color: var(--bg-colour);
-    margin-top: 0px;
-    margin: 0 auto;
+    height: 18em;
     display: block;
-    content: url("img/robotred.png");
+    margin: auto;
 }
 
-form {
-    color: white;
-    font-size: 5vh;
+#robot-info > label,
+#powerup-field > label {
+    display: block;
 }
 
-.inital-hide {
-    display: none;
-}
-
-input[type=checkbox] {
-    width: 4vh;
-    height: 4vh;
-}
-
-.red {
-    background: #f23030;
-}
-
-.blue {
-    background: #4380f2;
-}
-
-.transparent {
-    background: transparent;
-}
-
-.green {
-    background: #22f92a;
-}
-
-.orange {
-    background: #ff9100;
-}
-
-.pink {
-    background: #ff00d4;
-}
-
-.yellow {
-    background: #d9ff00;
-}
-div.square {
-    width: 50px;
-    height: 50px;
+.square {
+    width: 2em;
+    height: 2em;
     border-radius: 5px;
-}
-#arm_light{    
-    border: 3px solid #ff9100;
-}
-#intake_light{    
-    border: 3px solid #ff00d4;
-}
-#kicker_light{
-    border: 3px solid #d9ff00;
+    display: inline-block;
 }
 
-#cube_light.square {
-    padding: 50px;
-    border: 3px solid #22f92a;
+.light {
+    border: 3px solid var(--light-colour);
 }
 
-table {
-    color: white;
-    padding-left: 3vw;
+.light-on {
+    background-color: var(--light-colour);
 }
 
-#robot-info {
-    float: left;
-    padding: 3vh;
+#arm-light {
+    --light-colour: #ff9100;
 }
 
-#main_table {
-    margin-left: 4.5vw;
-    padding: 4px;
+#intake-light {
+    --light-colour: #ff00d4;
 }
 
-#connection svg {
+#kicker-light {
+    --light-colour: #d9ff00;
+}
+
+#cube-light {
+    --light-colour: #22f92a;
+
+    padding: 2em;
+}
+
+#cube-indicator,
+#robot-info,
+#powerup-field {
+    display: inline-block;
+    padding: 1.5em;
+}
+
+#cube-indicator {
+    vertical-align: top;
+}
+
+#powerup-field .square {
+    border: medium solid grey;
+}
+
+#powerup-field > [alignment="L"] > .field-left,
+#powerup-field > [alignment="R"] > .field-right {
+    background-color: var(--alliance-colour);
+    border: none;
+}
+
+#powerup-field > [alignment="L"] > .field-right,
+#powerup-field > [alignment="R"] > .field-left {
+    background-color: var(--enemy-colour);
+    border: none;
+}
+
+#connection {
     vertical-align: middle;
-    margin-left: 5vw;
+    margin-left: 3em;
 }

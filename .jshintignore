@@ -1,0 +1,2 @@
+# Ignore vendored minified dependencies.
+**/*.min.js
