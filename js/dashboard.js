@@ -17,6 +17,11 @@ $(function () {
     NetworkTables.addKeyListener("/robot/mode", robotModeCallback, true);
     NetworkTables.addKeyListener("/components/intake_automation/state/current_state", intakeStateCallback, true);
     NetworkTables.addKeyListener("/components/intake/is_cube_contained", (k, v) => cubeContained(v), true);
+    
+    NetworkTables.addKeyListener("/components/intake/arms_out", (k, v) => armsOut(v), true);
+    NetworkTables.addKeyListener("/components/intake/clamp_pos", (k, v) => clampPos(v), true);
+    NetworkTables.addKeyListener("/components/intake/kicker_pos", (k, v) => kickerPos(v), true);
+
     NetworkTables.addKeyListener("/SmartDashboard/imu_heading", (k, v) => rotateCompass(v), true);
     NetworkTables.addKeyListener("/FMSInfo/GameSpecificMessage", (k, v) => setMapLocations(v), true);
     NetworkTables.addKeyListener("/FMSInfo/IsRedAlliance", allianceCallback, true);
@@ -47,7 +52,7 @@ $(function () {
         container: '#camera',
         port: 1181,
         image_url: '/stream.mjpg',
-        host: "10.47.74.36",
+        host: "10.47.74.77",
         data_url: '/settings.json',
         attrs: {
             width: 583,
@@ -93,6 +98,29 @@ function cubeContained(status) {
         $("#cube-light").removeClass("light-on");
     }
 }
+
+function armsOut(status) {
+    if (status) {
+        $("#arm-light").addClass("light-on");
+    } else {
+        $("#arm-light").removeClass("light-on");
+    }
+}
+function clampPos(status) {
+    if (status) {
+        $("#intake-light").addClass("light-on");
+    } else {
+        $("#intake-light").removeClass("light-on");
+    }
+}
+function kickerPos(status) {
+    if (status) {
+        $("#kicker-light").addClass("light-on");
+    } else {
+        $("#kicker-light").removeClass("light-on");
+    }
+}
+
 
 function setMapLocations(locations) {
     $("#field-our-switch").attr("alignment", locations[0]);

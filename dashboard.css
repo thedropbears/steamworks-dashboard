@@ -8,7 +8,7 @@
 
     background-color: var(--bg-colour);
     color: white;
-    font-family: Comic Sans MS, Comic Neue, Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 20px;
     user-select: none;
 }
@@ -26,13 +26,13 @@
 }
 
 * {
+    overflow: hidden;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 #top-pane {
-    border-bottom: medium solid var(--accent-colour);
     color: var(--accent-colour);
     position: absolute;
     width: 50%;
@@ -53,11 +53,11 @@
 #checklist {
     background-color: var(--bg-colour);
     color: white;
-    font-size: 2em;
+    font-size: 1.7em;
     height: 100%;
     width: 100%;
     padding: 1em 4em;
-    margin-top: 7.5rem;
+    margin-top: 6.5rem;
     position: absolute;
     z-index: 1000;
     border-top: medium solid var(--accent-colour);
@@ -72,7 +72,7 @@
     border-left: medium solid var(--accent-colour);
     float: right;
     width: 50%;
-    height: 100%;
+    height: 1000px;
 }
 
 #camera {
@@ -82,17 +82,17 @@
     font-size: 300%;
     float: left;
     vertical-align: text-top;
-    margin: 9rem auto;
+    margin: 7rem auto 0 auto;
     width: 50%;
 }
 
 #compass-container {
-    border-top: medium solid var(--accent-colour);
     padding: 1em;
+    margin-top: 1em;
 }
 
 #compass {
-    height: 18em;
+    height: 16em;
     display: block;
     margin: auto;
 }
@@ -139,7 +139,7 @@
 #robot-info,
 #powerup-field {
     display: inline-block;
-    padding: 1.5em;
+    padding: 1em;
 }
 
 #cube-indicator {
